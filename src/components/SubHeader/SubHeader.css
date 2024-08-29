@@ -1,0 +1,10 @@
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 55px;
+}
+
+.sub-header .title {
+  font-size: 23px;
+}

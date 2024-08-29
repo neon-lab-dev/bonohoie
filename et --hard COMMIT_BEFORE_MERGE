@@ -1,0 +1,23 @@
+[33mcommit dccc6aae88a8ef1c6e5803cecd9556307e69e78c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev2[m[33m, [m[1;31morigin/dev2[m[33m)[m
+Author: Bhargav <bhargavvenkat515@gmail.com>
+Date:   Thu Aug 29 17:35:34 2024 +0530
+
+    dev2 changes
+
+[33mcommit 9ae2d133ca9110f34709b46370f9f97d93f641a2[m[33m ([m[1;32mdev[m[33m)[m
+Author: Mahesh <ramahesh024@gmail.com>
+Date:   Wed Aug 28 21:31:53 2024 +0530
+
+    hero section added
+
+[33mcommit 0540cb9b7c3d695f194f843dbb03f23c84e7428e[m
+Author: Mahesh <ramahesh024@gmail.com>
+Date:   Wed Aug 28 18:52:54 2024 +0530
+
+    added vite+react project
+
+[33mcommit 40254adb1490ff95049b70136a75793eee677af1[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Mahesh <ramahesh024@gmail.com>
+Date:   Wed Aug 28 18:51:58 2024 +0530
+
+    first commit
