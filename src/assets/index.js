@@ -4,6 +4,7 @@ import aboutus from './aboutus.png'
 import arrow_white from './arrow-slant-white.png'
 import arrow_black from './arrow-slant-black.png'
 import heart from './heart.png'
+import heart_grey from './heart_grey.png'
 import child1 from './child1.png'
 import child2 from './child2.png'
 import child3 from './child3.png'
@@ -27,21 +28,28 @@ import email from './email.png'
 import email_white from './email_white.png'
 import call from './call.png'
 import call_white from './call_white.png'
+import cart from './cart.png'
 import footer_image from './footer_image.png'
 import footer_design from './footer_design.png'
 import founder from './founder.png'
 import b from './b.png'
+import hamburger from './hamburger.png'
 import heart_blue from './heart_blue.png'
 import homie from './homie.png'
 import search from './search.png'
+import search_grey from './search_grey.png'
 import spreading_happiness from './spreading_happiness.png'
 import spreading_happiness_blue from './spreading_happiness_blue.png'
 import spreading_happiness_small from './spreading_happiness_small.png'
 import spreading_happiness_white_small from './spreading_happiness_white_small.png'
+import subtract from './subtract.png'
 import star from './star.png'
+import star_yellow from './star_yellow.png'
 import tandc from './tandc.jpeg'
 import faq from './faq.jpeg'
 import bonhomie from './Bonhomie.png'
+import bonhomie_header from './bonhomie_header.png'
+import bonhomie_yellow from './Bonhomie_yellow.png'
 import got_ques_bg from './got_ques_bg.png'
 
 
@@ -52,6 +60,7 @@ export const IMAGES={
     arrow_white,
     arrow_black,
     heart,
+    heart_grey,
     child1,
     child2,
     child3,
@@ -75,20 +84,27 @@ export const IMAGES={
     email_white,
     call,
     call_white,
+    cart,
     footer_image,
     footer_design,
     founder,
     b,
+    hamburger,
     heart_blue,
     homie,
     search,
+    search_grey,
     spreading_happiness,
     spreading_happiness_blue,
     spreading_happiness_small,
     spreading_happiness_white_small,
     star,
+    star_yellow,
+    subtract,
     tandc,
     faq,
     bonhomie,
+    bonhomie_header,
+    bonhomie_yellow,
     got_ques_bg
 }

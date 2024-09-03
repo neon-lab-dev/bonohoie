@@ -1,15 +1,20 @@
 import React from 'react'
 import { IMAGES } from '../assets'
 import { MoreQues } from '../components/MoreQues'
+import { HappyMoments } from '../components/HappyMoments'
+import { Footer } from '../components/Footer'
+import Header from '../components/Header'
 
 export const FAQ = () => {
   return (
+    <div>
+      <Header/>
     <div className="mx-6 md:mx-4">
       <div className=" relative">
         <img
           src={IMAGES.faq}
           alt="faq"
-          className="w-[96vw] h-[400px] m-auto rounded-3xl object-cover"
+          className="w-[96vw] h-[400px] m-auto rounded-3xl object-cover brightness-50"
         />
         <img
           src={IMAGES.bonhomie}
@@ -79,6 +84,11 @@ export const FAQ = () => {
       </div>
 
       <MoreQues/>
+      
     </div>
+    <HappyMoments/>
+      <Footer/>
+    </div>
+
   )
 }

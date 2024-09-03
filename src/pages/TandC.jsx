@@ -2,9 +2,13 @@ import React from "react";
 import { Footer } from "../components/Footer";
 import { IMAGES } from "../assets";
 import { MoreQues } from "../components/MoreQues";
+import { HappyMoments } from "../components/HappyMoments";
+import Header from "../components/Header";
 
 export const TandC = () => {
   return (
+    <div>
+      <Header/>
     <div className="mx-6 md:mx-4">
       <div className=" relative">
         <img
@@ -124,6 +128,9 @@ export const TandC = () => {
       </div>
 
       <MoreQues/>
+    </div>
+    <HappyMoments/>
+    <Footer/>
     </div>
   );
 };
