@@ -4,9 +4,9 @@ import { IMAGES } from '../assets'
 export const HappyMoments = () => {
   return (
     <div className='bg-[#F0F3FE] mt-10'>
-            <div className=' md:w-[500px] m-auto py-5'>
-                <p className='text-[#1C1D4F] font-semibold text-2xl md:text-5xl text-center '>Make us a part of your happy moments</p>
-                <p className='text-[#454545] text-sm '>Post your happy moments and tag us on <strong className='text-[#FF6D8B] '> @bonhomie_official</strong></p>
+            <div className=' md:w-[600px] m-auto py-10 '>
+                <p className='text-[#1C1D4F] font-semibold text-2xl md:text-5xl text-center mb-5'>Make us a part of your happy moments</p>
+                <p className='text-[#454545] text-sm text-center'>Post your happy moments and tag us on <strong className='text-[#FF6D8B] '> @bonhomie_official</strong></p>
             </div>
             
             <ul className='flex flex-nowrap overflow-x-scroll w-full'>

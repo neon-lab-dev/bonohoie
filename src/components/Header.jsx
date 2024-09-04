@@ -185,12 +185,12 @@ export const Header = () => {
         <img src={IMAGES.bonhomie_header} alt="bonhomie" className="h-12 w-28" />
         <ul className="md:flex md:flex-row justify-center items-center md:space-y-0 md:space-x-6 md:mt-0 hidden">
           <li>
-            <a href="#" className="block p-2 text-[#333333] hover:text-gray-300">
+            <a href="./aboutus" className="block p-2 text-[#333333] hover:text-gray-300">
               About Us
             </a>
           </li>
           <li>
-            <a href="#" className="block p-2 text-[#333333] hover:text-gray-300">
+            <a href="./faq" className="block p-2 text-[#333333] hover:text-gray-300">
               FAQs
             </a>
           </li>

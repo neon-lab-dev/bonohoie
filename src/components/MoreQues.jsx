@@ -9,11 +9,11 @@ export const MoreQues = () => {
           <p className="text-white text-lg">Forem ipsum dolor sit amet, consectetur elit. Nunc vulputate libero et velit</p>
         </div>
         <div className="flex flex-col lg:flex-row gap-5 lg:mr-7 mx-5">
-          <div className="flex flex-col rounded-xl bg-white/10 justify-around md:px-5 items-start my-4 h-[100px] md:h-[190px] ">
+          <div className="flex flex-col rounded-xl bg-white/10 justify-around md:px-5 items-start my-4 h-[100px] md:h-[190px] md:min-w-[200px] ">
             <img src={IMAGES.email_white} alt="email" className="w-7 h-7" />
             <p className="text-white md:text-lg ">contactus@bonhomie.com</p>
           </div>
-          <div className="flex flex-col rounded-xl bg-white/10 justify-around md:px-5 items-start my-4 h-[100px] md:h-[190px] ">
+          <div className="flex flex-col rounded-xl bg-white/10 justify-around md:px-5 items-start my-4 h-[100px] md:h-[190px] md:min-w-[200px] ">
             <img src={IMAGES.call_white} alt="call" className="w-7 h-7" />
             <p className="text-white md:text-xl">+91 96476 75788</p>
           </div>

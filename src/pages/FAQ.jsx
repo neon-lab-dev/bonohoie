@@ -22,6 +22,10 @@ export const FAQ = () => {
           className="w-full md:h-[220px] m-auto rounded-3xl object-contain  absolute bottom-0"
         />
       </div>
+      <div className="flex justify-between m-4 ">
+        <p className="text-[#391811] font-semibold ">2024</p>
+        <p className="text-[#391811] font-semibold " >PREMIUM KIDS WEAR</p>
+      </div>
 
       <div className='flex flex-col md:flex-row justify-between my-10'>
         <p className='text-2xl md:text-5xl md:w-[30vw] md:ml-3'>Answer to all your questions</p>

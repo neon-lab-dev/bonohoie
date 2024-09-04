@@ -10,15 +10,15 @@ export const AboutUs = () => {
       <Header />
       {/* we are on a mission */}
       <div className="bg-[#FDF9E9] relative  md:p-10 flex flex-col justify-end rounded-2xl mx-6">
-        <p className="text-[#EB5C5C] ">We are on a mission</p>
-        <div className="flex flex-col md:flex-row justify-center md:justify-between items-end">
-            <p className="text-3xl md:text-5xl md:w-[50vw]">Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit</p>
-            <p className="md:w-[40vw]">Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+        <p className="text-[#EB5C5C] mt-5">We are on a mission</p>
+        <div className="flex flex-col md:flex-row justify-center md:justify-between items-end mt-5 md:mb-10">
+            <p className="text-3xl md:text-5xl md:w-[50vw] font-semibold ">Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit</p>
+            <p className="md:w-[40vw] mt-5">Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
         </div>
         <img
           src={IMAGES.mission_bg}
           alt="mission_bg"
-          className="absolute top-0 right-0  object-cover"
+          className="absolute top-0 right-20  object-cover"
         />
         <div className="flex h-[360px] overflow-x-scroll ">
             <img src={IMAGES.moment6} alt="moment6" className="m-2 w-full" />
@@ -27,10 +27,10 @@ export const AboutUs = () => {
 
         </div>
       </div>
-        <div className='flex justify-between mx-6 mb-10 mt-5'>
-            <p>2024</p>
-            <p>PREMIUM KIDS WEAR</p>
-        </div>
+      <div className="flex justify-between m-4 ">
+        <p className="text-[#391811] font-semibold ">2024</p>
+        <p className="text-[#391811] font-semibold " >PREMIUM KIDS WEAR</p>
+      </div>
 
       <div className="bg-[#FFF1F3] rounded-2xl mx-6 relative h-[520px] md:h-[460px] overflow-hidden mb-10">
         <p className="text-[#4E031D] text-xl text-center p-6 md:p-10  md:leading-10">
@@ -47,14 +47,14 @@ export const AboutUs = () => {
       </div>
 
       <div className="flex flex-col-reverse md:flex-row mx-6">
-        <div className="bg-[#F82456] rounded-xl  md:w-[70vw] md:mr-9 relative">
+        <div className="bg-[#F82456] rounded-xl md:w-[65vw] md:mr-9 relative">
             
             <img src={IMAGES.star} alt="star" className="absolute top-0 left-0 " />
             <p className="text-white  md:text-2xl p-8">What our founder has to say</p>
             <p className="text-white text-2xl md:text-3xl xl:text-5xl leading-[60px] md:text-left  p-3 md:p-10 ">Jorem ipsum dolor sit amet, consectetur adipiscing elit. 
                 Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora</p>
         </div>
-        <div className=" relative rounded-xl h-[500px] md:h-[500px] md:w-[30vw] flex justify-center">
+        <div className=" relative rounded-xl h-[500px] md:h-[500px] md:w-[35vw] flex justify-center">
             <img src={IMAGES.subtract} alt="subtract" className="absolute top-0 z-0 h-[500px] w-full  md:h-full " />
             <img src={IMAGES.founder} alt="founder" className="h-full object-cover absolute top-0 z-10" />
         </div>

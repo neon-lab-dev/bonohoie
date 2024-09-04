@@ -22,13 +22,13 @@ export const TandC = () => {
           className="w-full md:h-[220px] m-auto rounded-3xl object-contain  absolute bottom-0"
         />
       </div>
-      <div className="flex justify-between m-4">
-        <p>2024</p>
-        <p>PREMIUM KIDS WEAR</p>
+      <div className="flex justify-between m-4 ">
+        <p className="text-[#391811] font-semibold ">2024</p>
+        <p className="text-[#391811] font-semibold " >PREMIUM KIDS WEAR</p>
       </div>
       <div className="flex flex-col-reverse md:flex-row">
-        <div className="md:w-[65vw] md:pr-8 mb-5">
-          <p className="text-3xl md:text-5xl">
+        <div className="md:w-[65vw] md:pr-8 mb-16">
+          <p className="text-3xl md:text-[40px] md:leading-[48px] font-semibold ">
             Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis.
           </p>
@@ -57,7 +57,7 @@ export const TandC = () => {
             condimentum ac, vestibulum e
           </p>
 
-          <p className="text-lg md:text-3xl font-semibold">1. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+          <p className="text-lg md:text-3xl font-semibold mt-5">1. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
           <p className=" md:text-lg text-[#454545]  mt-5 ">
             Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis. Class
@@ -66,7 +66,7 @@ export const TandC = () => {
             lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis
             condimentum ac, vestibulum e
           </p>
-          <p className="text-lg md:text-3xl font-semibold">2. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+          <p className="text-lg md:text-3xl font-semibold mt-5">2. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
           <p className="md:text-lg text-[#454545]  mt-5 ">
             Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis. Class
@@ -75,7 +75,7 @@ export const TandC = () => {
             lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis
             condimentum ac, vestibulum e
           </p>
-          <p className="text-lg md:text-3xl font-semibold">3. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+          <p className="text-lg md:text-3xl font-semibold mt-5">3. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
           <p className="md:text-lg text-[#454545]  mt-5 ">
             Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis. Class
@@ -84,7 +84,7 @@ export const TandC = () => {
             lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis
             condimentum ac, vestibulum e
           </p>
-          <p className="text-lg md:text-3xl font-semibold">4. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+          <p className="text-lg md:text-3xl font-semibold mt-5">4. Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
           <p className="md:text-lg text-[#454545]  mt-5 ">
             Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis. Class
@@ -95,32 +95,33 @@ export const TandC = () => {
           </p>
 
         </div>
-        <div className="md:w-[30vw] mb-5">
-          <p>Table of contents</p>
-          <ol type="1" className="list-decimal ml-4">
-            <li className="text-[#4F4F4F] text-lg">
+        <div className="md:w-[30vw] w-full mb-5">
+          <p className="text-3xl mb-3 font-semibold">Table of contents</p>
+          <ol type="1" className="list-decimal ml-4 ">
+            <li className="text-[#4F4F4F] text-lg mb-3">
             <a href="" className='underline '>Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
-            <li className="text-[#4F4F4F] text-lg">
+            <li className="text-[#4F4F4F] text-lg mb-3">
               <a href="" className="underline">Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
-            <li className="text-[#4F4F4F] text-lg">
+            <li className="text-[#4F4F4F] text-lg mb-3">
             <a href="" className="underline">Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
-            <li className="text-[#4F4F4F] text-lg">Corem ipsum dolor.</li>
-            <li className="text-[#4F4F4F] text-lg">
+            <li className="text-[#4F4F4F] text-lg mb-3"> <a href="" className="underline">Corem ipsum dolor. </a>
+            </li>
+            <li className="text-[#4F4F4F] text-lg mb-3">
             <a href="" className="underline">Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
-            <li className="text-[#4F4F4F] text-lg">
+            <li className="text-[#4F4F4F] text-lg mb-3">
             <a href="" className="underline">Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
-            <li className="text-[#4F4F4F] text-lg">
+            <li className="text-[#4F4F4F] text-lg mb-3">
             <a href="" className="underline">Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
-            <li className="text-[#4F4F4F] text-lg">
+            <li className="text-[#4F4F4F] text-lg mb-3">
             <a href="" className="underline">Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
-            <li className="text-[#4F4F4F] text-lg">
+            <li className="text-[#4F4F4F] text-lg mb-3">
             <a href="" className="underline">Corem ipsum dolor sit amet, consectetur adipiscing elit.</a>
             </li>
           </ol>

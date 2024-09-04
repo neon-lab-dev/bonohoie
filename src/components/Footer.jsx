@@ -1,9 +1,10 @@
 import React from 'react'
 import { IMAGES } from '../assets'
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <div className='bg-[#4B64E6] h-[900px] md:h-[700px] relative overflow-x-hidden'>
+    <div className='bg-[#4B64E6] h-[900px] md:h-[700px] relative overflow-x-hidden mt-10'>
 
             <div className='md:ml-10 md:mt-16 ml-8 mt-10 w-fit absolute left-0 top-0'>
                 <div className='flex mb-10'><img src={IMAGES.b} /> <img src={IMAGES.heart_blue} /> <img src={IMAGES.homie} /> </div>
@@ -15,15 +16,15 @@ export const Footer = () => {
                 </div>
             </div>
 
-            <div className='hidden absolute md:grid grid-cols-3 w-[400px] right-0 xl:right-0 top-0 xl:ml-10 md:mt-16 xl:w-fit xl:gap-10'>
+            <div className='hidden absolute md:grid grid-cols-3 w-[400px] right-0  top-0  md:mt-16  xl:gap-10'>
                 
                     <ul className='text-white'>
-                        <li className='mb-1'>Home </li> 
-                        <li className='mb-1'>Bestsellers</li> 
-                        <li className='mb-1'>About Us</li> 
-                        <li className='mb-1'>FAQs</li> 
-                        <li className='mb-1'>Terms and Conditions</li> 
-                        <li className='mb-1'>Privacy Policy</li>
+                        <li className='mb-1'><a href='./' className='underline'>Home</a></li> 
+                        <li className='mb-1'><a href='./' className='underline'>Bestsellers</a></li> 
+                        <li className='mb-1'><a href='./aboutus' className='underline'>About Us</a></li> 
+                        <li className='mb-1'><a href='./faq' className='underline'>FAQs</a> </li> 
+                        <li className='mb-1'><a href='./tandc' className='underline'>Terms and Conditions</a></li> 
+                        <li className='mb-1'><a href='./' className='underline'>Privacy Policy</a></li>
                     </ul>
                     <ul className='text-white'>
                         <li className='mb-1'>Tshirts </li> 
@@ -42,11 +43,11 @@ export const Footer = () => {
             </div>
             <div className=' absolute top-1/3 md:hidden'>
                     <ul className='text-white flex flex-wrap gap-5'>
-                        <li className='mb-1'>Home </li> 
-                        <li className='mb-1'>Bestsellers</li> 
-                        <li className='mb-1'>About Us</li> 
-                        <li className='mb-1'>FAQs</li> 
-                        <li className='mb-1'>Terms and Conditions</li> 
+                        <li className='mb-1'><a href='./' className='underline'>Home</a></li> 
+                        <li className='mb-1'> Bestsellers</li> 
+                        <li className='mb-1'><a href='./aboutus' className='underline'>About Us</a></li> 
+                        <li className='mb-1'><a href='./faq' className='underline'>FAQs</a> </li> 
+                        <li className='mb-1'><a href='./tandc' className='underline'>Terms and Conditions</a></li> 
                         <li className='mb-1'>Privacy Policy</li>
                     </ul>
                     <ul className='text-white flex flex-wrap gap-5'>
