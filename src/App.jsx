@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Boys from "./pages/Boys";
@@ -10,6 +11,7 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Moments from "./components/Moments/Moments";
 import Desktop2 from "./pages/Desktop2/Desktop2";
+import WishListedItems from "./pages/WishListedItems/WishListedItems";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<NoMatch />} />
           <Route path="/desktop2" element={<Desktop2 />} />
+          <Route path="/wish-listed-items" element={<WishListedItems />} />
         </Routes>
       </Router>
       <Moments />

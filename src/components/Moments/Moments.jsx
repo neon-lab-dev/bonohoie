@@ -1,4 +1,4 @@
-import React from "react";
+
 import Marquee from "react-marquee-slider";
 import './Moments.css';
 import moments1 from "../../assets/images/moments1.jpeg";
