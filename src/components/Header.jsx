@@ -211,7 +211,7 @@ export const Header = () => {
         >
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0 md:hidden">
             <li className="">
-              <a href="#" className="block p-2 pl-5 text-[#333333] hover:text-gray-300 border-b border-[##E7E7E7]">
+              <a href="./" className="block p-2 pl-5 text-[#333333] hover:text-gray-300 border-b border-[##E7E7E7]">
                 Home
               </a>
             </li>
@@ -231,12 +231,12 @@ export const Header = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="block p-2 pl-5 text-[#333333] hover:text-gray-300 border-b border-[##E7E7E7]">
+              <a href="./aboutus" className="block p-2 pl-5 text-[#333333] hover:text-gray-300 border-b border-[##E7E7E7]">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#" className="block p-2 pl-5 text-[#333333] hover:text-gray-300 border-b border-[##E7E7E7]">
+              <a href="./faq" className="block p-2 pl-5 text-[#333333] hover:text-gray-300 border-b border-[##E7E7E7]">
                 FAQs
               </a>
             </li>
