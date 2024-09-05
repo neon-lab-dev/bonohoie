@@ -146,8 +146,8 @@ export const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="p-4 bg-white text-[#333333]">
-      <div className="container mx-auto flex justify-between items-center">
+    <header className="py-4 pl-4 pr-6 bg-white text-[#333333] md:mx-10">
+      <div className=" mx-0 w-full flex justify-between items-center">
         {/* Hamburger Icon */}
         <button
           onClick={toggleMenu}
@@ -162,7 +162,7 @@ export const Header = () => {
 
         <ul className="md:flex md:flex-row md:space-y-0 md:space-x-6 md:mt-0 hidden">
           <li className="">
-            <a href="#" className="block p-2 text-[#333333] hover:text-gray-300">
+            <a href="./" className="block p-2 text-[#333333] hover:text-gray-300">
               Home
             </a>
           </li>
@@ -182,8 +182,8 @@ export const Header = () => {
             </a>
           </li>
         </ul>
-        <img src={IMAGES.bonhomie_header} alt="bonhomie" className="h-12 w-28" />
-        <ul className="md:flex md:flex-row justify-center items-center md:space-y-0 md:space-x-6 md:mt-0 hidden">
+        <img src={IMAGES.bonhomie_header} alt="bonhomie" className=" h-12 w-28 ml-10 md:mr-20" />
+        <ul className="md:flex md:flex-row justify-center items-center md:space-y-0 md:space-x-6 md:mt-0 hidden ">
           <li>
             <a href="./aboutus" className="block p-2 text-[#333333] hover:text-gray-300">
               About Us

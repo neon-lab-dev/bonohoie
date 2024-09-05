@@ -8,13 +8,16 @@ import heart_grey from './heart_grey.png'
 import child1 from './child1.png'
 import child2 from './child2.png'
 import child3 from './child3.png'
+import child1_s from './child1_s.png'
+import child2_s from './child2_s.png'
+import child3_s from './child3_S.png'
 import child4 from './child4.png'
 import plus_black from './plus_black.png'
 import girls1 from './girls.jpeg'
 import girls2 from './girls2.jpeg'
 import infant from './infant.jpeg'
 import boys1 from './boys.jpeg'
-import group from './group.jpeg'
+import group from './freebie1.png'
 import group2 from './group2.jpeg'
 import gift from './gift.png'
 import mission_bg from './mission_bg.png'
@@ -29,6 +32,7 @@ import email_white from './email_white.png'
 import call from './call.png'
 import call_white from './call_white.png'
 import cart from './cart.png'
+import copywright from './copywright.png'
 import footer_image from './footer_image.png'
 import footer_design from './footer_design.png'
 import founder from './founder.png'
@@ -44,9 +48,12 @@ import spreading_happiness_small from './spreading_happiness_small.png'
 import spreading_happiness_white_small from './spreading_happiness_white_small.png'
 import subtract from './subtract.png'
 import star from './star.png'
+import star_home from './star_home.png'
+import star_pink from './star_pink.png'
 import star_yellow from './star_yellow.png'
 import tandc from './tandc.jpeg'
 import faq from './faq.jpeg'
+import best_deals from './best_deals.png'
 import bonhomie from './Bonhomie.png'
 import bonhomie_header from './bonhomie_header.png'
 import bonhomie_yellow from './Bonhomie_yellow.png'
@@ -65,6 +72,9 @@ export const IMAGES={
     child2,
     child3,
     child4,
+    child1_s,
+    child2_s,
+    child3_s,
     plus_black,
     girls1,
     girls2,
@@ -85,6 +95,7 @@ export const IMAGES={
     call,
     call_white,
     cart,
+    copywright,
     footer_image,
     footer_design,
     founder,
@@ -99,10 +110,13 @@ export const IMAGES={
     spreading_happiness_small,
     spreading_happiness_white_small,
     star,
+    star_home,
+    star_pink,
     star_yellow,
     subtract,
     tandc,
     faq,
+    best_deals,
     bonhomie,
     bonhomie_header,
     bonhomie_yellow,
