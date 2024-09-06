@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Moments from "./components/Moments/Moments";
 import Desktop2 from "./pages/Desktop2/Desktop2";
 import WishListedItems from "./pages/WishListedItems/WishListedItems";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="*" element={<NoMatch />} />
           <Route path="/desktop2" element={<Desktop2 />} />
           <Route path="/wish-listed-items" element={<WishListedItems />} />
+          <Route path="/product-details" element={<ProductDetails />} />
         </Routes>
       </Router>
       <Moments />

@@ -16,6 +16,23 @@ import search from './logos/search.svg';
 import heartIcon from './logos/heart.svg';
 import sort from './logos/sort.svg';
 import filter from './logos/filter.svg';
+import filterWhite from './logos/filter-icon-white.svg';
+
+import cart from './logos/cart.svg';
+import cash from './logos/cash.svg';
+import clothDetails from './logos/cloth-details.svg';
+import deliveryVan from './logos/delivery-van.svg';
+import gift from './logos/gift.svg';
+import returnPackage from './logos/returns-package.svg';
+import size from './logos/size.svg';
+import star from './logos/star.svg';
+import tshirt from './logos/tshirt.svg';
+import unlocked from './logos/unlocked.svg';
+import slash from './logos/slash-icon.svg';
+import straightLine from './logos/straight-line.png';
+import freebiesBgShape from './logos/freebies-bg-shape.svg';
+import freebiesBgShape2 from './logos/Group 50.png';
+import detailsCardBgShape1 from './images/detailsCardBgShape1.png';
 
 export const IMAGES={
     logo,
@@ -31,7 +48,8 @@ export const IMAGES={
     girls1,
     girls2,
     infant,
-    boys1
+    boys1,
+    detailsCardBgShape1,
 }
 
 export const ICONS = {
@@ -39,4 +57,20 @@ export const ICONS = {
     heartIcon,
     filter,
     sort,
+    filterWhite,
+
+    cart,
+    cash,
+    clothDetails,
+    deliveryVan,
+    gift,
+    returnPackage,
+    size,
+    star,
+    tshirt,
+    unlocked,
+    slash,
+    straightLine,
+    freebiesBgShape,
+    freebiesBgShape2,
 };

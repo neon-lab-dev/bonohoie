@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { ICONS } from "../assets";
 
 const Filter = ({ isFilterExpanded, toggleFilterExpand }) => {
   const [filterTab, setFilterTab] = useState("Category");
@@ -17,11 +18,14 @@ const Filter = ({ isFilterExpanded, toggleFilterExpand }) => {
       {/* Filter Dropdown */}
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] z-50 font-Montserrat transition-all duration-300 ease-in-out">
         <div
-          className={`px-4 py-3 bg-white border rounded-t-2xl shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
+          className={`bg-white flex flex-col justify-between rounded-t-2xl shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
             isFilterExpanded ? "h-[460px]" : "h-0"
           }`}
           style={{ opacity: isFilterExpanded ? 1 : 0 }}
         >
+          <div className="px-4 py-3">
+
+         
           {/* Header */}
           <p
             onClick={toggleFilterExpand}
@@ -32,6 +36,7 @@ const Filter = ({ isFilterExpanded, toggleFilterExpand }) => {
 
           {/* Dropdown Content */}
           {isFilterExpanded && (
+            <div>
             <div className="flex gap-5 mt-4">
               {/* Tab buttons */}
               <div className="flex flex-col">
@@ -74,26 +79,64 @@ const Filter = ({ isFilterExpanded, toggleFilterExpand }) => {
 
               {/* Filter Content */}
               <div className="w-full">
+
+               {
+                filterTab === "Category" &&
                 <div className="flex flex-col">
-                  <div className="flex items-center justify-between w-full py-4">
-                    <label
-                      htmlFor="default-checkbox"
-                      className="text-[#333] font-medium text-base cursor-pointer"
-                    >
-                      TShirt
-                    </label>
-                    <input
-                      id="default-checkbox"
-                      type="checkbox"
-                      value=""
-                      className="w-4 h-4 text-[#f82456] bg-gray-100 border-gray-300 rounded-xl focus:ring-2 focus:ring-[#f82456]"
-                    />
-                  </div>
+                <div className="flex items-center justify-between w-full py-4">
+                  <label
+                    htmlFor="default-checkbox"
+                    className="text-[#333] font-medium text-base cursor-pointer"
+                  >
+                    TShirt
+                  </label>
+                  <input
+                    id="default-checkbox"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4  bg-gray-100 border-gray-300 rounded-xl focus:ring-2"
+                  />
                 </div>
               </div>
+               }
+
+
+                {
+                  filterTab === "Age" &&
+                  <div>Age</div>
+                }
+
+
+                {
+                  filterTab === "Colour" &&
+                  <div>Colour</div>
+                }
+
+
+                {
+                  filterTab === "Price Range" &&
+                  <div>Price Range</div>
+                }
+              </div>
+            </div>
+
+            
+
             </div>
           )}
+
+</div>
+
+<div className="bg-[#F6F6F6] px-4 py-3 flex justify-end bottom-0 w-full">
+              <button className="flex items-center justify-center text-white gap-[10px] px-3 py-[10px] bg-[#F82456] rounded-xl text-xs h-12 w-[152px]">
+                <img src={ICONS.filterWhite} alt="funel-icon" className="size-5" />
+                Filter
+              </button>
+            </div>
+          
         </div>
+
+       
       </div>
     </div>
   );
