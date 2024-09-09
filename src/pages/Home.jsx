@@ -1,8 +1,8 @@
-import React from 'react'
 import { Header } from '../components/Header'
 import { IMAGES } from '../assets'
 
 export const Home = () => {
+    
   return (
     <div>home
         <Header />

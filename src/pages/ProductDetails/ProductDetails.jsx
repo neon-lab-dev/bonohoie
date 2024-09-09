@@ -8,21 +8,135 @@ import DeliveryDetails from "./DeliveryDetails";
 import UnlockFreebies from "./UnlockFreebies";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import ProductInfo from "./ProductInfo";
+import Modal from "../../components/Reusable/Modal";
+import Login from "../../components/Auth/Login/Login";
+import Signup from "../../components/Auth/Signup/Signup";
+import Profile from "../../components/Auth/Profile/Profile";
+import YourOrders from "../../components/YourOrders/YourOrders";
+import Cart from "../../components/Cart/Cart";
+import ChooseGift from "../../components/ChooseGift/ChooseGift";
 
 const ProductDetails = () => {
+  const [openModal, setOpenModal] = useState(false);
+  // const [openCartModal, setOpenCartModal] = useState(false);
+  // const [openOrdersModal, setOpenOrdersModal] = useState(false);
+  // const [openGiftModal, setOpenGiftModal] = useState(false);
+
+  // modaltype will be signup, login, profile, orders, cart
+  const [modalType, setModalType] = useState("login");
+
   const [productSize, setProductSize] = useState("2-4Y");
   const sizes = ["2-4Y", "5-7Y", "8-10Y", "11-12Y"];
+  console.log(modalType);
 
   // Breadcrumb menus
   const breadcrumbItems = [
     { label: "Home", link: "/" },
     { label: "Tees", link: "/tees" },
     { label: "Age Group", link: "/tees/age-group" },
-    { label: "Product Name" }, // No link for the last item
+    { label: "Product Name" },
   ];
 
   return (
-    <div className="max-w-[1440px] mx-auto  font-Montserrat">
+    <div className="max-w-[1440px] mx-auto font-Montserrat">
+      <div className="flex gap-20">
+        <button
+          onClick={() => {
+            setModalType("cart");
+            setOpenModal(true);
+          }}
+        >
+          Cart
+        </button>
+
+        <button
+          onClick={() => {
+            setModalType("orders");
+            setOpenModal(true);
+          }}
+        >
+          Orders
+        </button>
+
+        <button
+          onClick={() => {
+            setModalType("chooseGift");
+            setOpenModal(true);
+          }}
+        >
+          Choose Gift
+        </button>
+
+        <button
+          onClick={() => {
+            setModalType("login");
+            setOpenModal(true);
+          }}
+        >
+          Login
+        </button>
+      </div>
+
+      {/* Login, signup, profile, change password modal */}
+      <Modal
+        modalType={modalType}
+        setModalType={setModalType}
+        openModal1={openModal}
+        setOpenModal1={setOpenModal}
+        title={
+          modalType === "login"
+            ? "Login"
+            : modalType === "signup"
+            ? "Signup"
+            : modalType === "profile"
+            ? "Profile"
+            : modalType === "orders"
+            ? "Your Orders"
+            : modalType === "cart"
+            ? "Cart"
+            : modalType === "chooseGift"
+            ? "Choose Gift"
+            : ""
+        }
+        classNames={`${
+          modalType === "cart" || modalType === "chooseGift"
+            ? "w-[660px]"
+            : "w-[430px]"
+        } w-full max-w-[660px] h-[547px] overflow-y-auto flex flex-col`}
+      >
+        <div className="flex flex-col justify-between h-full">
+          {modalType === "login" ? (
+            <Login setModalType={setModalType} />
+          ) : modalType === "signup" ? (
+            <Signup setModalType={setModalType} />
+          ) : modalType === "orders" ? (
+            <YourOrders />
+          ) : modalType === "chooseGift" ? (
+            <ChooseGift />
+          ) : modalType === "cart" ? (
+            <Cart setModalType={setModalType}/>
+          ) : (
+            <Profile setModalType={setModalType} />
+          )}
+
+          <img src={ICONS.bonhomie} alt="" className="w-full mt-8" />
+        </div>
+      </Modal>
+
+      {/* Cart modal
+      <Modal
+        openModal1={openModal}
+        setOpenModal1={setOpenModal}
+        title={"Cart"}
+        classNames="w-full w-[400px] sm:w-[596px] h-[530px] overflow-y-auto flex flex-col justify-between"
+      >
+        <Cart
+        setModalType={setModalType}
+        />
+
+        <img src={ICONS.bonhomie} alt="" className="w-full mt-8" />
+      </Modal> */}
+
       {/* Breadcrumbs */}
       <Breadcrumbs items={breadcrumbItems} />
 

@@ -27,12 +27,27 @@ import returnPackage from './logos/returns-package.svg';
 import size from './logos/size.svg';
 import star from './logos/star.svg';
 import tshirt from './logos/tshirt.svg';
+import locked from './logos/locked.svg';
 import unlocked from './logos/unlocked.svg';
 import slash from './logos/slash-icon.svg';
 import straightLine from './logos/straight-line.png';
 import freebiesBgShape from './logos/freebies-bg-shape.svg';
 import freebiesBgShape2 from './logos/Group 50.png';
+import cross from './logos/cross.svg';
+import eyeOpen from './logos/eye-open.svg';
+import eyeClosed from './logos/eye-closed.svg';
 import detailsCardBgShape1 from './images/detailsCardBgShape1.png';
+import freebiesBgShape3 from './logos/freebiesBgShape3.svg';
+import freebiesBgShape4 from './images/freebiesBgShape4.png';
+import productImg from './images/dummy-product.png';
+import bonhomie from './logos/Bonhomie.png';
+import tickCircle from './logos/Tick-Circle.svg';
+import rightArrow from './logos/right-arrow.svg';
+import minus from './logos/minus.svg';
+import plus from './logos/plus.svg';
+import deleteIcon from './logos/delete.svg';
+import cartIcon from './logos/cart-white.svg';
+import leftArrow from './logos/left-arrow.svg';
 
 export const IMAGES={
     logo,
@@ -50,6 +65,7 @@ export const IMAGES={
     infant,
     boys1,
     detailsCardBgShape1,
+    productImg,
 }
 
 export const ICONS = {
@@ -69,8 +85,22 @@ export const ICONS = {
     star,
     tshirt,
     unlocked,
+    locked,
     slash,
     straightLine,
     freebiesBgShape,
     freebiesBgShape2,
+    cross,
+    eyeOpen,
+    eyeClosed,
+    bonhomie,
+    tickCircle,
+    rightArrow,
+    minus,
+    plus,
+    deleteIcon,
+    freebiesBgShape3,
+    freebiesBgShape4,
+    cartIcon,
+    leftArrow,
 };

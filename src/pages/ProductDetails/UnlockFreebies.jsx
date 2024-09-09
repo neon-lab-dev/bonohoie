@@ -17,7 +17,7 @@ const UnlockFreebies = () => {
 
       <div className="px-4 py-5">
         <div className="flex items-center gap-2">
-          <img src={ICONS.unlocked} alt="unlock-icon" className="size-8" />
+          <img src={ICONS.locked} alt="unlock-icon" className="size-8" />
           <h1 className="text-[#1C1D4F] text-xl font-semibold leading-normal">
             Unlock Freebies
           </h1>
