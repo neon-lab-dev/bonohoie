@@ -7,12 +7,13 @@ import Girls from "./pages/Girls";
 import AboutUs from "./pages/AboutUs";
 import NoMatch from "./pages/NoMatch";
 import NotificationBar from "./components/NotificationBar/NotifcationBar";
-import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Moments from "./components/Moments/Moments";
 import Desktop2 from "./pages/Desktop2/Desktop2";
 import WishListedItems from "./pages/WishListedItems/WishListedItems";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import { Footer } from "./components/Footer";
+import AllProducts from "./pages/AllProducts/AllProducts";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/desktop2" element={<Desktop2 />} />
           <Route path="/wish-listed-items" element={<WishListedItems />} />
           <Route path="/product-details" element={<ProductDetails />} />
+          <Route path="/all-products" element={<AllProducts />} />
         </Routes>
       </Router>
       <Moments />

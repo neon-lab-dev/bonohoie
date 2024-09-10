@@ -18,11 +18,6 @@ import ChooseGift from "../../components/ChooseGift/ChooseGift";
 
 const ProductDetails = () => {
   const [openModal, setOpenModal] = useState(false);
-  // const [openCartModal, setOpenCartModal] = useState(false);
-  // const [openOrdersModal, setOpenOrdersModal] = useState(false);
-  // const [openGiftModal, setOpenGiftModal] = useState(false);
-
-  // modaltype will be signup, login, profile, orders, cart
   const [modalType, setModalType] = useState("login");
 
   const [productSize, setProductSize] = useState("2-4Y");
@@ -122,20 +117,6 @@ const ProductDetails = () => {
           <img src={ICONS.bonhomie} alt="" className="w-full mt-8" />
         </div>
       </Modal>
-
-      {/* Cart modal
-      <Modal
-        openModal1={openModal}
-        setOpenModal1={setOpenModal}
-        title={"Cart"}
-        classNames="w-full w-[400px] sm:w-[596px] h-[530px] overflow-y-auto flex flex-col justify-between"
-      >
-        <Cart
-        setModalType={setModalType}
-        />
-
-        <img src={ICONS.bonhomie} alt="" className="w-full mt-8" />
-      </Modal> */}
 
       {/* Breadcrumbs */}
       <Breadcrumbs items={breadcrumbItems} />

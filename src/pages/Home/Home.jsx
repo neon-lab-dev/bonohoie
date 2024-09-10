@@ -1,410 +1,751 @@
-import React from "react";
-import HeroSection from "../../assets/images/HeroImage.png";
-import BonhomieTitle from "../../assets/images/Bonhomie.png";
-import findhappiness from "../../assets/images/findhappiness.jpeg";
-import freebie1 from "../../assets/images/freebie1.png";
-import gifts from "../../assets/images/gifts.png";
-import CustomCarousel from "../../components/Carousel/Carousel";
-import SubHeader from "../../components/SubHeader/SubHeader";
-import Carousel from "../../components/Carousel/Carousel";
-import Boy1 from "../../assets/images/boy1.png";
-import Boy2 from "../../assets/images/boy2.png";
-import Boy3 from "../../assets/images/boy3.png";
-import Boy4 from "../../assets/images/boy4.png";
-import Profile1 from "../../assets/images/profile1.jpeg";
-import Profile2 from "../../assets/images/profile2.jpeg";
-import Profile3 from "../../assets/images/profile3.jpeg";
-import Profile4 from "../../assets/images/profile4.jpeg";
-import Profile5 from "../../assets/images/profile5.jpeg";
-import Cat1 from "../../assets/images/cat1.jpeg";
-import Cat2 from "../../assets/images/cat2.jpeg";
-import Cat3 from "../../assets/images/cat3.jpeg";
-import { useState } from "react";
-import "./Home.css";
+import { IMAGES } from "../../assets";
+import Marquee from "react-marquee-slider";
+import { useGetAllProductsQuery } from "../../redux/Features/Products/productApi";
+import Hero from "../../components/Hero/Hero";
 
-export default function Home() {
-  const [images, setImages] = useState([
-    {
-      src: Boy1,
-      alt: "Beige Co-ord Set",
-      fav: false,
-    },
-    {
-      src: Boy2,
-      alt: "Blue Co-ord Set",
-      fav: true,
-    },
-    {
-      src: Boy3,
-      alt: "Grey Co-ord Set",
-      fav: false,
-    },
-    {
-      src: Boy4,
-      alt: "White Co-ord Set",
-      fav: true,
-    },
-  ]);
-
-  const [profiles] = useState([
-    {
-      src: Profile1,
-      alt: "Profile 1",
-    },
-    {
-      src: Profile2,
-      alt: "Profile 2",
-    },
-    {
-      src: Profile3,
-      alt: "Profile 3",
-    },
-    {
-      src: Profile4,
-      alt: "Profile 4",
-    },
-    {
-      src: Profile5,
-      alt: "Profile 5",
-    },
-  ]);
-
-  const [categories] = useState([
-    {
-      src: Cat1,
-      alt: "Boys",
-      desc: "3-8 yrs",
-    },
-    {
-      src: Cat2,
-      alt: "Girls",
-      desc: "3-8 yrs",
-    },
-    {
-      src: Cat3,
-      alt: "Infants",
-      desc: "0-2 yrs",
-    },
-  ]);
+export const Home = () => {
+  const {data:products} = useGetAllProductsQuery();
+  console.log(products);
   return (
-    <div className="home">
-      <div className="home-hero-section">
-        <img  src={HeroSection} alt="Hero Section" />
-          <div className="home-overlay">
-          <div className="home-overlay-left">
-            <div >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M7.83555 4.27559C9.14631 0.241469 14.8535 0.241469 16.1643 4.27559C16.5497 5.46167 17.655 6.26471 18.9021 6.26471C23.1438 6.26471 24.9074 11.6926 21.4758 14.1858C20.4669 14.9188 20.0447 16.2182 20.4301 17.4043C21.7408 21.4384 17.1236 24.793 13.692 22.2998C12.683 21.5667 11.3168 21.5667 10.3079 22.2998C6.87624 24.793 2.25902 21.4384 3.56978 17.4043C3.95516 16.2182 3.53298 14.9188 2.52404 14.1858C-0.907588 11.6926 0.856037 6.26471 5.09776 6.26471C6.34488 6.26471 7.45017 5.46167 7.83555 4.27559ZM14.7102 7.64541C14.5773 7.25309 14.1516 7.04279 13.7593 7.17568C13.3669 7.30857 13.1566 7.73434 13.2895 8.12666C13.7206 9.39931 14.9433 10.2337 16.2923 10.2337C16.7066 10.2337 17.0423 9.89788 17.0423 9.48366C17.0423 9.06945 16.7066 8.73366 16.2923 8.73366C15.5529 8.73366 14.9245 8.27804 14.7102 7.64541Z"
-                  fill="#F2B01C"
-                />
-              </svg>
-              <p>4.5 </p>
+    <>
+      <div className="mx-3 overflow-x-hidden md:mx-10">
+        {/* <div className="">
+          <div className=" relative md:opacity-100 md:mx-0">
+            <img
+              src={IMAGES.hero}
+              alt="hero"
+              className="h-[550px] md:h-[640px] object-cover md:w-full rounded-2xl brightness-50"
+            />
+            <img
+              src={IMAGES.bonhomie_yellow}
+              alt="bonhomie_yellow"
+              className="absolute bottom-10 w-full "
+            />
+            <div className="hidden md:block absolute top-0 left-0 ml-8 mt-6">
+              <div className="flex">
+                <img src={IMAGES.star_yellow} alt="star_yellow" className="" />
+                <p className="text-white">4.5</p>
+              </div>
+              <p className="text-white mt-8 w-[200px] ">
+                Both kids and their happy parents love us
+              </p>
             </div>
-            
-              <p>Both Kids and their happy <br/> parents love us</p>
-            
-          </div>
-          <div className="home-overlay-right">
-            
-              <p>
-                Supplying your child with the prettiest, coziest <br/>clothes
+            <div className="absolute top-1/3 md:top-0 md:right-0 md:w-[300px] m-6">
+              <p className="text-white text-sm font- mb-4 ">
+                Supplying your child with the prettiest, coziest clothes
                 possible at the most affordable prices.
               </p>
-            
-            <div className="home-overlay-right-bottom">
-              <button className="btn btn-primary">2023 Collection</button>
-              <button className="btn btn-secondary">
-                <div>
-                  Shop Now{" "}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_381_4120)">
-                      <path
-                        d="M2.38069 11.6289C2.07734 11.8686 2.0257 12.3088 2.26535 12.6121C2.50501 12.9155 2.9452 12.9671 3.24856 12.7275L2.38069 11.6289ZM13.7109 4.46205C14.0143 4.2224 14.0659 3.7822 13.8263 3.47885C13.5866 3.17549 13.1464 3.12385 12.8431 3.36351L13.7109 4.46205ZM8.15691 2.01405C7.77275 1.97072 7.4262 2.24702 7.38287 2.63119C7.33954 3.01535 7.61584 3.3619 8 3.40523L8.15691 2.01405ZM10.1339 2.94147L10.0554 3.63706L10.1339 2.94147ZM13.4945 7.19533L14.1894 7.27999L13.4945 7.19533ZM12.5495 9.16396C12.5027 9.54772 12.7759 9.89672 13.1597 9.94348C13.5434 9.99023 13.8924 9.71704 13.9392 9.33328L12.5495 9.16396ZM13.1021 3.71817L13.5921 3.21827L13.5921 3.21827L13.1021 3.71817ZM13.4258 4.12794L14.0256 3.76694L14.0256 3.76694L13.4258 4.12794ZM3.24856 12.7275L13.7109 4.46205L12.8431 3.36351L2.38069 11.6289L3.24856 12.7275ZM8 3.40523L10.0554 3.63706L10.2124 2.24589L8.15691 2.01405L8 3.40523ZM12.7996 7.11067L12.5495 9.16396L13.9392 9.33328L14.1894 7.27999L12.7996 7.11067ZM10.0554 3.63706C10.8914 3.73135 11.4594 3.79649 11.8851 3.89416C12.297 3.98866 12.4874 4.09584 12.6121 4.21807L13.5921 3.21827C13.2074 2.84113 12.7333 2.6524 12.1982 2.52962C11.6769 2.41001 11.0156 2.33648 10.2124 2.24589L10.0554 3.63706ZM14.1894 7.27999C14.2871 6.4776 14.3686 5.81721 14.3729 5.28239C14.3773 4.73341 14.3034 4.22854 14.0256 3.76694L12.8261 4.48894C12.9162 4.63855 12.9764 4.84864 12.973 5.27119C12.9695 5.7079 12.9014 6.2756 12.7996 7.11067L14.1894 7.27999ZM12.6121 4.21807C12.6946 4.29895 12.7665 4.38995 12.8261 4.48894L14.0256 3.76694C13.9049 3.56643 13.7592 3.38209 13.5921 3.21827L12.6121 4.21807Z"
-                        fill="white"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_381_4120">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
-              </button>
+              <div className="flex justify-center gap-2">
+                <button className="border-white border-2 rounded-lg p-2 text-white">
+                  2023 collection
+                </button>
+                <button className="bg-white/50 rounded-lg p-2 text-white flex">
+                  Shop now
+                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                </button>
+              </div>
+            </div>
+            <div className="flex justify-between m-4 ">
+              <p className="text-[#391811] font-semibold ">2024</p>
+              <p className="text-[#391811] font-semibold ">PREMIUM KIDS WEAR</p>
             </div>
           </div>
-          </div>
-          <div className="home-bonhomie-title">
-          <svg xmlns="http://www.w3.org/2000/svg" width="182" height="206" viewBox="0 0 182 206" fill="none">
-  <path d="M-8 206.709V0.124023H92.9316C118.902 0.124023 138.38 5.04271 151.366 14.8801C164.548 24.7175 171.139 37.7029 171.139 53.8362C171.139 64.6573 168.483 74.1012 163.171 82.1679C157.858 90.0378 150.579 96.137 141.332 100.465C132.084 104.794 121.46 106.958 109.458 106.958L115.066 94.8581C128.051 94.8581 139.561 97.0224 149.595 101.351C159.629 105.483 167.401 111.68 172.91 119.943C178.615 128.207 181.468 138.339 181.468 150.341C181.468 168.048 174.484 181.919 160.515 191.953C146.545 201.791 125.985 206.709 98.8341 206.709H-8ZM39.5146 170.704H95.2926C107.688 170.704 117.033 168.737 123.329 164.802C129.822 160.67 133.068 154.178 133.068 145.324C133.068 136.667 129.822 130.273 123.329 126.141C117.033 121.813 107.688 119.648 95.2926 119.648H35.9731V84.824H87.0292C98.6373 84.824 107.491 82.8565 113.59 78.9215C119.886 74.7898 123.034 68.5923 123.034 60.3289C123.034 52.2622 119.886 46.2614 113.59 42.3264C107.491 38.1947 98.6373 36.1289 87.0292 36.1289H39.5146V170.704Z" fill="#F2B01C"/>
-</svg>   
-      <svg xmlns="http://www.w3.org/2000/svg" width="182" height="206" viewBox="0 0 174 160" fill="none">
-  <path d="M0 44.6681C0 -3.3553 66.5297 -21.1534 87.001 34.4405C107.472 -21.1534 174 -3.3553 174 44.6681C174 96.8452 87.001 163 87.001 163C87.001 163 0 96.8452 0 44.6681Z" fill="#F2B01C"/>
-</svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="163" height="161" viewBox="0 0 163 161" fill="none">
-  <path d="M97.0889 0.572754C109.681 0.572754 120.895 3.13047 130.733 8.2459C140.767 13.1646 148.637 20.8378 154.343 31.2654C160.048 41.4963 162.901 54.6784 162.901 70.8117V161.709H116.862V77.8947C116.862 65.106 114.009 55.6622 108.304 49.563C102.795 43.4638 94.9247 40.4142 84.6938 40.4142C77.4141 40.4142 70.8231 41.9882 64.9207 45.1361C59.215 48.0874 54.6898 52.7109 51.345 59.0069C48.1971 65.3028 46.6231 73.3695 46.6231 83.2069V161.709H0.584106V2.93372H44.5572V46.9069L36.2938 33.6264C41.9995 23.002 50.1646 14.837 60.789 9.13129C71.4133 3.4256 83.5133 0.572754 97.0889 0.572754Z" fill="#F2B01C"/>
-</svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="163" height="219" viewBox="0 0 163 219" fill="none">
-  <path d="M96.5282 58.5729C109.12 58.5729 120.335 61.1306 130.172 66.246C140.206 71.1647 148.076 78.8379 153.782 89.2655C159.487 99.4964 162.34 112.679 162.34 128.812V219.709H116.301V135.895C116.301 123.106 113.448 113.662 107.743 107.563C102.234 101.464 94.364 98.4143 84.1331 98.4143C76.8534 98.4143 70.2623 99.9883 64.3599 103.136C58.6542 106.088 54.129 110.711 50.7843 117.007C47.6363 123.303 46.0623 131.37 46.0623 141.207V219.709H0.0233154V0.729004H46.0623V104.907L35.733 91.6265C41.4387 81.0021 49.6038 72.8371 60.2282 67.1314C70.8525 61.4257 82.9526 58.5729 96.5282 58.5729Z" fill="#F2B01C"/>
-</svg>
- <svg xmlns="http://www.w3.org/2000/svg" width="176" height="161" viewBox="0 0 176 161" fill="none">
-  <path d="M88.1666 164.07C71.2463 164.07 56.1951 160.529 43.013 153.446C30.0276 146.363 19.6984 136.722 12.0252 124.524C4.5488 112.129 0.810547 98.0613 0.810547 82.3215C0.810547 66.3849 4.5488 52.3174 12.0252 40.1191C19.6984 27.7239 30.0276 18.0833 43.013 11.1971C56.1951 4.11421 71.2463 0.572754 88.1666 0.572754C104.89 0.572754 119.843 4.11421 133.025 11.1971C146.207 18.0833 156.536 27.6256 164.013 39.8239C171.489 52.0223 175.228 66.1882 175.228 82.3215C175.228 98.0613 171.489 112.129 164.013 124.524C156.536 136.722 146.207 146.363 133.025 153.446C119.843 160.529 104.89 164.07 88.1666 164.07ZM88.1666 126.295C95.8398 126.295 102.726 124.524 108.825 120.982C114.924 117.441 119.745 112.424 123.286 105.931C126.828 99.2418 128.598 91.3719 128.598 82.3215C128.598 73.0743 126.828 65.2044 123.286 58.7117C119.745 52.2191 114.924 47.202 108.825 43.6605C102.726 40.1191 95.8398 38.3483 88.1666 38.3483C80.4934 38.3483 73.6073 40.1191 67.5081 43.6605C61.4089 47.202 56.4902 52.2191 52.752 58.7117C49.2105 65.2044 47.4398 73.0743 47.4398 82.3215C47.4398 91.3719 49.2105 99.2418 52.752 105.931C56.4902 112.424 61.4089 117.441 67.5081 120.982C73.6073 124.524 80.4934 126.295 88.1666 126.295Z" fill="#F2B01C"/>
-</svg>
-       <svg xmlns="http://www.w3.org/2000/svg" width="269" height="161" viewBox="0 0 269 161" fill="none">
-  <path d="M203.73 0.572754C216.322 0.572754 227.438 3.13047 237.079 8.2459C246.916 13.1646 254.589 20.8378 260.098 31.2654C265.804 41.4963 268.657 54.6784 268.657 70.8117V161.709H222.618V77.8947C222.618 65.106 219.962 55.6622 214.65 49.563C209.337 43.4638 201.861 40.4142 192.22 40.4142C185.531 40.4142 179.53 41.9882 174.218 45.1361C168.906 48.0874 164.774 52.6126 161.823 58.7117C158.872 64.8109 157.396 72.5825 157.396 82.0264V161.709H111.357V77.8947C111.357 65.106 108.701 55.6622 103.389 49.563C98.2732 43.4638 90.8951 40.4142 81.2545 40.4142C74.5651 40.4142 68.5642 41.9882 63.2521 45.1361C57.9399 48.0874 53.8082 52.6126 50.857 58.7117C47.9058 64.8109 46.4301 72.5825 46.4301 82.0264V161.709H0.391113V2.93372H44.3643V46.3166L36.1008 33.6264C41.6098 22.8053 49.3813 14.6402 59.4155 9.13129C69.6464 3.4256 81.2545 0.572754 94.2398 0.572754C108.799 0.572754 121.489 4.31096 132.311 11.7874C143.329 19.067 150.608 30.2817 154.15 45.4313L137.918 41.0044C143.23 28.6093 151.69 18.7719 163.298 11.4923C175.103 4.21258 188.58 0.572754 203.73 0.572754Z" fill="#F2B01C"/>
-</svg>
- <svg xmlns="http://www.w3.org/2000/svg" width="58" height="232" viewBox="0 0 58 232" fill="none">
-  <path d="M6.31354 232.709V73.9338H52.3525V232.709H6.31354ZM29.333 51.7997C20.8728 51.7997 13.9867 49.3403 8.67448 44.4216C3.36229 39.5029 0.706177 33.4038 0.706177 26.1241C0.706177 18.8444 3.36229 12.7452 8.67448 7.82654C13.9867 2.90784 20.8728 0.448486 29.333 0.448486C37.7931 0.448486 44.6794 2.80947 49.9916 7.53142C55.3038 12.0566 57.9598 17.9591 57.9598 25.2387C57.9598 32.9119 55.3038 39.3062 49.9916 44.4216C44.8761 49.3403 37.9899 51.7997 29.333 51.7997Z" fill="#F2B01C"/>
-</svg>
- 
- <svg xmlns="http://www.w3.org/2000/svg" width="145" height="161" viewBox="0 0 145 161" fill="none">
-  <path d="M91.2684 164.07C73.1676 164.07 57.231 160.529 43.4587 153.446C29.8831 146.363 19.357 136.722 11.8806 124.524C4.40421 112.129 0.666016 98.0613 0.666016 82.3215C0.666016 66.3849 4.30591 52.3174 11.5856 40.1191C19.062 27.7239 29.1945 18.0833 41.9831 11.1971C54.7717 4.11421 69.2327 0.572754 85.366 0.572754C100.909 0.572754 114.878 3.91746 127.273 10.6069C139.865 17.0996 149.801 26.5435 157.081 38.9386C164.36 51.137 168 65.7947 168 82.9117C168 84.6824 167.902 86.7483 167.705 89.1093C167.508 91.2735 167.311 93.3394 167.115 95.3068H38.1465V68.4508H142.915L125.207 76.419C125.207 68.1556 123.535 60.9743 120.19 54.8751C116.846 48.776 112.222 44.054 106.32 40.7093C100.417 37.1678 93.5311 35.3971 85.6611 35.3971C77.7912 35.3971 70.8067 37.1678 64.7075 40.7093C58.8051 44.054 54.1815 48.8743 50.8368 55.1703C47.4921 61.2695 45.8196 68.5491 45.8196 77.0093V84.0922C45.8196 92.7491 47.6888 100.422 51.427 107.112C55.3619 113.604 60.7725 118.621 67.6586 122.163C74.7416 125.508 83.005 127.18 92.4489 127.18C100.909 127.18 108.287 125.901 114.583 123.343C121.076 120.786 126.978 116.949 132.29 111.834L156.785 138.395C149.506 146.658 140.357 153.052 129.339 157.578C118.321 161.906 105.631 164.07 91.2684 164.07Z" fill="#F2B01C"/>
-</svg>
-          </div>
-        
-        
-      </div>
+        </div> */}
+        <Hero/>
 
-      <div className="hero-footer">
+        {/* latest arrivals starts here */}
         <div>
-          <p>2024</p>
-        </div>
-        <div>
-          <p>PREMIUM KIDS WEAR</p>
-        </div>
-      </div>
-      <SubHeader title="Latest Arrivals" buttonText="See All Products" />
-      <Carousel images={images} setImages={setImages} deviceType={"desktop"} />
-      <div className="loved-message">
-        <div className="left">
-          <p>Why are we loved</p>
-        </div>
-        <div className="right">
-          <div className="top">
-            <p>
-              Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio{" "}
+          <div className="flex justify-between mb-5 mt-20">
+            <p className="text-[#333333] text-2xl md:text-5xl font-semibold md:font-normal">
+              Latest Arrivals
             </p>
-          </div>
-          <div className="bottom">
-            <div className="profiles">
-              {profiles.map((profile, index) => (
-                <div key={index} className="profile">
-                  <img src={profile.src} alt={profile.alt} />
-                </div>
-              ))}
-            </div>
-            <div className="profiles-tag">+200 happy children</div>
-          </div>
-        </div>
-      </div>
-      <div className="cat-images">
-        <div className="cat-item t1">
-          <img src={categories[0].src} alt={categories[0].alt} />
-          <div className="sub">
-            <div className="text">
-              <h3 className="title">{categories[0].alt}</h3>
-              <p className="desc">{categories[0].desc}</p>
-            </div>
-            <button className="btn btn-secondary bt">
-              <div>
-                Shop Now{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_381_4120)">
-                    <path
-                      d="M2.38069 11.6289C2.07734 11.8686 2.0257 12.3088 2.26535 12.6121C2.50501 12.9155 2.9452 12.9671 3.24856 12.7275L2.38069 11.6289ZM13.7109 4.46205C14.0143 4.2224 14.0659 3.7822 13.8263 3.47885C13.5866 3.17549 13.1464 3.12385 12.8431 3.36351L13.7109 4.46205ZM8.15691 2.01405C7.77275 1.97072 7.4262 2.24702 7.38287 2.63119C7.33954 3.01535 7.61584 3.3619 8 3.40523L8.15691 2.01405ZM10.1339 2.94147L10.0554 3.63706L10.1339 2.94147ZM13.4945 7.19533L14.1894 7.27999L13.4945 7.19533ZM12.5495 9.16396C12.5027 9.54772 12.7759 9.89672 13.1597 9.94348C13.5434 9.99023 13.8924 9.71704 13.9392 9.33328L12.5495 9.16396ZM13.1021 3.71817L13.5921 3.21827L13.5921 3.21827L13.1021 3.71817ZM13.4258 4.12794L14.0256 3.76694L14.0256 3.76694L13.4258 4.12794ZM3.24856 12.7275L13.7109 4.46205L12.8431 3.36351L2.38069 11.6289L3.24856 12.7275ZM8 3.40523L10.0554 3.63706L10.2124 2.24589L8.15691 2.01405L8 3.40523ZM12.7996 7.11067L12.5495 9.16396L13.9392 9.33328L14.1894 7.27999L12.7996 7.11067ZM10.0554 3.63706C10.8914 3.73135 11.4594 3.79649 11.8851 3.89416C12.297 3.98866 12.4874 4.09584 12.6121 4.21807L13.5921 3.21827C13.2074 2.84113 12.7333 2.6524 12.1982 2.52962C11.6769 2.41001 11.0156 2.33648 10.2124 2.24589L10.0554 3.63706ZM14.1894 7.27999C14.2871 6.4776 14.3686 5.81721 14.3729 5.28239C14.3773 4.73341 14.3034 4.22854 14.0256 3.76694L12.8261 4.48894C12.9162 4.63855 12.9764 4.84864 12.973 5.27119C12.9695 5.7079 12.9014 6.2756 12.7996 7.11067L14.1894 7.27999ZM12.6121 4.21807C12.6946 4.29895 12.7665 4.38995 12.8261 4.48894L14.0256 3.76694C13.9049 3.56643 13.7592 3.38209 13.5921 3.21827L12.6121 4.21807Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_381_4120">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
+            <button className="border-[#333333] border-[1px] p-2 rounded-xl flex text-[#333333]">
+              See All Products{" "}
+              <img src={IMAGES.arrow_black} className="mt-1 ml-1" />{" "}
             </button>
           </div>
+
+          <ul className="flex justify-between overflow-x-scroll no-scrollbar mb-10">
+            <li className="mx-1 relative">
+              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
+                <img
+                  src={IMAGES.child1}
+                  className=" h-[240px] md:h-[300px] object-cover"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>Beige Co-ord set</p>
+            </li>
+            <li className="mx-1 relative">
+              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
+                <img
+                  src={IMAGES.child2}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>Blue Co-ord set</p>
+            </li>
+            <li className="mx-1 relative">
+              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
+                <img
+                  src={IMAGES.child3}
+                  className=" h-[240px] md:h-[300px] object-cover"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>Grey Co-ord set</p>
+            </li>
+            <li className="mx-1 relative">
+              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
+                <img
+                  src={IMAGES.child4}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>White Co-ord set</p>
+            </li>
+          </ul>
         </div>
-        <div className="cat-item t2">
-          <div className="top">
-            <h3>
-              Find the <span>best deals</span> on comfortable child co-ord sets
-              for your little ones.
-            </h3>
-            <button className="btn btn-fourth">
+
+        {/* why are we loved starts here */}
+        <div>
+          <div className="bg-[#F6F6F6] md:bg-white ">
+            <div className="flex flex-col md:flex-row py-8 px-5">
+              <p className="text-[#333333] w-[40vw] font-semibold mb-5">Why are we loved</p>
               <div>
-                Shop Now{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_381_4120)">
-                    <path
-                      d="M2.38069 11.6289C2.07734 11.8686 2.0257 12.3088 2.26535 12.6121C2.50501 12.9155 2.9452 12.9671 3.24856 12.7275L2.38069 11.6289ZM13.7109 4.46205C14.0143 4.2224 14.0659 3.7822 13.8263 3.47885C13.5866 3.17549 13.1464 3.12385 12.8431 3.36351L13.7109 4.46205ZM8.15691 2.01405C7.77275 1.97072 7.4262 2.24702 7.38287 2.63119C7.33954 3.01535 7.61584 3.3619 8 3.40523L8.15691 2.01405ZM10.1339 2.94147L10.0554 3.63706L10.1339 2.94147ZM13.4945 7.19533L14.1894 7.27999L13.4945 7.19533ZM12.5495 9.16396C12.5027 9.54772 12.7759 9.89672 13.1597 9.94348C13.5434 9.99023 13.8924 9.71704 13.9392 9.33328L12.5495 9.16396ZM13.1021 3.71817L13.5921 3.21827L13.5921 3.21827L13.1021 3.71817ZM13.4258 4.12794L14.0256 3.76694L14.0256 3.76694L13.4258 4.12794ZM3.24856 12.7275L13.7109 4.46205L12.8431 3.36351L2.38069 11.6289L3.24856 12.7275ZM8 3.40523L10.0554 3.63706L10.2124 2.24589L8.15691 2.01405L8 3.40523ZM12.7996 7.11067L12.5495 9.16396L13.9392 9.33328L14.1894 7.27999L12.7996 7.11067ZM10.0554 3.63706C10.8914 3.73135 11.4594 3.79649 11.8851 3.89416C12.297 3.98866 12.4874 4.09584 12.6121 4.21807L13.5921 3.21827C13.2074 2.84113 12.7333 2.6524 12.1982 2.52962C11.6769 2.41001 11.0156 2.33648 10.2124 2.24589L10.0554 3.63706ZM14.1894 7.27999C14.2871 6.4776 14.3686 5.81721 14.3729 5.28239C14.3773 4.73341 14.3034 4.22854 14.0256 3.76694L12.8261 4.48894C12.9162 4.63855 12.9764 4.84864 12.973 5.27119C12.9695 5.7079 12.9014 6.2756 12.7996 7.11067L14.1894 7.27999ZM12.6121 4.21807C12.6946 4.29895 12.7665 4.38995 12.8261 4.48894L14.0256 3.76694C13.9049 3.56643 13.7592 3.38209 13.5921 3.21827L12.6121 4.21807Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_381_4120">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </button>
-          </div>
-          <div className="bottom">
-            <img src={categories[2].src} alt={categories[2].alt} />
-            <div className="sub">
-              <div className="text">
-                <h3 className="title">{categories[2].alt}</h3>
-                <p className="desc">{categories[2].desc}</p>
-              </div>
-              <button className="btn btn-secondary bt">
+                <p className="text-2xl md:text-5xl font-medium md:leading-[68px]">
+                  Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                  vulputate libero et velit interdum, ac aliquet odio{" "}
+                </p>
                 <div>
-                  Shop Now{" "}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_381_4120)">
-                      <path
-                        d="M2.38069 11.6289C2.07734 11.8686 2.0257 12.3088 2.26535 12.6121C2.50501 12.9155 2.9452 12.9671 3.24856 12.7275L2.38069 11.6289ZM13.7109 4.46205C14.0143 4.2224 14.0659 3.7822 13.8263 3.47885C13.5866 3.17549 13.1464 3.12385 12.8431 3.36351L13.7109 4.46205ZM8.15691 2.01405C7.77275 1.97072 7.4262 2.24702 7.38287 2.63119C7.33954 3.01535 7.61584 3.3619 8 3.40523L8.15691 2.01405ZM10.1339 2.94147L10.0554 3.63706L10.1339 2.94147ZM13.4945 7.19533L14.1894 7.27999L13.4945 7.19533ZM12.5495 9.16396C12.5027 9.54772 12.7759 9.89672 13.1597 9.94348C13.5434 9.99023 13.8924 9.71704 13.9392 9.33328L12.5495 9.16396ZM13.1021 3.71817L13.5921 3.21827L13.5921 3.21827L13.1021 3.71817ZM13.4258 4.12794L14.0256 3.76694L14.0256 3.76694L13.4258 4.12794ZM3.24856 12.7275L13.7109 4.46205L12.8431 3.36351L2.38069 11.6289L3.24856 12.7275ZM8 3.40523L10.0554 3.63706L10.2124 2.24589L8.15691 2.01405L8 3.40523ZM12.7996 7.11067L12.5495 9.16396L13.9392 9.33328L14.1894 7.27999L12.7996 7.11067ZM10.0554 3.63706C10.8914 3.73135 11.4594 3.79649 11.8851 3.89416C12.297 3.98866 12.4874 4.09584 12.6121 4.21807L13.5921 3.21827C13.2074 2.84113 12.7333 2.6524 12.1982 2.52962C11.6769 2.41001 11.0156 2.33648 10.2124 2.24589L10.0554 3.63706ZM14.1894 7.27999C14.2871 6.4776 14.3686 5.81721 14.3729 5.28239C14.3773 4.73341 14.3034 4.22854 14.0256 3.76694L12.8261 4.48894C12.9162 4.63855 12.9764 4.84864 12.973 5.27119C12.9695 5.7079 12.9014 6.2756 12.7996 7.11067L14.1894 7.27999ZM12.6121 4.21807C12.6946 4.29895 12.7665 4.38995 12.8261 4.48894L14.0256 3.76694C13.9049 3.56643 13.7592 3.38209 13.5921 3.21827L12.6121 4.21807Z"
-                        fill="white"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_381_4120">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                  <p>+200 happy children</p>
                 </div>
+              </div>
+            </div>
+
+          </div>
+          {/* for smaller devices */}
+          <div className="mt-10 md:hidden">
+            <div className="h-[240px] overflow-hidden mx-4 rounded-3xl mb-4 relative">
+              <img src={IMAGES.infant} alt="child1" className="brightness-50" />
+              <div className="flex absolute bottom-10 justify-between px-6 w-full">
+                <div>
+                  <p className="text-white">Infants</p>
+                  <p className="text-white">00-02 yrs</p>
+                </div>
+                <button className="border-white border-2 rounded-lg p-2 text-white flex bg-white/40">
+                  Shop now
+                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                </button>
+              </div>
+            </div>
+            <div className="h-[240px] overflow-hidden mx-4 rounded-3xl mb-4 relative">
+              <img
+                src={IMAGES.girls2}
+                alt="child1"
+                className="h-[240px] object-cover brightness-50 w-full"
+              />
+              <div className="flex absolute bottom-10 justify-between px-6 w-full">
+                <div>
+                  <p className="text-white">Girls</p>
+                  <p className="text-white">03-08 yrs</p>
+                </div>
+                <button className="border-white border-2 rounded-lg p-2 text-white flex bg-white/40">
+                  Shop now
+                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                </button>
+              </div>
+            </div>
+            <div className="h-[240px] overflow-hidden mx-4 rounded-3xl mb-4 relative">
+              <img src={IMAGES.boys1} alt="child1" className="brightness-50" />
+              <div className="flex absolute bottom-10 justify-between px-6 w-full">
+                <div>
+                  <p className="text-white">Boys</p>
+                  <p className="text-white">03-08 yrs</p>
+                </div>
+                <button className="border-white border-2 rounded-lg p-2 text-white flex bg-white/40">
+                  Shop now
+                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                </button>
+              </div>
+            </div>
+            <div className="bg-[#F82456] h-[200px] overflow-hidden mx-4 rounded-3xl mb-4 relative">
+              <img src={IMAGES.best_deals} alt="best" className=" absolute bottom-0 right-0" />
+              <p className="text-white text-xl m-6 ">
+                Find the <strong className="italic">best deals</strong> on
+                comfortable child co-ord sets for your little ones.
+              </p>
+              <button className="border-white border-2 rounded-lg p-2 text-white flex m-6">
+                Shop now
+                <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
               </button>
             </div>
-          </div>
-        </div>
-        <div className="cat-item t3">
-          <img src={categories[1].src} alt={categories[1].alt} />
-          <div className="sub">
-            <div className="text">
-              <h3 className="title">{categories[1].alt}</h3>
-              <p className="desc">{categories[1].desc}</p>
-            </div>
-            <button className="btn btn-secondary bt">
-              <div>
-                Shop Now{" "}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_381_4120)">
-                    <path
-                      d="M2.38069 11.6289C2.07734 11.8686 2.0257 12.3088 2.26535 12.6121C2.50501 12.9155 2.9452 12.9671 3.24856 12.7275L2.38069 11.6289ZM13.7109 4.46205C14.0143 4.2224 14.0659 3.7822 13.8263 3.47885C13.5866 3.17549 13.1464 3.12385 12.8431 3.36351L13.7109 4.46205ZM8.15691 2.01405C7.77275 1.97072 7.4262 2.24702 7.38287 2.63119C7.33954 3.01535 7.61584 3.3619 8 3.40523L8.15691 2.01405ZM10.1339 2.94147L10.0554 3.63706L10.1339 2.94147ZM13.4945 7.19533L14.1894 7.27999L13.4945 7.19533ZM12.5495 9.16396C12.5027 9.54772 12.7759 9.89672 13.1597 9.94348C13.5434 9.99023 13.8924 9.71704 13.9392 9.33328L12.5495 9.16396ZM13.1021 3.71817L13.5921 3.21827L13.5921 3.21827L13.1021 3.71817ZM13.4258 4.12794L14.0256 3.76694L14.0256 3.76694L13.4258 4.12794ZM3.24856 12.7275L13.7109 4.46205L12.8431 3.36351L2.38069 11.6289L3.24856 12.7275ZM8 3.40523L10.0554 3.63706L10.2124 2.24589L8.15691 2.01405L8 3.40523ZM12.7996 7.11067L12.5495 9.16396L13.9392 9.33328L14.1894 7.27999L12.7996 7.11067ZM10.0554 3.63706C10.8914 3.73135 11.4594 3.79649 11.8851 3.89416C12.297 3.98866 12.4874 4.09584 12.6121 4.21807L13.5921 3.21827C13.2074 2.84113 12.7333 2.6524 12.1982 2.52962C11.6769 2.41001 11.0156 2.33648 10.2124 2.24589L10.0554 3.63706ZM14.1894 7.27999C14.2871 6.4776 14.3686 5.81721 14.3729 5.28239C14.3773 4.73341 14.3034 4.22854 14.0256 3.76694L12.8261 4.48894C12.9162 4.63855 12.9764 4.84864 12.973 5.27119C12.9695 5.7079 12.9014 6.2756 12.7996 7.11067L14.1894 7.27999ZM12.6121 4.21807C12.6946 4.29895 12.7665 4.38995 12.8261 4.48894L14.0256 3.76694C13.9049 3.56643 13.7592 3.38209 13.5921 3.21827L12.6121 4.21807Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_381_4120">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="home-freebies-cont"> 
-        <div className="home-freebies-left">
-          <img src={freebie1} alt="Freebie 1" />
-          <div className="freebie-icon-cont">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
-  <path d="M4.4835 18.4639C4.05013 18.8063 3.97636 19.4351 4.31873 19.8685C4.66109 20.3018 5.28994 20.3756 5.72331 20.0333L4.4835 18.4639ZM22.4631 6.80861C22.8964 6.46625 22.9702 5.8374 22.6279 5.40403C22.2855 4.97067 21.6566 4.8969 21.2233 5.23926L22.4631 6.80861ZM13.6376 3.10522C13.0888 3.04332 12.5937 3.43803 12.5318 3.98684C12.4699 4.53564 12.8646 5.03072 13.4135 5.09262L13.6376 3.10522ZM16.8142 4.46985L16.7022 5.46355L16.7022 5.46355L16.8142 4.46985ZM22.1912 11.276L23.1839 11.397L23.1839 11.397L22.1912 11.276ZM20.7983 14.4403C20.7315 14.9886 21.1218 15.4871 21.67 15.5539C22.2182 15.6207 22.7168 15.2304 22.7836 14.6822L20.7983 14.4403ZM21.5634 5.71256L22.2634 4.99841L22.2634 4.99841L21.5634 5.71256ZM22.0813 6.3682L22.9381 5.85248L22.9381 5.85248L22.0813 6.3682ZM5.72331 20.0333L22.4631 6.80861L21.2233 5.23926L4.4835 18.4639L5.72331 20.0333ZM13.4135 5.09262L16.7022 5.46355L16.9263 3.47615L13.6376 3.10522L13.4135 5.09262ZM21.1985 11.1551L20.7983 14.4403L22.7836 14.6822L23.1839 11.397L21.1985 11.1551ZM16.7022 5.46355C18.0369 5.61409 18.9537 5.71903 19.643 5.87718C20.3125 6.03081 20.6416 6.20928 20.8634 6.4267L22.2634 4.99841C21.6701 4.41684 20.9359 4.12187 20.0903 3.92784C19.2644 3.73834 18.2143 3.62142 16.9263 3.47615L16.7022 5.46355ZM23.1839 11.397C23.3406 10.1103 23.4699 9.06166 23.4767 8.21435C23.4836 7.34682 23.3666 6.56429 22.9381 5.85248L21.2246 6.88391C21.3848 7.15002 21.4822 7.51144 21.4767 8.19835C21.4711 8.90549 21.361 9.82176 21.1985 11.1551L23.1839 11.397ZM20.8634 6.4267C21.0027 6.56322 21.124 6.71682 21.2246 6.88391L22.9381 5.85248C22.7502 5.54037 22.5235 5.25342 22.2634 4.99841L20.8634 6.4267Z" fill="#262626"/>
-</svg>
-          </div>
-        </div>
-        <div className="home-freebies-right">
-         <p>Win freebies as <br/> you shop for your <br/> little ones</p>
-          <img src={gifts} alt="Freebie 2" />
-         </div>
-      </div>
-      <div className="home-shop-under-cont">
-        <div className="home-shop-under">
-          <p>Shop Under</p>
-          <div>
-            <span>Rs. </span>
-            <h1>1200</h1>
-          </div>
 
-        </div>
-        <div className="home-shop-under">
-        <p>Shop Under</p>
-          <div>
-            <span>Rs. </span>
-            <h1>1600</h1>
-          </div>
-        </div>
-        <div className="home-shop-under">
-        <p>Shop Under</p>
-          <div>
-            <span>Rs. </span>
-            <h1>2000</h1>
-          </div>
-        </div>
-      </div>
-      <div className="home-find-happi">
-         <img src={findhappiness} alt="Find Happiness" />
-         <div className="home-find-happi-l">
-              <p>ONLY FOR YOU AND YOUR KIDS</p>
-              <div>
-              <h1>JOIN THE </h1>
-              <h1>HAPPINESS</h1>
-              <h1>CLUB</h1>
-              </div>
             
-         </div>
-         <div className="home-find-happi-r">
-            <p>200 PRODUCTS <br/> TO CHOOSE FROM</p>
-            <button>
-              <span>Shop Now</span>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  <path d="M2.38069 11.6293C2.07734 11.8689 2.0257 12.3091 2.26535 12.6125C2.50501 12.9158 2.9452 12.9675 3.24856 12.7278L2.38069 11.6293ZM13.7109 4.46242C14.0143 4.22277 14.0659 3.78257 13.8263 3.47921C13.5866 3.17586 13.1464 3.12422 12.8431 3.36387L13.7109 4.46242ZM8.15691 2.01442C7.77275 1.97109 7.4262 2.24739 7.38287 2.63155C7.33954 3.01572 7.61584 3.36227 8 3.4056L8.15691 2.01442ZM10.1339 2.94184L10.0554 3.63743L10.1339 2.94184ZM13.4945 7.1957L14.1894 7.28035L13.4945 7.1957ZM12.5495 9.16432C12.5027 9.54809 12.7759 9.89709 13.1597 9.94385C13.5434 9.9906 13.8924 9.7174 13.9392 9.33364L12.5495 9.16432ZM13.1021 3.71853L13.5921 3.21863L13.5921 3.21863L13.1021 3.71853ZM13.4258 4.12831L14.0256 3.76731L14.0256 3.76731L13.4258 4.12831ZM3.24856 12.7278L13.7109 4.46242L12.8431 3.36387L2.38069 11.6293L3.24856 12.7278ZM8 3.4056L10.0554 3.63743L10.2124 2.24625L8.15691 2.01442L8 3.4056ZM12.7996 7.11104L12.5495 9.16432L13.9392 9.33364L14.1894 7.28035L12.7996 7.11104ZM10.0554 3.63743C10.8914 3.73172 11.4594 3.79685 11.8851 3.89452C12.297 3.98903 12.4874 4.0962 12.6121 4.21843L13.5921 3.21863C13.2074 2.84149 12.7333 2.65277 12.1982 2.52999C11.6769 2.41037 11.0156 2.33685 10.2124 2.24625L10.0554 3.63743ZM14.1894 7.28035C14.2871 6.47797 14.3686 5.81758 14.3729 5.28276C14.3773 4.73377 14.3034 4.2289 14.0256 3.76731L12.8261 4.48931C12.9162 4.63891 12.9764 4.84901 12.973 5.27155C12.9695 5.70826 12.9014 6.27597 12.7996 7.11104L14.1894 7.28035ZM12.6121 4.21843C12.6946 4.29932 12.7665 4.39032 12.8261 4.48931L14.0256 3.76731C13.9049 3.5668 13.7592 3.38245 13.5921 3.21863L12.6121 4.21843Z" fill="#333333"/>
-</svg>
-            </button>
-         </div>
+          </div>
 
+          {/* for medium and higher devices */}
+          <div className="md:mt-10 hidden md:grid md:grid-cols-[25%_25%_50%] md:h-[500px] lg:h-[570px] mb-7">
+            <div className="h-full md:h-[500px] lg:h-[570px] overflow-hidden mx-2 lg:mx-4 rounded-3xl mb-4 relative">
+              <img
+                src={IMAGES.boys1}
+                alt="child1"
+                className="h-full object-cover brightness-50"
+              />
+              <div className=" lg:flex absolute bottom-10 justify-between px-6 w-full">
+                <div>
+                  <p className="text-white text-4xl">Boys</p>
+                  <p className="text-white text-xl">03-08 yrs</p>
+                </div>
+                <button className="border-none rounded-xl py-2 lg:p-4 text-white flex bg-white/40 mt-5">
+                  Shop now
+                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                </button>
+              </div>
+            </div>
+            <div className="h-full md:h-[500px] lg:h-[570px] grid grid-rows-[60%_40%] justify-between">
+              <div className="bg-[#F82456] h-[90%] overflow-hidden mx-2 lg:mx-4 rounded-3xl mb-4 relative">
+              <img src={IMAGES.best_deals} alt="best" className=" absolute bottom-0 right-0" />
+                <p className="text-white lg:text-xl m-6 mt-9">
+                  Find the <strong className="italic">best deals</strong> on
+                  comfortable child co-ord sets for your little ones.
+                </p>
+                <button className="border-white border-2 rounded-xl py-2 lg:p-4 text-white flex m-6">
+                  Shop now
+                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                </button>
+              </div>
+              <div className="h-full overflow-hidden mx-2 lg:mx-4 rounded-3xl mb-4 relative">
+                <img
+                  src={IMAGES.infant}
+                  alt="child1"
+                  className="h-full w-full brightness-50"
+                />
+                <div className="absolute bottom-10 justify-between px-6 w-full">
+                  <div>
+                    <p className="text-white text-4xl">Infants</p>
+                    <p className="text-white text-xl">00-02 yrs</p>
+                  </div>
+                  <button className="border-none rounded-xl py-2 lg:p-4 text-white flex bg-white/40 mt-5">
+                    Shop now
+                    <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="h-full md:h-[500px] lg:h-[570px] overflow-hidden mx-2 lg:mx-4 rounded-3xl mb-4 relative">
+              <img
+                src={IMAGES.girls1}
+                alt="child1"
+                className="h-full object-cover w-full brightness-50"
+              />
+              <div className="flex absolute bottom-10 justify-between px-6 w-full">
+                <div>
+                  <p className="text-white text-4xl">Girls</p>
+                  <p className="text-white text-xl">03-08 yrs</p>
+                </div>
+                <button className="border-none rounded-xl py-2 lg:p-4 text-white flex bg-white/40 mt-5">
+                  Shop now
+                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="w-full overflow-hidden my-10">
+              <Marquee
+                velocity={25}
+                minScale={0.7}
+                resetAfterTries={200}
+                scatterRandomly={false}
+              >
+                <div className="flex justify-center items-center">
+                  <span className="text-[42px] mx-4 font-medium">
+                    Affordable luxury and comfort
+                  </span>
+                  <img
+                    src={IMAGES.star_pink}
+                    alt="icon-1"
+                    className="h-14 mx-4"
+                  />
+                </div>
+                <div className="flex justify-center items-center">
+                  <span className="text-[42px] mx-4 font-medium">Spreading Joy and comfort</span>
+                  <img
+                    src={IMAGES.star_home}
+                    alt="icon-2"
+                    className="h-14 mx-4 mt-3"
+                  />
+                </div>
+                
+              </Marquee>
+            </div>
+        </div>
+
+        {/* bestsellers starts here */}
+        <div className="hidden md:block">
+          <div className="flex justify-between">
+            <p className="text-[#333333] text-2xl md:hidden font-semibold">
+              Summer Essentials
+            </p>
+            <p className="text-[#333333] hidden md:block md:text-5xl font-medium">
+              Bestsellers
+            </p>
+            <p className="hidden md:block md:w-[350px]">
+              Forem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et velit{" "}
+            </p>
+            <button className="border-[#333333] border-[1px] p-2 rounded-xl flex text-[#333333] md:hidden">
+              See All Products{" "}
+              <img src={IMAGES.arrow_black} className="mt-1 ml-1" />{" "}
+            </button>
+          </div>
+
+          <div className="grid md:grid-cols-[33%_33%_33%] justify-center overflow-x-scroll no-scrollbar mb-10">
+            <div className="hidden md:block mx-2 relative my-7 ">
+              <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px] rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child1_s}
+                  className=" h-[240px] md:h-[300px] object-cover object-center"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-8 hidden md:block"
+              />
+              <p className="absolute top-3 left-3 hidden md:block">
+                Beige Shirt
+              </p>
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <div className="flex justify-between mt-5">
+                <p className="text-2xl text-[#454545] ">RS. 1500</p>
+                <p className="text-[#888888] ">inclusive of all taxes</p>
+              </div>
+            </div>
+            <div className="hidden md:block mx-2 relative my-7">
+              <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px] rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child2_s}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-14 hidden md:block"
+              />
+              <p className="absolute top-3 left-3 hidden md:block">
+                Blue Shirt
+              </p>
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <div className="flex justify-between mt-5">
+                <p className="text-2xl text-[#454545] ">RS. 1500</p>
+                <p className="text-[#888888] ">inclusive of all taxes</p>
+              </div>
+            </div>
+            <div className="hidden md:block mx-2 relative my-7">
+              <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px]  rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child3_s}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-14 hidden md:block"
+              />
+              <p className="absolute top-3 left-3 hidden md:block">
+                White Shirt
+              </p>
+
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <div className="flex justify-between mt-5">
+                <p className="text-2xl text-[#454545] ">RS. 1500</p>
+                <p className="text-[#888888] ">inclusive of all taxes</p>
+              </div>
+            </div>
+
+            <div className="hidden md:block mx-2 relative my-7">
+              <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px]  rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child3_s}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-14 hidden md:block"
+              />
+              <p className="absolute top-3 left-3 hidden md:block">
+                White Shirt
+              </p>
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <div className="flex justify-between mt-5">
+                <p className="text-2xl text-[#454545] ">RS. 1500</p>
+                <p className="text-[#888888] ">inclusive of all taxes</p>
+              </div>
+            </div>
+            <div className="hidden md:block mx-2 relative my-7">
+              <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px] rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child1_s}
+                  className=" h-[240px] md:h-[300px] object-cover"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-14 hidden md:block"
+              />
+              <p className="absolute top-3 left-3 hidden md:block">
+                Beige Shirt
+              </p>
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <div className="flex justify-between mt-5">
+                <p className="text-2xl text-[#454545] ">RS. 1500</p>
+                <p className="text-[#888888] ">inclusive of all taxes</p>
+              </div>
+            </div>
+            <div className="hidden md:block mx-2 relative my-7">
+              <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px]  rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child2_s}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-14 hidden md:block"
+              />
+              <p className="absolute top-3 left-3 hidden md:block">
+                Blue Shirt
+              </p>
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <div className="flex justify-between mt-5">
+                <p className="text-2xl text-[#454545] ">RS. 1500</p>
+                <p className="text-[#888888] ">inclusive of all taxes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* summer essentials for smaller devices */}
+        <div className="md:hidden mb-20">
+          <div className="flex justify-between mb-5">
+            <p className="text-[#333333] text-2xl md:text-5xl font-semibold">
+              Summer Essentials
+            </p>
+            <button className="border-[#333333] border-[1px] p-2 rounded-xl flex text-[#333333]">
+              See All Products{" "}
+              <img src={IMAGES.arrow_black} className="mt-1 ml-1" />{" "}
+            </button>
+          </div>
+
+          <ul className="flex justify-between overflow-x-scroll no-scrollbar mb-10">
+            <li className="mx-2 relative">
+              <div className="bg-[#F8EBDC] w-[220px] h-[280px] md:w-[300px] md:h-[350px] rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child1}
+                  className=" h-[240px] md:h-[300px] object-cover"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>Beige Co-ord set</p>
+            </li>
+            <li className="mx-2 relative">
+              <div className="bg-[#F8EBDC] w-[220px] h-[280px] md:w-[300px] md:h-[350px]  rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child2}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>Blue Co-ord set</p>
+            </li>
+            <li className="mx-2 relative">
+              <div className="bg-[#F8EBDC] w-[220px] h-[280px] md:w-[300px] md:h-[350px]  rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child3}
+                  className=" h-[240px] md:h-[300px] object-cover"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>Grey Co-ord set</p>
+            </li>
+            <li className="mx-2 relative">
+              <div className="bg-[#F8EBDC] w-[220px] h-[280px] md:w-[300px] md:h-[350px]  rounded-xl flex items-end justify-center">
+                <img
+                  src={IMAGES.child4}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p>White Co-ord set</p>
+            </li>
+          </ul>
+        </div>
+
+        {/*  */}
+        <div>
+          <div className="flex flex-col md:grid grid-cols-[66%_33%] h-[750px] md:h-[400px] lg:h-[480px]">
+            <div className="mx-2 relative object-cover mb-6">
+              <img
+                src={IMAGES.group}
+                alt="group"
+                className=" md:w-full h-[350px] lg:h-[450px]  rounded-xl z-0 brightness-75"
+              />
+              <p className="absolute top-0 left-0 text-white text-2xl md:w-[25vw] m-7 ">
+                Forem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                vulputate libero et velit{" "}
+              </p>
+              <div className="rounded-full h-12 w-12 xl:h-20 xl:w-20 border-black border-[2px] flex justify-center items-center z-10 absolute top-5 -right-2 xl:top-0 sm:right-0">
+                <img
+                  src={IMAGES.arrow_black}
+                  alt="arrow"
+                  className="w-10 h-10"
+                />
+              </div>
+            </div>
+            <div className="bg-[#4B64E6] mx-2 rounded-xl min-h-[300px] h-[350px] lg:h-[450px] relative overflow-hidden ">
+              <p className="text-white text-2xl w-48 m-7">
+                Win freebies as you shop for your little ones
+              </p>
+              <img
+                src={IMAGES.gift}
+                alt="gift"
+                className="absolute top-16 left-[45%] sm:left-[59%] md:left-20 md:top-20 h-[300px] w-[300px] md:h-[380px] md:w-[400px] overflow-hidden"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-3 sm:grid sm:grid-cols-[33%_33%_33%]">
+            <div className="bg-[#F6F6F6] mx-2 h-[220px] rounded-xl flex justify-center items-center">
+              <div>
+                <p className="text-2xl text-[#888888] text-center mb-5">
+                  Shop Under
+                </p>
+                <p className="text-2xl text-[#888888]">
+                  Rs.{" "}
+                  <strong className="text-[56px] md:text-5xl lg:text-[80px] text-black font-semibold">
+                    1200
+                  </strong>
+                </p>
+              </div>
+            </div>
+            <div className="bg-[#F6F6F6] mx-2 h-[220px] rounded-xl flex justify-center items-center">
+              <div>
+                <p className="text-2xl text-[#888888] text-center mb-5">
+                  Shop Under
+                </p>
+                <p className="text-2xl text-[#888888]">
+                  Rs.{" "}
+                  <strong className="text-[56px] md:text-5xl lg:text-[80px] text-black font-semibold">
+                    1600
+                  </strong>
+                </p>
+              </div>
+            </div>
+            <div className="bg-[#F6F6F6] mx-2 h-[220px] rounded-xl flex justify-center items-center">
+              <div>
+                <p className="text-2xl text-[#888888] text-center mb-5">
+                  Shop Under
+                </p>
+                <p className="text-2xl text-[#888888]">
+                  Rs.{" "}
+                  <strong className="text-[56px] md:text-5xl lg:text-[80px] text-black font-semibold">
+                    2000
+                  </strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* new releases */}
+        <div>
+          <div className="flex justify-between mt-20 md:mt-32 mb-5">
+            <p className="text-[#333333] text-2xl md:text-5xl mb-5 font-normal ">
+              New Releases
+            </p>
+            <button className="border-[#333333] border-[1px] p-2 rounded-xl flex text-[#333333]">
+              See All Products{" "}
+              <img src={IMAGES.arrow_black} className="mt-1 ml-1" />{" "}
+            </button>
+          </div>
+
+          <ul className="flex justify-between overflow-x-scroll no-scrollbar mb-20">
+            <li className="mx-2 relative">
+              <div className=" bg-[#F6F6F6] md:bg-[#F8EBDC] w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl flex justify-center items-end">
+                <img
+                  src={IMAGES.child1}
+                  className=" h-[240px] md:h-[300px] object-cover"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p className="mt-3 hidden md:block">Cool Tshirt</p>
+              <p className="mt-3 md:hidden">Rs. 1200</p>
+            </li>
+            <li className="mx-2 relative">
+              <div className="bg-[#F6F6F6] md:bg-[#F8EBDC] w-[220px] h-[280px] md:w-[340px] md:h-[400px]  rounded-xl flex justify-center items-end">
+                <img
+                  src={IMAGES.child2}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p className="mt-3 hidden md:block">Cool Tshirt2</p>
+              <p className="mt-3 md:hidden">Rs. 1200</p>
+            </li>
+            <li className="mx-2 relative">
+              <div className="bg-[#F6F6F6] md:bg-[#F8EBDC] w-[220px] h-[280px] md:w-[340px] md:h-[400px]  rounded-xl flex justify-center items-end">
+                <img
+                  src={IMAGES.child3}
+                  className=" h-[240px] md:h-[300px] object-cover"
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p className="mt-3 hidden md:block">Cool Tshirt3</p>
+              <p className="mt-3 md:hidden">Rs. 1200</p>
+            </li>
+            <li className="mx-2 relative">
+              <div className="bg-[#F6F6F6] md:bg-[#F8EBDC] w-[220px] h-[280px] md:w-[340px] md:h-[400px]  rounded-xl flex justify-center items-end">
+                <img
+                  src={IMAGES.child4}
+                  className=" h-[240px] md:h-[300px] object-cover "
+                />
+              </div>
+              <img
+                src={IMAGES.heart}
+                className="absolute top-3 right-3 hidden md:block"
+              />
+              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
+                <img src={IMAGES.plus_black} className="p-3" />
+              </div>
+              <p className="mt-3 hidden md:block">Cool Tshirt4</p>
+              <p className="mt-3 md:hidden">Rs. 1200</p>
+            </li>
+          </ul>
+        </div>
+
+        {/* join the happiness club */}
+        <div className="relative">
+          <img
+            src={IMAGES.group2}
+            alt="group2"
+            className="w-[95vw] m-auto object-cover h-[500px] md:h-[550px] rounded-xl brightness-50"
+          />
+          <p className="hidden md:block absolute left-0 top-0 ml-12 mt-8 text-white">
+            ONLY FOR YOU AND YOUR KIDS
+          </p>
+          <p className="hidden md:block absolute right-0 top-0 mr-12 mt-8 text-white">
+            200 PRODUCTS TO CHOOSE FROM
+          </p>
+          <p className="hidden md:block absolute left-0 bottom-0 ml-12 mb-8 text-white text-4xl lg:text-7xl font-black w-[30vw]">
+            JOIN THE HAPPINESS CLUB
+          </p>
+          <button className="hidden rounded-lg p-2 text-black md:flex absolute right-0 bottom-0 bg-white mr-12 mb-8">
+            Shop now
+            <img src={IMAGES.arrow_black} className="mt-1 ml-1" />
+          </button>
+
+          {/* for smaller devices */}
+          <div className="md:hidden flex flex-col absolute top-0 left-0 justify-between items-center h-full">
+            <p className=" text-white mt-4">ONLY FOR YOU AND YOUR KIDS</p>
+            <p className=" text-white text-5xl lg:text-7xl font-black  m-auto text-center">
+              JOIN THE HAPPINESS CLUB
+            </p>
+            <p className=" text-white">200 PRODUCTS TO CHOOSE FROM</p>
+            <button className="rounded-lg p-2 text-black flex  bg-white mb-6">
+              Shop now
+              <img src={IMAGES.arrow_black} className="mt-1 ml-1" />
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* happy moments */}
+      {/* <HappyMoments /> */}
+      {/* footer */}
+      {/* <Footer /> */}
+    </>
   );
-}
+};
+
+export default Home;

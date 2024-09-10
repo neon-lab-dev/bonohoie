@@ -1,20 +1,44 @@
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import InputField from "../../Reusable/InputField";
+import { useSignupMutation } from "../../../redux/Features/Auth/authApi";
+import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/Features/Auth/authSlice";
 
-const Signup = ({ setModalType }) => {
+const Signup = ({ setModalType, setOpenModal }) => {
+  const dispatch = useDispatch();
+  const [signup, {isLoading:isRegistering}] = useSignupMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const handleLogin = (loginData) => {
-    console.log(loginData);
+  const handleSignup = async (data) => {
+    const signupData = {
+      full_name : data.full_name,
+      email : data.email,
+      phoneNo: data.phoneNo,
+      password : data.password,
+      confirm_password : data.confirm_password
+    };
+    try{
+      const res = await signup(signupData).unwrap();
+      const user = res.user;
+      toast.success("Registered successfully.");
+      setOpenModal(false);
+      dispatch(setUser({ user }));
+    }catch(err){
+      toast.error("Failed to register. Please try again.");
+      console.log(err.message);
+    }
   };
+
+
   return (
     <form
-      onSubmit={handleSubmit(handleLogin)}
+      onSubmit={handleSubmit(handleSignup)}
       className="px-8 font-Montserrat flex flex-col gap-6 mt-[42px]"
     >
       <div className="flex flex-col gap-4">
@@ -22,22 +46,22 @@ const Signup = ({ setModalType }) => {
         <InputField
           label="Full Name"
           type="text"
-          id="fullName"
+          id="full_name"
           placeholder=""
           register={register}
           validation={{ required: "Full Name is required" }}
-          error={errors.fullName}
+          error={errors.full_name}
         />
 
         {/* Phone Number */}
         <InputField
           label="Phone Number"
           type="text"
-          id="phoneNumber"
+          id="phoneNo"
           placeholder=""
           register={register}
           validation={{ required: "Phone Number is required" }}
-          error={errors.phoneNumber}
+          error={errors.phoneNo}
         />
 
         {/* Email Address */}
@@ -55,22 +79,22 @@ const Signup = ({ setModalType }) => {
         <InputField
           label="Create Password"
           type="password"
-          id="createPassword"
+          id="password"
           placeholder=""
           register={register}
           validation={{ required: "Password is required" }}
-          error={errors.createPassword}
+          error={errors.password}
         />
 
         {/* Retype Password */}
         <InputField
           label="Retype Password"
           type="password"
-          id="retypePassword"
+          id="confirm_password"
           placeholder=""
           register={register}
           validation={{ required: "Please retype your password" }}
-          error={errors.retypePassword}
+          error={errors.confirm_password}
         />
 
         {/* Password field */}
@@ -78,9 +102,12 @@ const Signup = ({ setModalType }) => {
 
       <button
         type="submit"
-        className="text-white px-6 py-[10px] bg-[#333] rounded-xl text-sm font-semibold mx-auto h-14 w-[142px]"
+        className={`${isRegistering ? "animate-pulse" : ""} text-white px-6 py-[10px] bg-[#333] rounded-xl text-sm font-semibold mx-auto h-14 w-[142px]`}
       >
-        Register
+        {
+          isRegistering? "Loading...": "Register"
+        }
+        
       </button>
 
       <p className="text-base font-medium leading-[24px] text-[#262626] text-center">
@@ -99,6 +126,7 @@ const Signup = ({ setModalType }) => {
 // PropTypes validation
 Signup.propTypes = {
   setModalType: PropTypes.func.isRequired,
+  setOpenModal: PropTypes.func.isRequired,
 };
 
 export default Signup;

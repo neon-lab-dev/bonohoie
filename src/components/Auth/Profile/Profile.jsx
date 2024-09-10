@@ -2,9 +2,14 @@ import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import InputField from "../../Reusable/InputField";
 import { ICONS } from "../../../assets";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useGetMeQuery } from "../../../redux/Features/Auth/authApi";
 
 const Profile = () => {
+
+  const {data:myProfile, isLoading} = useGetMeQuery();
+
+  console.log(myProfile);
   const [showPassword, setShowPassword] = useState(false);
 //   To handle the edit mode
   const [editMode, setEditMode] = useState(false);
@@ -12,7 +17,7 @@ const Profile = () => {
 
   // Mock user data (this would normally come from an API)
   const user = {
-    fullName: "Rahul",
+    fullName: myProfile?.user?.full_name,
     phoneNumber: "0000000000",
     email: "rahul@gmail.com",
     password: "11111111",
@@ -24,8 +29,24 @@ const Profile = () => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: user,
+    defaultValues: {
+      fullName: "",
+      phoneNumber: "",
+      email: "",
+      password: "",
+    },
   });
+
+  useEffect(() => {
+    if (myProfile) {
+      reset({
+        fullName: myProfile?.user?.full_name || "",
+        phoneNumber: myProfile?.user?.phoneNo || "",
+        email: myProfile?.user?.email || "",
+        password: "*******",
+      });
+    }
+  }, [myProfile, reset]);
 
 
 
@@ -163,14 +184,14 @@ const Profile = () => {
             <button
               type="button"
               onClick={() => setEditMode(true)} // Enable edit mode
-              className="text-white px-6 py-[10px] bg-[#333] rounded-xl text-[13px] font-semibold mx-auto h-14 w-[179px]"
+              className="text-white px-6 py-[10px] bg-[#333] rounded-xl text-xs font-semibold mx-auto h-14 w-[179px]"
             >
               Update Information
             </button>
             <button
               type="button"
               onClick={() => setPasswordChangeMode(true)} // Example function to trigger change password modal
-              className="text-white px-6 py-[10px] bg-[#333] rounded-xl text-[13px] font-semibold mx-auto h-14 w-[179px]"
+              className="text-white px-6 py-[10px] bg-[#333] rounded-xl text-xs font-semibold mx-auto h-14 w-[179px]"
             >
               Change Password
             </button>
