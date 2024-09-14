@@ -1,6 +1,6 @@
 import { ICONS } from "../../assets";
 import ProductImages from "./ProductImages";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DetailCard from "../../components/Reusable/DetailCard";
 import ImageCarousel from "./ImageCarousel";
 import DeliveryOptions from "./DeliveryOptions";
@@ -8,131 +8,128 @@ import DeliveryDetails from "./DeliveryDetails";
 import UnlockFreebies from "./UnlockFreebies";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import ProductInfo from "./ProductInfo";
-import Modal from "../../components/Reusable/Modal";
-import Login from "../../components/Auth/Login/Login";
-import Signup from "../../components/Auth/Signup/Signup";
-import Profile from "../../components/Auth/Profile/Profile";
-import YourOrders from "../../components/YourOrders/YourOrders";
-import Cart from "../../components/Cart/Cart";
-import ChooseGift from "../../components/ChooseGift/ChooseGift";
+import { useLoaderData } from "react-router-dom";
+import { toast } from "sonner";
 
+
+// Made in missing in api
+// Product Code missing in api
+// Collection missing in api
 const ProductDetails = () => {
-  const [openModal, setOpenModal] = useState(false);
-  const [modalType, setModalType] = useState("login");
+  const productDetail = useLoaderData();
+  console.log(productDetail);
 
-  const [productSize, setProductSize] = useState("2-4Y");
-  const sizes = ["2-4Y", "5-7Y", "8-10Y", "11-12Y"];
-  console.log(modalType);
+  const {_id,name, description, ratings, images, sizes} = productDetail.product
+
+  // State to track selected size and price
+  const [selectedSize, setSelectedSize] = useState(sizes[0]);
+
+   // State to track selected products with sizes
+   const [selectedProducts, setSelectedProducts] = useState({}); 
+
+  //  Setting the first size product in state automatically befor clicking
+   useEffect(() => {
+    if (sizes.length > 0) {
+      const firstSize = sizes[0];
+      setSelectedSize(firstSize);
+      setSelectedProducts({
+        productId: _id,
+        name: name,
+        selectedSize: firstSize.size,
+        price: calculatePrice(firstSize.basePrice, firstSize.discountedPercent),
+        image: images[0] || ICONS.imageIcon,
+      });
+    }
+  }, [sizes, _id, name, images]);
+
+   console.log(selectedProducts);
+
+  // Discount price calculation
+  const calculatePrice = (basePrice, discountedPercent) => {
+    return basePrice - (basePrice * discountedPercent) / 100;
+  };
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+
+    setSelectedProducts({
+      productId: _id,
+      name: name,
+      selectedSize: size.size,
+      price: calculatePrice(size.basePrice, size.discountedPercent),
+      image: images[0] || ICONS.imageIcon,
+    });
+
+  };
 
   // Breadcrumb menus
   const breadcrumbItems = [
     { label: "Home", link: "/" },
     { label: "Tees", link: "/tees" },
     { label: "Age Group", link: "/tees/age-group" },
-    { label: "Product Name" },
+    { label: name },
   ];
+
+
+  const [isInCart, setIsInCart] = useState(false);
+
+  const handleAddToCart = () => {
+    // Retrieve existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if the product is already in the cart
+    const existingProduct = cart.find(
+      (cartProduct) => cartProduct.productId === _id
+    );
+
+    if (!existingProduct) {
+      // Add the new product to the cart array
+      cart.push({
+        productId: selectedProducts?.productId,
+        name: selectedProducts?.name,
+        size: selectedProducts?.selectedSize,
+        basePrice: selectedProducts?.price || 0,
+        // discountedPercent: product.sizes[0]?.discountedPercent || 0,
+        image: selectedProducts?.image?.url || ICONS.imageIcon,
+        quantity : 1
+      });
+
+      // Save the updated array back to localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+      setIsInCart(true);
+      toast.success(`${name} added to cart!`);
+    } else {
+      // If the product is already in the cart, remove it
+      cart = cart.filter(
+        (cartProduct) => cartProduct.productId !== _id
+      );
+      localStorage.setItem("cart", JSON.stringify(cart));
+      setIsInCart(false);
+      toast.success(`${name} removed from cart!`);
+    }
+  };
+
+
+
 
   return (
     <div className="max-w-[1440px] mx-auto font-Montserrat">
-      <div className="flex gap-20">
-        <button
-          onClick={() => {
-            setModalType("cart");
-            setOpenModal(true);
-          }}
-        >
-          Cart
-        </button>
-
-        <button
-          onClick={() => {
-            setModalType("orders");
-            setOpenModal(true);
-          }}
-        >
-          Orders
-        </button>
-
-        <button
-          onClick={() => {
-            setModalType("chooseGift");
-            setOpenModal(true);
-          }}
-        >
-          Choose Gift
-        </button>
-
-        <button
-          onClick={() => {
-            setModalType("login");
-            setOpenModal(true);
-          }}
-        >
-          Login
-        </button>
-      </div>
-
-      {/* Login, signup, profile, change password modal */}
-      <Modal
-        modalType={modalType}
-        setModalType={setModalType}
-        openModal1={openModal}
-        setOpenModal1={setOpenModal}
-        title={
-          modalType === "login"
-            ? "Login"
-            : modalType === "signup"
-            ? "Signup"
-            : modalType === "profile"
-            ? "Profile"
-            : modalType === "orders"
-            ? "Your Orders"
-            : modalType === "cart"
-            ? "Cart"
-            : modalType === "chooseGift"
-            ? "Choose Gift"
-            : ""
-        }
-        classNames={`${
-          modalType === "cart" || modalType === "chooseGift"
-            ? "w-[660px]"
-            : "w-[430px]"
-        } w-full max-w-[660px] h-[547px] overflow-y-auto flex flex-col`}
-      >
-        <div className="flex flex-col justify-between h-full">
-          {modalType === "login" ? (
-            <Login setModalType={setModalType} />
-          ) : modalType === "signup" ? (
-            <Signup setModalType={setModalType} />
-          ) : modalType === "orders" ? (
-            <YourOrders />
-          ) : modalType === "chooseGift" ? (
-            <ChooseGift />
-          ) : modalType === "cart" ? (
-            <Cart setModalType={setModalType}/>
-          ) : (
-            <Profile setModalType={setModalType} />
-          )}
-
-          <img src={ICONS.bonhomie} alt="" className="w-full mt-8" />
-        </div>
-      </Modal>
 
       {/* Breadcrumbs */}
       <Breadcrumbs items={breadcrumbItems} />
 
       {/* Product images for smaller device */}
-      <ImageCarousel />
+      <ImageCarousel images={images}/>
 
       <div className="flex flex-col lg:flex-row gap-9 mt-5 md:mt-8 px-4 md:px-[56px]">
         {/* Product images for bigger screens */}
-        <ProductImages />
+        <ProductImages images={images} />
 
         {/* Product Details */}
         <div className="w-full lg:w-[40%]">
           {/* Product name */}
           <h1 className="text-2xl md:text-[32px] font-bold leading-normal md:leading-[44px] text-[#333]">
-            The Ray of joy-white tees
+            {name}
           </h1>
 
           {/* MRP tagline */}
@@ -144,7 +141,7 @@ const ProductDetails = () => {
           <div className="flex items-center gap-4 mt-[6px]">
             {/* Price */}
             <h1 className="text-[32px] md:text-[40px] font-semibold md:font-medium text-[#454545] leading-normal">
-              Rs. 2000
+              Rs.  {calculatePrice(selectedSize.basePrice, selectedSize.discountedPercent)}
             </h1>
             <img
               src={ICONS.straightLine}
@@ -154,14 +151,13 @@ const ProductDetails = () => {
 
             <img src={ICONS.star} alt="star-icon" className="size-6" />
             <h1 className="text-xl font-semibold text-[#333] leading-normal">
-              4.5
+              {ratings}
             </h1>
           </div>
 
           {/* Product description */}
           <p className="text-base md:text-lg font-medium leading-6 md:leading-[32px] text-[#888] mt-5 md:mt-6">
-            Morem ipsum dolor sit amet, consectetur adipiscing elit. ac aliquet
-            odio . Class aptent taciti sociosqu a... more
+            {description}
           </p>
 
           {/* Sizes */}
@@ -183,14 +179,14 @@ const ProductDetails = () => {
               {sizes?.map((size, index) => (
                 <button
                   key={index}
-                  onClick={() => setProductSize(size)}
+                  onClick={() => handleSizeClick(size)}
                   className={`${
-                    productSize === size
+                    selectedSize.size === size.size
                       ? "bg-[#FFF1F3] border-[#FF6D8B] text-[#FF6D8B]"
                       : "border-[#E7E7E7] text-[#454545]"
-                  } flex h-[56px] px-3 py-2 justify-center items-center gap-3 rounded-lg border text-lg font-medium leading-8 w-full`}
+                  } flex h-[56px] px-3 py-2 justify-center items-center gap-3 rounded-lg border text-lg font-medium leading-8 w-full max-w-[103px]`}
                 >
-                  {size}
+                  {size?.size}
                 </button>
               ))}
             </div>
@@ -198,12 +194,12 @@ const ProductDetails = () => {
 
           {/* buttons */}
           <div className="hidden md:flex items-center gap-[10px] mt-6 border-b border-[#D1D1D1] border-dashed pb-6">
-            <button className="border border-[#333] rounded-xl px-6 py-[10px] flex items-center justify-between h-14 w-[320px] text-sm font-semibold leading-6 text-[#333]">
+            <button onClick={handleAddToCart} className="border border-[#333] rounded-xl px-6 py-[10px] flex items-center justify-between h-14 w-full md:w-[320px] text-sm font-semibold leading-6 text-[#333]">
               Add to Bag
               <img src={ICONS.cart} alt="cart-icon" className="size-5" />
             </button>
 
-            <button className="text-white px-6 py-[10px] bg-[#F82456] rounded-xl text-sm h-14 w-[202px]">
+            <button className="text-white px-6 py-[10px] bg-[#F82456] rounded-xl text-sm h-14 w-full md:w-[202px]">
               Buy Now
             </button>
           </div>
@@ -265,6 +261,24 @@ const ProductDetails = () => {
           {/* Product info (Product Code, Collection, Made In) */}
           <ProductInfo />
         </div>
+
+        <div
+        style={{
+          boxShadow: "0px -4px 4px 0px rgba(0, 0, 0, 0.06)",
+        }}
+        className="z-10 fixed bottom-0 right-0 left-0 flex md:hidden items-center gap-3 bg-white px-4 py-3 justify-center w-full"
+      >
+        <div className="flex items-center gap-[10px] w-full">
+            <button onClick={handleAddToCart} className="border border-[#333] rounded-xl px-6 py-[10px] flex items-center justify-between h-14 w-full md:w-[320px] text-sm font-semibold leading-6 text-[#333]">
+              Add to Bag
+              <img src={ICONS.cart} alt="cart-icon" className="size-5" />
+            </button>
+
+            <button className="text-white px-6 py-[10px] bg-[#F82456] rounded-xl text-sm h-14 w-full md:w-[202px]">
+              Buy Now
+            </button>
+          </div>
+      </div>
       </div>
     </div>
   );

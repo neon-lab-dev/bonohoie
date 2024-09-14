@@ -98,6 +98,10 @@ import cartGray from './logos/cart-gray.svg';
 import filterWhite2 from './logos/filter-white2.svg';
 import productsBannerImage from './images/products-banner.png';
 import BonhomieDarkIcon from './images/BonhomieDarkIcon.png';
+import ellipse1 from './images/Ellipse 5.png';
+import imageIcon from './logos/image-icon.svg';
+import redHeart from './logos/red-heart.svg';
+import menu from './logos/menu.svg';
 
 
 export const IMAGES={
@@ -164,7 +168,8 @@ export const IMAGES={
     bonhomie_yellow,
     got_ques_bg,
     productsBannerImage,
-    BonhomieDarkIcon
+    BonhomieDarkIcon,
+    ellipse1
 }
 
 export const ICONS = {
@@ -205,4 +210,7 @@ export const ICONS = {
     profileIcon,
     cartGray,
     filterWhite2,
+    imageIcon,
+    redHeart,
+    menu,
 };

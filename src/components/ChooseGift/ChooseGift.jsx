@@ -1,7 +1,10 @@
 import { ICONS } from "../../assets";
+import { useGetAllFreebiesQuery } from "../../redux/Features/Freebies/freebiesApi";
+import FreebiesCardLoader from "../Loaders/FreebiesCardLoader";
 import FreebiesCard from "./FreebiesCard";
 
 const ChooseGift = () => {
+  const {data , isLoading:isFreebiesLoading} = useGetAllFreebiesQuery();
   return (
     <div className="py-6">
       <div className="bg-[#FDF9E9] relative px-8 py-5 border-t border-[#E7E7E7]">
@@ -36,12 +39,16 @@ const ChooseGift = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-7">
-        <FreebiesCard/>
-        <FreebiesCard/>
-        <FreebiesCard/>
-        <FreebiesCard/>
-        <FreebiesCard/>
-        <FreebiesCard/>
+          {
+            isFreebiesLoading ? 
+            [1,2,3].map((_,index) => 
+              <FreebiesCardLoader key={index}/>
+            )
+            :
+            data?.freebies?.map(freebie => 
+              <FreebiesCard key={freebie?._id} freebie={freebie} />
+            )
+          }
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { IMAGES } from "../../assets";
 import Marquee from "react-marquee-slider";
 import { useGetAllProductsQuery } from "../../redux/Features/Products/productApi";
 import Hero from "../../components/Hero/Hero";
+import LatestArrival from "../../components/LatestArrival/LatestArrival";
 
 export const Home = () => {
   const {data:products} = useGetAllProductsQuery();
@@ -9,129 +10,10 @@ export const Home = () => {
   return (
     <>
       <div className="mx-3 overflow-x-hidden md:mx-10">
-        {/* <div className="">
-          <div className=" relative md:opacity-100 md:mx-0">
-            <img
-              src={IMAGES.hero}
-              alt="hero"
-              className="h-[550px] md:h-[640px] object-cover md:w-full rounded-2xl brightness-50"
-            />
-            <img
-              src={IMAGES.bonhomie_yellow}
-              alt="bonhomie_yellow"
-              className="absolute bottom-10 w-full "
-            />
-            <div className="hidden md:block absolute top-0 left-0 ml-8 mt-6">
-              <div className="flex">
-                <img src={IMAGES.star_yellow} alt="star_yellow" className="" />
-                <p className="text-white">4.5</p>
-              </div>
-              <p className="text-white mt-8 w-[200px] ">
-                Both kids and their happy parents love us
-              </p>
-            </div>
-            <div className="absolute top-1/3 md:top-0 md:right-0 md:w-[300px] m-6">
-              <p className="text-white text-sm font- mb-4 ">
-                Supplying your child with the prettiest, coziest clothes
-                possible at the most affordable prices.
-              </p>
-              <div className="flex justify-center gap-2">
-                <button className="border-white border-2 rounded-lg p-2 text-white">
-                  2023 collection
-                </button>
-                <button className="bg-white/50 rounded-lg p-2 text-white flex">
-                  Shop now
-                  <img src={IMAGES.arrow_white} className="mt-1 ml-1" />
-                </button>
-              </div>
-            </div>
-            <div className="flex justify-between m-4 ">
-              <p className="text-[#391811] font-semibold ">2024</p>
-              <p className="text-[#391811] font-semibold ">PREMIUM KIDS WEAR</p>
-            </div>
-          </div>
-        </div> */}
         <Hero/>
 
         {/* latest arrivals starts here */}
-        <div>
-          <div className="flex justify-between mb-5 mt-20">
-            <p className="text-[#333333] text-2xl md:text-5xl font-semibold md:font-normal">
-              Latest Arrivals
-            </p>
-            <button className="border-[#333333] border-[1px] p-2 rounded-xl flex text-[#333333]">
-              See All Products{" "}
-              <img src={IMAGES.arrow_black} className="mt-1 ml-1" />{" "}
-            </button>
-          </div>
-
-          <ul className="flex justify-between overflow-x-scroll no-scrollbar mb-10">
-            <li className="mx-1 relative">
-              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
-                <img
-                  src={IMAGES.child1}
-                  className=" h-[240px] md:h-[300px] object-cover"
-                />
-              </div>
-              <img
-                src={IMAGES.heart}
-                className="absolute top-3 right-3 hidden md:block"
-              />
-              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
-                <img src={IMAGES.plus_black} className="p-3" />
-              </div>
-              <p>Beige Co-ord set</p>
-            </li>
-            <li className="mx-1 relative">
-              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
-                <img
-                  src={IMAGES.child2}
-                  className=" h-[240px] md:h-[300px] object-cover "
-                />
-              </div>
-              <img
-                src={IMAGES.heart}
-                className="absolute top-3 right-3 hidden md:block"
-              />
-              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
-                <img src={IMAGES.plus_black} className="p-3" />
-              </div>
-              <p>Blue Co-ord set</p>
-            </li>
-            <li className="mx-1 relative">
-              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
-                <img
-                  src={IMAGES.child3}
-                  className=" h-[240px] md:h-[300px] object-cover"
-                />
-              </div>
-              <img
-                src={IMAGES.heart}
-                className="absolute top-3 right-3 hidden md:block"
-              />
-              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
-                <img src={IMAGES.plus_black} className="p-3" />
-              </div>
-              <p>Grey Co-ord set</p>
-            </li>
-            <li className="mx-1 relative">
-              <div className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
-                <img
-                  src={IMAGES.child4}
-                  className=" h-[240px] md:h-[300px] object-cover "
-                />
-              </div>
-              <img
-                src={IMAGES.heart}
-                className="absolute top-3 right-3 hidden md:block"
-              />
-              <div className="rounded-md bg-white absolute top-3 right-3 md:hidden">
-                <img src={IMAGES.plus_black} className="p-3" />
-              </div>
-              <p>White Co-ord set</p>
-            </li>
-          </ul>
-        </div>
+        <LatestArrival/>
 
         {/* why are we loved starts here */}
         <div>
@@ -143,7 +25,21 @@ export const Home = () => {
                   Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                   vulputate libero et velit interdum, ac aliquet odio{" "}
                 </p>
-                <div>
+                <div className="flex items-center gap-20">
+                  <div className="relative flex items-center max-w-[200px]">
+                    <div className="size-9 rounded-full border-2 border-white">
+                      <img src={IMAGES.ellipse1} alt="" className="size-9 rounded-full" />
+                    </div>
+                    <div className="size-9 rounded-full border-2 border-white absolute left-6">
+                      <img src={IMAGES.ellipse1} alt="" className="size-9 rounded-full" />
+                    </div>
+                    <div className="size-9 rounded-full border-2 border-white absolute left-12">
+                      <img src={IMAGES.ellipse1} alt="" className="size-9 rounded-full" />
+                    </div>
+                    <div className="size-9 rounded-full border-2 border-white absolute left-16">
+                      <img src={IMAGES.ellipse1} alt="" className="size-9 rounded-full" />
+                    </div>
+                  </div>
                   <p>+200 happy children</p>
                 </div>
               </div>

@@ -1,21 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
-import { IMAGES } from "../../assets";
 
-const ImageCarousel = () => {
+const ImageCarousel = ({images}) => {
   const [currentSlider, setCurrentSlider] = useState(0);
-  const productImages = [
-    IMAGES.child1,
-    IMAGES.child2,
-    IMAGES.child3,
-    IMAGES.child4,
-  ];
 
   const nextSlider = useCallback(
     () =>
       setCurrentSlider((currentSlider) =>
-        currentSlider === productImages.length - 1 ? 0 : currentSlider + 1
+        currentSlider === images.length - 1 ? 0 : currentSlider + 1
       ),
-    [productImages.length]
+    [images.length]
   );
 
   // for automatic sliding
@@ -34,14 +27,13 @@ const ImageCarousel = () => {
           style={{ transform: `translateX(-${currentSlider * 100}%)` }}
         >
           {/* sliders */}
-          {productImages.map((slide, index) => (
+          {images?.map((image, index) => (
             <div
-              key={index}
+            key={index}
               className="bg-[#F6F6F6] min-w-full  overflow-hidden font-Montserrat relative "
             >
               <img
-                key={slide}
-                src={slide}
+                src={image?.url}
                 className="min-w-full h-full w-full object-cover"
                 alt={`Slider - ${index + 1}`}
               />
@@ -52,7 +44,7 @@ const ImageCarousel = () => {
 
       {/* dots */}
       <div className="flex justify-center items-center rounded-full z-50 mt-5 w-full gap-1">
-        {productImages.map((img, idx) => (
+        {images?.map((img, idx) => (
           <button
             key={`${img}_${idx}`}
             onClick={() => setCurrentSlider(idx)}

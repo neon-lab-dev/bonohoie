@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Breadcrumbs = ({ items }) => {
   return (
     <div className="px-4 md:px-[56px] mt-8 font-Montserrat">
-      <ol className="flex space-x-2 text-[#888] text-base font-medium leading-6">
+      <ol className="flex flex-wrap gap-2 text-[#888] text-base font-medium leading-6">
         {items.map((item, index) => {
           const isLastItem = index === items.length - 1;
           return (

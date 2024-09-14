@@ -4,7 +4,7 @@ import { IMAGES } from "../../assets";
 const Hero = () => {
     return (
         <div className="">
-          <div className=" relative md:opacity-100 md:mx-0">
+          <div className="relative md:opacity-100 md:mx-0">
             <img
               src={IMAGES.hero}
               alt="hero"

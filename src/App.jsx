@@ -14,6 +14,8 @@ import WishListedItems from "./pages/WishListedItems/WishListedItems";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import { Footer } from "./components/Footer";
 import AllProducts from "./pages/AllProducts/AllProducts";
+import { FAQ } from './pages/FAQ';
+import { TandC } from "./pages/TandC";
 
 function App() {
   return (
@@ -24,11 +26,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/boys" element={<Boys />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/girls" element={<Girls />} />
-          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="*" element={<NoMatch />} />
           <Route path="/desktop2" element={<Desktop2 />} />
           <Route path="/wish-listed-items" element={<WishListedItems />} />
+          <Route path="/terms-condition" element={<TandC />} />
           <Route path="/product-details" element={<ProductDetails />} />
           <Route path="/all-products" element={<AllProducts />} />
         </Routes>

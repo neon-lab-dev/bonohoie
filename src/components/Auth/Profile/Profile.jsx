@@ -3,11 +3,17 @@ import PropTypes from "prop-types";
 import InputField from "../../Reusable/InputField";
 import { ICONS } from "../../../assets";
 import { useEffect, useState } from "react";
-import { useGetMeQuery } from "../../../redux/Features/Auth/authApi";
+import { useGetMeQuery, useUpdateProfileMutation } from "../../../redux/Features/Auth/authApi";
+import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/Features/Auth/authSlice";
 
 const Profile = () => {
 
-  const {data:myProfile, isLoading} = useGetMeQuery();
+  const dispatch = useDispatch();
+
+  const {data:myProfile, isLoading:isProfileLoading} = useGetMeQuery();
+  const [updateProfile, {isLoading:isProfileUpdating}] = useUpdateProfileMutation();
 
   console.log(myProfile);
   const [showPassword, setShowPassword] = useState(false);
@@ -50,11 +56,33 @@ const Profile = () => {
 
 
 
-    // API calling will be here
-  const handleUpdateProfileDetails = (formData) => {
-    console.log("Updated Profile Details: ", formData);
-    setEditMode(false);
-  };
+    // Update profile
+    const handleUpdateProfileDetails = async (data) => {
+      const formData = new FormData();
+    
+      // Append the form fields
+      formData.append("full_name", data.fullName);
+      formData.append("email", data.email);
+      formData.append("phoneNo", data.phoneNumber);
+      
+      if (PasswordChangeMode) {
+        formData.append("password", data.password);
+        formData.append("confirm_password", data.confirmPassword); // if you have a confirmation field
+      }
+    
+      try {
+        const res = await updateProfile(formData).unwrap();
+        const user = res.user;
+        toast.success("Profile updated successfully.");
+        dispatch(setUser({ user }));
+      } catch (err) {
+        toast.error("Failed to update profile. Please try again.");
+        console.log(err.message);
+      }
+    };
+    
+
+
 
     // Return to profile mode
   const handleCancel = () => {
@@ -68,6 +96,24 @@ const Profile = () => {
       onSubmit={handleSubmit(handleUpdateProfileDetails)}
       className="px-8 font-Montserrat flex flex-col gap-6 mt-[42px]"
     >
+        {
+          isProfileLoading
+?
+    <div className="flex flex-col gap-5">
+      {
+        [1,2,3,4,5].map((_, index) => 
+          <div key={index} className="w-full rounded-lg bg-gradient-to-r from-gray-100 to-gray-200 h-16 animate-pulse">
+    </div>
+        )   
+      }
+    </div>
+
+    :
+
+    
+
+
+    <div>
       <div className="flex flex-col gap-4">
         <InputField
           label="Full Name"
@@ -77,7 +123,7 @@ const Profile = () => {
           register={register}
           validation={{ required: "Full Name is required" }}
           error={errors.fullName}
-          disabled={!editMode} // Disable input when not in edit mode
+          disabled={!editMode}
         />
 
         <InputField
@@ -88,7 +134,7 @@ const Profile = () => {
           register={register}
           validation={{ required: "Phone Number is required" }}
           error={errors.phoneNumber}
-          disabled={!editMode} // Disable input when not in edit mode
+          disabled={!editMode}
         />
 
         <InputField
@@ -99,7 +145,7 @@ const Profile = () => {
           register={register}
           validation={{ required: "Email is required" }}
           error={errors.email}
-          disabled={!editMode} // Disable input when not in edit mode
+          disabled={!editMode}
         />
 
           
@@ -143,7 +189,7 @@ const Profile = () => {
         }
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 mt-6">
 
         {
           editMode ?
@@ -157,9 +203,11 @@ const Profile = () => {
             </button>
             <button
               type="submit"
-              className="text-white px-6 py-[10px] bg-[#F82456] rounded-xl text-[13px] font-semibold mx-auto h-14 w-[179px]"
+              className={`${isProfileUpdating ? "animate-pulse" : ""} text-white px-6 py-[10px] bg-[#F82456] rounded-xl text-[13px] font-semibold mx-auto h-14 w-[179px]`}
             >
-              Update Details
+              {
+                isProfileUpdating? "Updating..." : "Update Details"
+              }
             </button>
           </>
           :
@@ -198,6 +246,8 @@ const Profile = () => {
           </>
         }
       </div>
+      </div>
+          }
     </form>
   );
 };

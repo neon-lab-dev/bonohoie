@@ -1,14 +1,11 @@
-import React from 'react'
 import { IMAGES } from '../assets'
 import { MoreQues } from '../components/MoreQues'
 import { HappyMoments } from '../components/HappyMoments'
 import { Footer } from '../components/Footer'
-import Header from '../components/Header'
 
 export const FAQ = () => {
   return (
     <div>
-      <Header/>
     <div className="mx-6 md:mx-10">
       <div className=" relative">
       <p className="absolute text-white text-4xl md:text-5xl top-6 left-6">FAQs</p>

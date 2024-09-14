@@ -13,7 +13,7 @@ const Modal = ({ children, openModal1, setOpenModal1, modalType,setModalType, cl
        <div className="p-3 absolute overflow-y-auto">
        <div
           onClick={(e_) => e_.stopPropagation()}
-          className={` rounded-lg bg-white drop-shadow-2xl dark:bg-gray-800 dark:text-white ${
+          className={`rounded-lg bg-white drop-shadow-2xl dark:bg-gray-800 dark:text-white ${
             openModal1
               ? "opacity-1 duration-300"
               : "scale-110 opacity-0 duration-150"

@@ -42,7 +42,7 @@ const InputField = ({
       )}
 
       {error && (
-        <span className="text-[#F82456] text-start mt-1">{error.message}</span>
+        <span className="text-[#F82456] text-start mt-1 w-fit">{error.message}</span>
       )}
     </div>
   );
