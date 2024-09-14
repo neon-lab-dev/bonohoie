@@ -1,0 +1,19 @@
+.notification-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  height: 40px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue-600);
+  color: var(--white-color);
+}
+
+.notification-bar .notification-bar-background-icons {
+  position: absolute;
+  top: 0;
+}

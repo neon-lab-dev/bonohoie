@@ -1,0 +1,46 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  background-color: var(--white-color);
+  color: var(--black-color-700);
+  padding: 0 56px;
+}
+
+.nav-bar ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 32px;
+}
+
+.nav-bar ul a {
+  text-decoration: none;
+  color: var(--black-color-700);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar ul a:hover {
+  color: var(--primary-brand-color);
+}
+
+.nav-bar ul a.active {
+  color: var(--primary-brand-color);
+}
+
+.nav-bar ul a svg path {
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar ul a:hover svg path {
+  stroke: var(--primary-brand-color);
+}
+
+.nav-bar ul a.active svg path {
+  stroke: var(--primary-brand-color);
+}

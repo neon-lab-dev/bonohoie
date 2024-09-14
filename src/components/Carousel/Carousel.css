@@ -1,0 +1,43 @@
+.carousel {
+    padding: 10px 0;
+    padding-bottom: 60px;
+  }
+  
+  .carousel li {
+    width: 380px !important;
+  }
+  
+  .carousel-item {
+    height: 430px;
+    width: 340px;
+    background-color: var(--fourth-brand-color-100);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .carousel-item img {
+    height: 300px;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .carousel-item .heart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .carousel-item .heart.selected svg path {
+    stroke: var(--primary-brand-color);
+    fill: var(--primary-brand-color);
+  }
+  
+  .carousel-item .item-text {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+  }

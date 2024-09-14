@@ -1,13 +1,8 @@
-import React from "react";
 import { IMAGES } from "../assets";
-import { HappyMoments } from "../components/HappyMoments";
-import { Footer } from "../components/Footer";
-import Header from "../components/Header";
 
 export const AboutUs = () => {
   return (
     <div>
-      <Header />
       {/* we are on a mission */}
       <div className="bg-[#FDF9E9] relative  md:p-10 flex flex-col justify-end rounded-2xl mx-6 md:mx-10 ">
         <p className="text-[#EB5C5C] mt-5 ml-4">We are on a mission</p>
@@ -61,9 +56,8 @@ export const AboutUs = () => {
         </div>
       </div>
 
-      <HappyMoments/>
-      <Footer/>
-
     </div>
   );
 };
+
+export default AboutUs;

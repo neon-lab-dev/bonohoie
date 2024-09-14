@@ -17,9 +17,44 @@ import girls1 from './girls.jpeg'
 import girls2 from './girls2.jpeg'
 import infant from './infant.jpeg'
 import boys1 from './boys.jpeg'
+import search from './logos/search.svg';
+import heartIcon from './logos/heart.svg';
+import sort from './logos/sort.svg';
+import filter from './logos/filter.svg';
+import filterWhite from './logos/filter-icon-white.svg';
+
+import cart from './logos/cart.svg';
+import cash from './logos/cash.svg';
+import clothDetails from './logos/cloth-details.svg';
+import deliveryVan from './logos/delivery-van.svg';
+import gift from './logos/gift.svg';
+import returnPackage from './logos/returns-package.svg';
+import size from './logos/size.svg';
+import star from './logos/star.svg';
+import tshirt from './logos/tshirt.svg';
+import locked from './logos/locked.svg';
+import unlocked from './logos/unlocked.svg';
+import slash from './logos/slash-icon.svg';
+import straightLine from './logos/straight-line.png';
+import freebiesBgShape from './logos/freebies-bg-shape.svg';
+import freebiesBgShape2 from './logos/Group 50.png';
+import cross from './logos/cross.svg';
+import eyeOpen from './logos/eye-open.svg';
+import eyeClosed from './logos/eye-closed.svg';
+import detailsCardBgShape1 from './images/detailsCardBgShape1.png';
+import freebiesBgShape3 from './logos/freebiesBgShape3.svg';
+import freebiesBgShape4 from './images/freebiesBgShape4.png';
+import productImg from './images/dummy-product.png';
+import bonhomie from './logos/Bonhomie.png';
+import tickCircle from './logos/Tick-Circle.svg';
+import rightArrow from './logos/right-arrow.svg';
+import minus from './logos/minus.svg';
+import plus from './logos/plus.svg';
+import deleteIcon from './logos/delete.svg';
+import cartIcon from './logos/cart-white.svg';
+import leftArrow from './logos/left-arrow.svg';
 import group from './freebie1.png'
 import group2 from './group2.jpeg'
-import gift from './gift.png'
 import mission_bg from './mission_bg.png'
 import moment1 from './moment1.jpeg'
 import moment2 from './moment2.jpeg'
@@ -31,7 +66,7 @@ import email from './email.png'
 import email_white from './email_white.png'
 import call from './call.png'
 import call_white from './call_white.png'
-import cart from './cart.png'
+// import cart from './cart.png'
 import copywright from './copywright.png'
 import footer_image from './footer_image.png'
 import footer_design from './footer_design.png'
@@ -40,27 +75,38 @@ import b from './b.png'
 import hamburger from './hamburger.png'
 import heart_blue from './heart_blue.png'
 import homie from './homie.png'
-import search from './search.png'
+// import search from './search.png'
 import search_grey from './search_grey.png'
 import spreading_happiness from './spreading_happiness.png'
 import spreading_happiness_blue from './spreading_happiness_blue.png'
 import spreading_happiness_small from './spreading_happiness_small.png'
 import spreading_happiness_white_small from './spreading_happiness_white_small.png'
 import subtract from './subtract.png'
-import star from './star.png'
+// import star from './star.png'
 import star_home from './star_home.png'
 import star_pink from './star_pink.png'
 import star_yellow from './star_yellow.png'
 import tandc from './tandc.jpeg'
 import faq from './faq.jpeg'
 import best_deals from './best_deals.png'
-import bonhomie from './Bonhomie.png'
+// import bonhomie from './Bonhomie.png'
 import bonhomie_header from './bonhomie_header.png'
 import bonhomie_yellow from './Bonhomie_yellow.png'
 import got_ques_bg from './got_ques_bg.png'
+import profileIcon from './logos/profile-icon.svg';
+import cartGray from './logos/cart-gray.svg';
+import filterWhite2 from './logos/filter-white2.svg';
+import productsBannerImage from './images/products-banner.png';
+import BonhomieDarkIcon from './images/BonhomieDarkIcon.png';
+import ellipse1 from './images/Ellipse 5.png';
+import imageIcon from './logos/image-icon.svg';
+import redHeart from './logos/red-heart.svg';
+import menu from './logos/menu.svg';
 
 
 export const IMAGES={
+    productImg,
+    detailsCardBgShape1,
     aboutus,
     logo,
     hero,
@@ -120,5 +166,51 @@ export const IMAGES={
     bonhomie,
     bonhomie_header,
     bonhomie_yellow,
-    got_ques_bg
+    got_ques_bg,
+    productsBannerImage,
+    BonhomieDarkIcon,
+    ellipse1
 }
+
+export const ICONS = {
+    search,
+    heartIcon,
+    filter,
+    sort,
+    filterWhite,
+
+    cart,
+    cash,
+    clothDetails,
+    deliveryVan,
+    gift,
+    returnPackage,
+    size,
+    star,
+    tshirt,
+    unlocked,
+    locked,
+    slash,
+    straightLine,
+    freebiesBgShape,
+    freebiesBgShape2,
+    cross,
+    eyeOpen,
+    eyeClosed,
+    bonhomie,
+    tickCircle,
+    rightArrow,
+    minus,
+    plus,
+    deleteIcon,
+    freebiesBgShape3,
+    freebiesBgShape4,
+    cartIcon,
+    leftArrow,
+    profileIcon,
+    cartGray,
+    filterWhite2,
+    imageIcon,
+    redHeart,
+    menu,
+};

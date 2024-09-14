@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Marquee from "react-marquee-slider";
 
 export const Home = () => {
+    
   return (
     <>
       <Header />

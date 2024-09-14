@@ -46,7 +46,7 @@ export const Footer = () => {
             <p className="text-[#9CB3F4] text-[14px] sm:text-base mb-2 mt-3">Shop by Category</p>
             <p className="text-[#9CB3F4] text-[14px] sm:text-base mb-2 mt-3 ml-9">Shop by Age</p>
       </div>
-      <div className='hidden absolute md:grid grid-cols-3 w-[510px] right-0  top-0  md:mt-32  gap-5'>
+      <div className='hidden absolute md:grid grid-cols-3 w-[510px] right-0  top-0  md:mt-32  gap-5 z-20'>
         <ul className="text-white text-sm">
           <li className="mb-3 ">
             <a href="./">Home</a>
@@ -55,13 +55,13 @@ export const Footer = () => {
             <a href="./">Bestsellers</a>
           </li>
           <li className="mb-3 ">
-            <a href="./aboutus">About Us</a>
+            <a href="./about-us">About Us</a>
           </li>
           <li className="mb-3 ">
             <a href="./faq">FAQs</a>{" "}
           </li>
           <li className="mb-3 ">
-            <a href="./tandc">Terms and Conditions</a>
+            <a href="./terms-condition">Terms and Conditions</a>
           </li>
           <li className="mb-3 ">
             <a href="./">Privacy Policy</a>

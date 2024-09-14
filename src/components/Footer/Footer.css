@@ -1,0 +1,138 @@
+
+.footer {
+    background-color: #4b64e6;
+    color: white;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap:40%;
+    position: relative;
+    font-size: 14px;
+    padding-bottom: 400px;
+}
+
+
+.footer-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+}
+.footer-left img{
+     width: 50%;
+}
+
+.footer-description {
+    color: var(--White, #FFF);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px; /* 200% */
+}
+
+.footer-contact-cont{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.footer-contact-sub{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.footer-cont-sub span{
+    color: var(--White, #FFF);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 171.429% */
+}
+.footer-abs-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    height:auto;
+
+}
+.footer-happiness{
+    height: 70%;
+
+}
+.footer-spreadhappiness{
+    position: absolute;
+    bottom: 50px;
+    left:0;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap:1%;
+    justify-content: center;
+    height: 80px;
+    overflow-y: hidden;
+}
+
+.footer-right {
+    display: flex;
+    flex: 2;
+    justify-content: space-around;
+}
+
+.footer-links,
+.footer-categories,
+.footer-age {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-categories li,
+.footer-age li {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#footer-list-head{
+    color: var(--Blue-300, #9CB3F4);
+    /* Normal/14/500-Medium */
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 171.429% */
+}
+
+.footer-bottom {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin-right: 20px;
+}
+
+.back-to-top {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.back-to-top:hover {
+    background: white;
+    color: #2a2a72;
+}
+
+
