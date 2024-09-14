@@ -227,7 +227,7 @@ export const Home = () => {
             <div className="hidden md:block mx-2 relative my-7 ">
               <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px] rounded-xl flex items-end justify-center">
                 <img
-                  src={IMAGES.child1_s}
+                  src={IMAGES.child1s}
                   className=" h-[240px] md:h-[300px] object-cover object-center"
                 />
               </div>
@@ -249,7 +249,7 @@ export const Home = () => {
             <div className="hidden md:block mx-2 relative my-7">
               <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px] rounded-xl flex items-end justify-center">
                 <img
-                  src={IMAGES.child2_s}
+                  src={IMAGES.child2s}
                   className=" h-[240px] md:h-[300px] object-cover "
                 />
               </div>
@@ -271,7 +271,7 @@ export const Home = () => {
             <div className="hidden md:block mx-2 relative my-7">
               <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px]  rounded-xl flex items-end justify-center">
                 <img
-                  src={IMAGES.child3_s}
+                  src={IMAGES.child3s}
                   className=" h-[240px] md:h-[300px] object-cover "
                 />
               </div>
@@ -295,7 +295,7 @@ export const Home = () => {
             <div className="hidden md:block mx-2 relative my-7">
               <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px]  rounded-xl flex items-end justify-center">
                 <img
-                  src={IMAGES.child3_s}
+                  src={IMAGES.child3s}
                   className=" h-[240px] md:h-[300px] object-cover "
                 />
               </div>
@@ -317,7 +317,7 @@ export const Home = () => {
             <div className="hidden md:block mx-2 relative my-7">
               <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px] rounded-xl flex items-end justify-center">
                 <img
-                  src={IMAGES.child1_s}
+                  src={IMAGES.child1s}
                   className=" h-[240px] md:h-[300px] object-cover"
                 />
               </div>
@@ -339,7 +339,7 @@ export const Home = () => {
             <div className="hidden md:block mx-2 relative my-7">
               <div className="bg-[#F6F6F6] w-[220px] h-[280px] md:w-full md:h-[350px]  rounded-xl flex items-end justify-center">
                 <img
-                  src={IMAGES.child2_s}
+                  src={IMAGES.child2s}
                   className=" h-[240px] md:h-[300px] object-cover "
                 />
               </div>

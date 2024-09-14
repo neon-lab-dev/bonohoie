@@ -8,9 +8,9 @@ import heart_grey from './heart_grey.png'
 import child1 from './child1.png'
 import child2 from './child2.png'
 import child3 from './child3.png'
-import child1_s from './child1_s.png'
-import child2_s from './child2_s.png'
-import child3_s from './child3_S.png'
+import child1s from './child1_s.png'
+import child2s from './child2_s.png'
+import child3s from './child3_s.png'
 import child4 from './child4.png'
 import plus_black from './plus_black.png'
 import girls1 from './girls.jpeg'
@@ -118,9 +118,9 @@ export const IMAGES={
     child2,
     child3,
     child4,
-    child1_s,
-    child2_s,
-    child3_s,
+    child1s,
+    child2s,
+    child3s,
     plus_black,
     girls1,
     girls2,
