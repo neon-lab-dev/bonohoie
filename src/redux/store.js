@@ -3,6 +3,7 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import storage from 'redux-persist/lib/storage';
 import { baseApi } from './API/baseApi';
 import authReducer from './Features/Auth/authSlice';
+import modalReducer from './Features/Modal/ModalSlice'
 
 const persistConfig = {
   key: 'auth',
@@ -15,6 +16,7 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
+    modal:modalReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

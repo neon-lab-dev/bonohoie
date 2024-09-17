@@ -22,8 +22,8 @@ const ChooseGift = () => {
             <div className="flex items-center gap-2">
               <img src={ICONS.unlocked} alt="unlock-icon" className="size-8" />
               <h1
-                className="text-[#1C1D4F] font-semibold leading-normal"
-                style={{ fontSize: "clamp(8px, 3vw, 20px)" }}
+                className="text-[#1C1D4F] font-semibold leading-normal text-xl"
+                // style={{ fontSize: "clamp(8px, 3vw, 20px)" }}
               >
                 Unlocked Freebies
               </h1>
@@ -31,8 +31,7 @@ const ChooseGift = () => {
           </div>
 
           <p
-            style={{ fontSize: "clamp(8px, 2vw, 14px)" }}
-            className="text-[#262626] font-medium leading-none sm:leading-6 mt-2"
+            className="text-[#262626] font-medium leading-none sm:leading-6 mt-2 text-sm"
           >
             You can select any two of the freebies that have been unlocked.
           </p>

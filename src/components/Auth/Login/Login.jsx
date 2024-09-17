@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import InputField from "../../Reusable/InputField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ICONS } from "../../../assets";
 import { useLoginMutation } from "../../../redux/Features/Auth/authApi";
@@ -10,6 +10,7 @@ import { setUser } from "../../../redux/Features/Auth/authSlice";
 import { toast } from "sonner";
 
 const Login = ({ setModalType, setOpenModal }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading: isLoginIn }] = useLoginMutation();
@@ -29,7 +30,8 @@ const Login = ({ setModalType, setOpenModal }) => {
       console.log(res);
       const user = res.user;
       toast.success("Logged in successfully.");
-      setOpenModal(false);
+      setOpenModal(dispatch(setOpenModal(false)));
+      navigate('/')
       dispatch(setUser({ user }));
     } catch (err) {
       toast.error("Invalid email or password!");
@@ -86,7 +88,8 @@ const Login = ({ setModalType, setOpenModal }) => {
       <p className="text-base font-medium leading-[24px] text-[#262626] text-center">
         Don’t have an account?{" "}
         <span
-          onClick={() => setModalType("signup")}
+        
+          onClick={() => setModalType(dispatch(setModalType("signup")))}
           className="cursor-pointer text-base font-semibold leading-[24px] text-[#FF6D8B] underline"
         >
           Register now

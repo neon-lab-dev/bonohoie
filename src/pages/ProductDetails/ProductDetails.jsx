@@ -1,4 +1,4 @@
-import { ICONS } from "../../assets";
+import { ICONS, IMAGES } from "../../assets";
 import ProductImages from "./ProductImages";
 import { useEffect, useState } from "react";
 import DetailCard from "../../components/Reusable/DetailCard";
@@ -10,12 +10,15 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import ProductInfo from "./ProductInfo";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "sonner";
+import { setModalType, setOpenModal } from "../../redux/Features/Modal/ModalSlice";
+import { useDispatch } from "react-redux";
 
 
 // Made in missing in api
 // Product Code missing in api
 // Collection missing in api
 const ProductDetails = () => {
+  const dispatch = useDispatch();
   const productDetail = useLoaderData();
   console.log(productDetail);
 
@@ -79,7 +82,7 @@ const ProductDetails = () => {
 
     // Check if the product is already in the cart
     const existingProduct = cart.find(
-      (cartProduct) => cartProduct.productId === _id
+      (cartProduct) => cartProduct?.productId === _id
     );
 
     if (!existingProduct) {
@@ -128,9 +131,18 @@ const ProductDetails = () => {
         {/* Product Details */}
         <div className="w-full lg:w-[40%]">
           {/* Product name */}
+          <div className="flex items-center justify-between">
           <h1 className="text-2xl md:text-[32px] font-bold leading-normal md:leading-[44px] text-[#333]">
             {name}
           </h1>
+
+          <img
+        // src={isInCart ? ICONS.redHeart : IMAGES.heart}
+        src={IMAGES.heart}
+        className="cursor-pointer size-5"
+        alt="Heart Icon"
+      />
+          </div>
 
           {/* MRP tagline */}
           <p className="text-sm md:text-lg font-medium leading-normal md:leading-[32px] text-[#888] mt-[14px] md:mt-5">
@@ -194,7 +206,13 @@ const ProductDetails = () => {
 
           {/* buttons */}
           <div className="hidden md:flex items-center gap-[10px] mt-6 border-b border-[#D1D1D1] border-dashed pb-6">
-            <button onClick={handleAddToCart} className="border border-[#333] rounded-xl px-6 py-[10px] flex items-center justify-between h-14 w-full md:w-[320px] text-sm font-semibold leading-6 text-[#333]">
+            <button 
+            onClick={() => {
+              handleAddToCart()
+              setModalType(dispatch(setModalType("cart")));
+              setOpenModal(dispatch(setOpenModal(true)));
+            }}
+             className="border border-[#333] rounded-xl px-6 py-[10px] flex items-center justify-between h-14 w-full md:w-[320px] text-sm font-semibold leading-6 text-[#333]">
               Add to Bag
               <img src={ICONS.cart} alt="cart-icon" className="size-5" />
             </button>
@@ -269,7 +287,13 @@ const ProductDetails = () => {
         className="z-10 fixed bottom-0 right-0 left-0 flex md:hidden items-center gap-3 bg-white px-4 py-3 justify-center w-full"
       >
         <div className="flex items-center gap-[10px] w-full">
-            <button onClick={handleAddToCart} className="border border-[#333] rounded-xl px-6 py-[10px] flex items-center justify-between h-14 w-full md:w-[320px] text-sm font-semibold leading-6 text-[#333]">
+            <button
+            onClick={() => {
+              handleAddToCart();
+              setModalType(dispatch(setModalType("cart")));
+              setOpenModal(dispatch(setOpenModal(true)));
+            }}
+            className="border border-[#333] rounded-xl px-6 py-[10px] flex items-center justify-between h-14 w-full md:w-[320px] text-sm font-semibold leading-6 text-[#333]">
               Add to Bag
               <img src={ICONS.cart} alt="cart-icon" className="size-5" />
             </button>

@@ -61,7 +61,7 @@ export const Footer = () => {
             <a href="./faq">FAQs</a>{" "}
           </li>
           <li className="mb-3 ">
-            <a href="./terms-condition">Terms and Conditions</a>
+            <a href="/terms-condition">Terms and Conditions</a>
           </li>
           <li className="mb-3 ">
             <a href="./">Privacy Policy</a>

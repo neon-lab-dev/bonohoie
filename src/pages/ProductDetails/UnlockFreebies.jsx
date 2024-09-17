@@ -12,7 +12,7 @@ const UnlockFreebies = () => {
       <img
         src={ICONS.freebiesBgShape2}
         alt=""
-        className="absolute bottom-0 right-0 rounded-xl"
+        className="absolute bottom-0 right-0 rounded-xl w-1/2 md:w-auto"
       />
 
       <div className="px-4 py-5">

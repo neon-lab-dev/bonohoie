@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, useCurrentUser } from "../../redux/Features/Auth/authSlice";
 import { toast } from "sonner";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import { selectModalState, setModalType, setOpenModal } from "../../redux/Features/Modal/ModalSlice";
 
 const navlinks = [
   {
@@ -45,9 +46,9 @@ const navlinks = [
 const NavBar = () => {
   const dispatch = useDispatch();
   const user = useSelector(useCurrentUser);
-  const [openModal, setOpenModal] = useState(false);
-  const [modalType, setModalType] = useState("login");
-  console.log(modalType);
+  const modalState = useSelector(selectModalState);
+  const { openModal, modalType } = modalState;
+  console.log(openModal);
   const [open, setOpen] = useState(false);
   const dropDownRef = useRef(null);
   const [cartItems, setCartItems] = useState(
@@ -72,10 +73,11 @@ const NavBar = () => {
     <div className="max-w-[1440px] mx-auto px-4 md:px-[56px] font-Montserrat w-full my-6">
       {/* Auth , cart, orders modal */}
       <Modal
-        modalType={modalType}
-        setModalType={setModalType}
-        openModal1={openModal}
-        setOpenModal1={setOpenModal}
+
+modalType={modalType}
+setModalType={setModalType}
+openModal1={openModal}
+setOpenModal1={setOpenModal}
         title={
           modalType === "login"
             ? "Login"
@@ -133,7 +135,7 @@ const NavBar = () => {
           <img src={BrandLogoPrimary} alt="Bonhomie Logo" />
         </NavLink>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-5">
           
           {navlinks.slice(4, 8).map((navlink, index) => (
             <Link
@@ -151,7 +153,7 @@ const NavBar = () => {
             className="size-5 cursor-pointer"
           />
           </a>
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-5">
             {user ? (
               <li>
                 <div ref={dropDownRef}>
@@ -168,8 +170,8 @@ const NavBar = () => {
                   >
                     <button
                       onClick={() => {
-                        setModalType("orders");
-                        setOpenModal(true);
+                        setModalType(dispatch(setModalType("orders")));
+                        setOpenModal(dispatch(setOpenModal(true)));
                         setOpen(false);
                       }}
                       className="text-[#4F4F4F] text-sm font-medium leading-6"
@@ -178,8 +180,8 @@ const NavBar = () => {
                     </button>
                     <button
                       onClick={() => {
-                        setModalType("profile");
-                        setOpenModal(true);
+                        setModalType(dispatch(setModalType("profile")));
+                        setOpenModal(dispatch(setOpenModal(true)));
                         setOpen(false);
                       }}
                       className="text-[#4F4F4F] text-sm font-medium leading-6"
@@ -198,8 +200,8 @@ const NavBar = () => {
             ) : (
               <li
                 onClick={() => {
-                  setModalType("login");
-                  setOpenModal(true);
+                  setModalType(dispatch(setModalType("login")));
+                  setOpenModal(dispatch(setOpenModal(true)));
                 }}
               >
                 <img
@@ -213,8 +215,8 @@ const NavBar = () => {
             <li>
               <div
                 onClick={() => {
-                  setModalType("cart");
-                  setOpenModal(true);
+                  setModalType(dispatch(setModalType("cart")));
+                  setOpenModal(dispatch(setOpenModal(true)));
                 }}
                 className="relative w-fit"
               >

@@ -2,7 +2,7 @@ import { ICONS } from "../../assets";
 
 const FreebiesCard = ({ freebie }) => {
   return (
-    <div className="z-10 px-3 pt-3 bg-white flex flex-col gap-3 rounded-2xl w-[191px] border border-[#FCF1C5]">
+    <div className="z-10 px-3 pt-3 bg-white flex flex-col gap-3 rounded-2xl w-[220px] sm:w-[191px] mx-auto border border-[#FCF1C5]">
       <div className=" bg-[#FCF6F0] rounded-2xl h-[124px] p-3 flex justify-center items-center">
         {freebie?.images?.map((image) => (
           <img key={image?._id} src={image?.url} alt="" className="size-24" />

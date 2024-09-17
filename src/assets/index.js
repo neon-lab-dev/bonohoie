@@ -98,13 +98,16 @@ import cartGray from './logos/cart-gray.svg';
 import filterWhite2 from './logos/filter-white2.svg';
 import productsBannerImage from './images/products-banner.png';
 import BonhomieDarkIcon from './images/BonhomieDarkIcon.png';
+import gifts from './images/gifts.png';
 import ellipse1 from './images/Ellipse 5.png';
 import imageIcon from './logos/image-icon.svg';
 import redHeart from './logos/red-heart.svg';
 import menu from './logos/menu.svg';
+import rightTop from './logos/right-top-arrow.svg';
 
 
 export const IMAGES={
+    gifts,
     productImg,
     detailsCardBgShape1,
     aboutus,
@@ -173,6 +176,7 @@ export const IMAGES={
 }
 
 export const ICONS = {
+    rightTop,
     search,
     heartIcon,
     filter,

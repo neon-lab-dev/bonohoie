@@ -1,7 +1,9 @@
+import { useDispatch } from "react-redux";
 import { ICONS } from "../../assets";
 import GiftCard from "../Cart/GiftCard";
 
 const FreebiesUnlocked = ({ setModalType }) => {
+  const dispatch = useDispatch();
   return (
     <div className="bg-[#FDF9E9] rounded-xl relative">
       {/* Background images */}
@@ -28,22 +30,6 @@ const FreebiesUnlocked = ({ setModalType }) => {
             </h1>
           </div>
 
-          <button
-            onClick={() => setModalType("chooseGift")}
-            className="  z-10 bg-white border border-[#00000033] rounded-xl px-3 py-2 flex items-center gap-3 justify-center w-fit"
-          >
-            <img
-              src={ICONS.gift}
-              alt="gift-icon"
-              className="size-4 sm:size-6"
-            />
-            <p
-              style={{ fontSize: "clamp(8px, 2vw, 16px)" }}
-              className="text-[#262626] font-medium leading-6"
-            >
-              Choose Gift
-            </p>
-          </button>
         </div>
 
         <p
@@ -54,11 +40,28 @@ const FreebiesUnlocked = ({ setModalType }) => {
           young ones
         </p>
 
-        <div className="mt-5 grid grid-cols-2 md:grid-cols-3 gap-[10px]">
+        <div className="mt-5 flex flex-wrap gap-[10px]">
         <GiftCard/>
         <GiftCard/>
         <GiftCard/>
         </div>
+
+        <button
+       
+            onClick={() =>  setModalType(dispatch(setModalType("chooseGift")))}
+            className="  z-10 bg-white border border-[#FAE18E] rounded-xl px-3 py-2 flex items-center gap-3 justify-center w-fit mt-5"
+          >
+            <img
+              src={ICONS.gift}
+              alt="gift-icon"
+              className="size-6"
+            />
+            <p
+              className="text-[#262626] font-medium leading-6 text-xl"
+            >
+              Choose Gift
+            </p>
+          </button>
       </div>
     </div>
   );

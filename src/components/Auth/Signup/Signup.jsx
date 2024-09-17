@@ -113,7 +113,7 @@ const Signup = ({ setModalType, setOpenModal }) => {
       <p className="text-base font-medium leading-[24px] text-[#262626] text-center">
         Already a member?{" "}
         <span
-          onClick={() => setModalType("login")}
+          onClick={() => setModalType(dispatch(setModalType("login")))}
           className="cursor-pointer text-base font-semibold leading-[24px] text-[#FF6D8B] underline"
         >
           Login

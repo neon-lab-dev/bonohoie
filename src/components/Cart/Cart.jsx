@@ -67,7 +67,7 @@ const Cart = ({ setModalType }) => {
       <div className="px-8">
         <FreebiesUnlocked setModalType={setModalType} />
 
-        <hr className="border-[2px] mt-4 border-[#262626]" />
+        <hr className="border-[1.5px] mt-4 border-[#262626]" />
         {/* Subtotal */}
         <div className="flex items-center justify-between mt-8">
           <div>
