@@ -24,14 +24,137 @@ const navlinks = [
   {
     label: "Boys",
     path: "",
+    icon : ICONS.downArrow,
+    categoryList: [
+      {
+        label: "All Products",
+        path: "/all-products",
+      },
+      {
+        label: "Coords set",
+        path: "/all-products",
+      },
+      {
+        label: "Tees",
+        path: "/all-products",
+      },
+      {
+        label: "Shirts",
+        path: "/all-products",
+      },
+      {
+        label: "Bottoms",
+        path: "/all-products",
+      },
+      {
+        label: "Accessories",
+        path: "/all-products",
+      },
+    ],
+    ageList: [
+      {
+        label: "3-4 yrs",
+        path: "/all-products",
+      },
+      {
+        label: "5-6 yrs",
+        path: "/all-products",
+      },
+      {
+        label: "7-8 yrs",
+        path: "/all-products",
+      },
+    ]
   },
   {
     label: "Girls",
     path: "",
+    icon : ICONS.downArrow,
+    categoryList: [
+      {
+        label: "All Products",
+        path: "/all-products",
+      },
+      {
+        label: "Coords set",
+        path: "/all-products",
+      },
+      {
+        label: "Tees",
+        path: "/all-products",
+      },
+      {
+        label: "Shirts",
+        path: "/all-products",
+      },
+      {
+        label: "Bottoms",
+        path: "/all-products",
+      },
+      {
+        label: "Accessories",
+        path: "/all-products",
+      },
+    ],
+    ageList: [
+      {
+        label: "3-4 yrs",
+        path: "/all-products",
+      },
+      {
+        label: "5-6 yrs",
+        path: "/all-products",
+      },
+      {
+        label: "7-8 yrs",
+        path: "/all-products",
+      },
+    ]
   },
   {
     label: "New Born",
     path: "",
+    icon : ICONS.downArrow,
+    categoryList: [
+      {
+        label: "All Products",
+        path: "/all-products",
+      },
+      {
+        label: "Coords set",
+        path: "/all-products",
+      },
+      {
+        label: "Tees",
+        path: "/all-products",
+      },
+      {
+        label: "Shirts",
+        path: "/all-products",
+      },
+      {
+        label: "Bottoms",
+        path: "/all-products",
+      },
+      {
+        label: "Accessories",
+        path: "/all-products",
+      },
+    ],
+    ageList: [
+      {
+        label: "3-4 yrs",
+        path: "/all-products",
+      },
+      {
+        label: "5-6 yrs",
+        path: "/all-products",
+      },
+      {
+        label: "7-8 yrs",
+        path: "/all-products",
+      },
+    ]
   },
   {
     label: "About Us",
@@ -51,6 +174,7 @@ const NavBar = () => {
   console.log(openModal);
   const [open, setOpen] = useState(false);
   const dropDownRef = useRef(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("cart")) || []
   );
@@ -120,14 +244,76 @@ setOpenModal1={setOpenModal}
       <div className="flex items-center justify-between w-full">
       <HamburgerMenu/>
         <div className="flex items-center gap-8">
-          {navlinks.slice(0, 4).map((navlink, index) => (
-            <Link
-              key={index}
-              to={`/${navlink.path}`}
-              className="text-[#4F4F4F] text-sm font-medium hidden lg:block"
+        {navlinks.slice(0, 4).map((navlink, index) => (
+            <div className="relative" key={index}
+            onMouseEnter={() => setOpenDropdown(index)}
+            onMouseLeave={() => setOpenDropdown(null)}
             >
-              {navlink.label}
-            </Link>
+              <Link
+              
+                to={`/${navlink.path}`}
+                className="text-[#4F4F4F] text-sm font-medium hidden lg:flex items-center gap-2"
+              >
+                {navlink.label}
+                {navlink.icon && (
+                  <img
+                    src={navlink.icon}
+                    alt="dropdown-icon"
+                    className="w-[10px] cursor-pointer"
+                  />
+                )}
+              </Link>
+              {/* Dropdown */}
+              { navlink.categoryList && navlink.ageList &&
+                openDropdown === index &&
+                <div className="z-20 absolute left-0 top-full duration-300 bg-white p-4 rounded-tr-[20px] rounded-b-[20px] shadow-2xl w-[330px]">
+            
+        <div className="overflow-hidden flex justify-between mt-3">
+          {/* Shop by category */}
+          <div className="flex flex-col gap-[22px]">
+            <h1 className="text-[#262626] text-sm font-bold px-3 leading-6 text-start">
+              Shop by category
+            </h1>
+
+            <div className="flex flex-col gap-5">
+              {
+                navlink.categoryList &&
+              navlink.categoryList.map((category, index) => (
+                <Link
+                  key={index}
+                  to={category.path}
+                >
+                  <p className="text-[#333] text-sm font-medium px-3 leading-6 text-start hover:underline">
+                    {category.label}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Shop by age */}
+          <div className="flex flex-col gap-[22px] flex-1">
+            <h1 className="text-[#262626] text-sm font-bold px-4 leading-6 text-start">
+              Shop by age
+            </h1>
+
+            <div className="flex flex-col items-start justify-start gap-5">
+              {navlink.ageList &&
+              navlink.ageList.map((age, index) => (
+                <Link
+                  key={index}
+                  to={age.path}
+                >
+                  <p className="text-[#333] text-sm text-start px-4 font-medium leading-6 hover:cursor-pointer">
+                    {age.label}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+              </div>}
+            </div>
           ))}
         </div>
 

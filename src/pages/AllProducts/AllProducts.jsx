@@ -112,7 +112,7 @@ const AllProducts = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-between w-[400px] h-[56px] px-[20px] py-[10px] border border-gray-300 rounded-[8px]">
+            <div className="flex items-center justify-between w-[300px] h-[56px] px-[20px] py-[10px] border border-gray-300 rounded-[8px]">
               <input
                 type="text"
                 placeholder={"Search for any product"}

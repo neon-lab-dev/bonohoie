@@ -1,6 +1,9 @@
+import { useDispatch } from "react-redux";
 import { ICONS } from "../../assets";
+import { setModalType, setOpenModal } from "../../redux/Features/Modal/ModalSlice";
 
 const UnlockFreebies = () => {
+  const dispatch = useDispatch();
   return (
     <div className="bg-[#FDF9E9] rounded-xl h-[188px] relative  mt-6">
       {/* Background images */}
@@ -28,10 +31,15 @@ const UnlockFreebies = () => {
           young ones
         </p>
 
-        <div className="bg-white border border-[#00000033] rounded-xl px-3 py-2 flex items-center gap-3 justify-center w-fit mt-5">
+        <button
+        onClick={() => {
+          setModalType(dispatch(setModalType("chooseGift")));
+              setOpenModal(dispatch(setOpenModal(true)));
+        }}
+        className="bg-white border border-[#00000033] rounded-xl px-3 py-2 flex items-center gap-3 justify-center w-fit mt-5">
           <img src={ICONS.gift} alt="gift-icon" className="size-6" />
           <p className="text-[#262626] font-medium leading-6">Know More</p>
-        </div>
+        </button>
       </div>
     </div>
   );

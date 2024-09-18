@@ -3,7 +3,7 @@ import { IMAGES } from "../../assets";
 
 const BestDeals = () => {
     return (
-        <div className="mt-7 md:mt-10 flex flex-col lg:flex-row gap-5">
+        <div className="mt-7 md:mt-10 flex flex-col md:flex-row gap-5">
 
 
           <div className="h-[248px] lg:h-[520px] w-full max-w-[398px] md:max-w-[354px] overflow-hidden rounded-3xl mb-4 relative">

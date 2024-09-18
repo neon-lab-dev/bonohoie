@@ -104,6 +104,7 @@ import imageIcon from './logos/image-icon.svg';
 import redHeart from './logos/red-heart.svg';
 import menu from './logos/menu.svg';
 import rightTop from './logos/right-top-arrow.svg';
+import downArrow from './logos/down-arrow.svg';
 
 
 export const IMAGES={
@@ -176,6 +177,7 @@ export const IMAGES={
 }
 
 export const ICONS = {
+    downArrow,
     rightTop,
     search,
     heartIcon,
