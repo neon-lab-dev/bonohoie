@@ -1,9 +1,10 @@
 import logo from './logo.png'
+import BrandLogoPrimary from "./logos/BrandLogoPrimary.svg";
 import hero from './hero.jpeg'
 import aboutus from './aboutus.png'
-import arrow_white from './arrow-slant-white.png'
-import arrow_black from './arrow-slant-black.png'
-import heart from './heart.png'
+import arrow_white from './logos/arrow-white.svg'
+import arrow_black from './logos/arrow-black.svg'
+import heart from './logos/heart.svg'
 import heart_grey from './heart_grey.png'
 import child1 from './child1.png'
 import child2 from './child2.png'
@@ -18,6 +19,7 @@ import girls2 from './girls2.jpeg'
 import infant from './infant.jpeg'
 import boys1 from './boys.jpeg'
 import search from './logos/search.svg';
+import searchBlack from './logos/search-black.svg';
 import heartIcon from './logos/heart.svg';
 import sort from './logos/sort.svg';
 import filter from './logos/filter.svg';
@@ -63,9 +65,10 @@ import moment4 from './moment4.jpeg'
 import moment5 from './moment5.jpeg'
 import moment6 from './moment6.png'
 import email from './email.png'
-import email_white from './email_white.png'
-import call from './call.png'
-import call_white from './call_white.png'
+import email_white from './logos/email-white.svg'
+import callGray from './logos/call-gray.svg';
+import emailGray from './logos/email-gray.svg';
+import call_white from './logos/call-white.svg'
 // import cart from './cart.png'
 import copywright from './copywright.png'
 import footer_image from './footer_image.png'
@@ -85,7 +88,7 @@ import subtract from './subtract.png'
 // import star from './star.png'
 import star_home from './star_home.png'
 import star_pink from './star_pink.png'
-import star_yellow from './star_yellow.png'
+import star_yellow from './logos/star.svg'
 import tandc from './tandc.jpeg'
 import faq from './faq.jpeg'
 import best_deals from './best_deals.png'
@@ -142,7 +145,6 @@ export const IMAGES={
     moment6,
     email,
     email_white,
-    call,
     call_white,
     cart,
     copywright,
@@ -177,6 +179,10 @@ export const IMAGES={
 }
 
 export const ICONS = {
+    emailGray,
+    callGray,
+    searchBlack,
+    BrandLogoPrimary,
     downArrow,
     rightTop,
     search,

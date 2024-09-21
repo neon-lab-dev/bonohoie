@@ -12,6 +12,7 @@ import { useLoaderData } from "react-router-dom";
 import { toast } from "sonner";
 import { setModalType, setOpenModal } from "../../redux/Features/Modal/ModalSlice";
 import { useDispatch } from "react-redux";
+import ExpandableDescription from "./ExpandableDescription";
 
 
 // Made in missing in api
@@ -113,8 +114,6 @@ const ProductDetails = () => {
   };
 
 
-
-
   return (
     <div className="max-w-[1440px] mx-auto font-Montserrat">
 
@@ -168,12 +167,14 @@ const ProductDetails = () => {
           </div>
 
           {/* Product description */}
-          <p className="text-base md:text-lg font-medium leading-6 md:leading-[32px] text-[#888] mt-5 md:mt-6">
-            {description}
-          </p>
+
+          <div className="mt-5 md:mt-6">
+          <ExpandableDescription description={description} />
+
+    </div>
 
           {/* Sizes */}
-          <div className="mt-6 border-b md:border-none border-[#D1D1D1] border-dashed pb-6">
+          <div className="mt-11 border-b md:border-none border-[#D1D1D1] border-dashed pb-6">
             <div className="flex items-center justify-between">
               <h1 className="text-xl font-semibold text-[#333] leading-normal">
                 Sizes
@@ -277,7 +278,7 @@ const ProductDetails = () => {
           </div>
 
           {/* Product info (Product Code, Collection, Made In) */}
-          <ProductInfo />
+          <ProductInfo productCode={_id}/>
         </div>
 
         <div

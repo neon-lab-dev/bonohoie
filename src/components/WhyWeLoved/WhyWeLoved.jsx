@@ -8,12 +8,13 @@ const WhyWeLoved = () => {
              {/* py-8 px-5 */}
         <div className="bg-[#F6F6F6] md:bg-white  border-[#E7E7E7] lg:border-dashed border-none lg:border-b-2">
           <div className="flex flex-col md:flex-row"> 
-            <div className="lg:border-dashed border-none lg:border-r-2 border-[#E7E7E7] w-[40vw]">
+            <div className="lg:border-dashed border-none lg:border-r-2 border-[#E7E7E7] w-[40vw] hidden md:block">
            <div className="lg:border-dashed border-none lg:border-b-2 border-[#E7E7E7] py-0 lg:py-10 pt-10">
            <p className="text-[#333333] font-semibold my-4 text-center">Why are we loved</p>
            </div>
             </div>
             <div className="px-4 md:px-12 pb-12 pt-7 lg:pt-12 flex flex-col gap-7 lg:gap-14">
+            <p className="text-[#333333] font-semibold my-4 text-start block md:hidden">Why are we loved</p>
               <p className="text-[28px] md:text-[44px] font-medium leading-[44px] md:leading-[68px]">
                 Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 vulputate libero et velit interdum, ac aliquet odio{" "}

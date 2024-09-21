@@ -5,6 +5,7 @@ import { useSignupMutation } from "../../../redux/Features/Auth/authApi";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/Features/Auth/authSlice";
+import ModalInnerContainer from "../../Reusable/ModalInnerContainer";
 
 const Signup = ({ setModalType, setOpenModal }) => {
   const dispatch = useDispatch();
@@ -37,9 +38,10 @@ const Signup = ({ setModalType, setOpenModal }) => {
 
 
   return (
-    <form
+   <ModalInnerContainer>
+     <form
       onSubmit={handleSubmit(handleSignup)}
-      className="px-8 font-Montserrat flex flex-col gap-6 mt-[42px]"
+      className="font-Montserrat flex flex-col gap-6"
     >
       <div className="flex flex-col gap-4">
         {/* Full Name */}
@@ -120,6 +122,7 @@ const Signup = ({ setModalType, setOpenModal }) => {
         </span>
       </p>
     </form>
+   </ModalInnerContainer>
   );
 };
 

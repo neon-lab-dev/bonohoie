@@ -35,7 +35,7 @@ const AllProductCard = ({item}) => {
       >
         
         <div className="flex items-center justify-between p-5">
-          <Link to={`/product-details/${_id}`} className="text-[#454545] text-base font-semibold leading-6 capitalize hover:underline">
+          <Link to={`/product-details/${_id}`} className="text-[#454545] text-sm md:text-base font-medium leading-[22px] md:leading-6 capitalize hover:underline">
             {name}
           </Link>
 

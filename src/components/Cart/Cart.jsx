@@ -3,10 +3,10 @@ import { ICONS } from "../../assets";
 import FreebiesUnlocked from "../FreebiesUnlocked/FreebiesUnlocked";
 import CartItemCard from "./CartItemCard";
 import { toast } from 'sonner';
+import PropTypes from 'prop-types'
 
-const Cart = ({ setModalType }) => {
+const Cart = ({ setModalType, openDrawer }) => {
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("cart")) || [];
@@ -46,9 +46,13 @@ const Cart = ({ setModalType }) => {
     return cartItems.reduce((total, item) => total + item.basePrice * item.quantity, 0);
   };
 
+
+ 
+
   return (
-    <div className="mt-6">
-      <div className="flex flex-col">
+    <div className="font-Montserrat">
+      <div className="">
+      <div className="flex flex-col mt-6 md:mt-0">
         {cartItems.length === 0 ? (
           <p className="text-center font-medium leading-6 mb-10">Cart is empty</p>
         ) : (
@@ -64,21 +68,26 @@ const Cart = ({ setModalType }) => {
         )}
       </div>
 
-      <div className="px-8">
-        <FreebiesUnlocked setModalType={setModalType} />
+      <div className="">
+      {/* toggleChooseGiftDrawer   is for smaller device */}
+        <FreebiesUnlocked setModalType={setModalType} openDrawer={openDrawer} />
 
         <hr className="border-[1.5px] mt-4 border-[#262626]" />
         {/* Subtotal */}
         <div className="flex items-center justify-between mt-8">
-          <div>
-            <h1 style={{ fontSize: "clamp(8px, 3vw, 20px)" }} className="font-semibold text-[#262626] leading-normal">Subtotal</h1>
-            <p style={{ fontSize: "clamp(8px, 2vw, 14px)" }} className="font-medium leading-6 text-[#454545]">
+          <div className="w-full">
+            <div className="flex items-center justify-between w-full">
+            <h1 className="text-base md:text-xl font-medium md:font-semibold text-[#262626] leading-6 md:leading-normal">Subtotal</h1>
+
+            <h1 className="text-xl md:text-[32px] font-medium md:font-semibold leading-none md:leading-[44px] text-[#262626]">
+            Rs. {getTotalPrice()}
+          </h1>
+            </div>
+            <p className="text-xs md:text-sm font-medium leading-normal md:leading-6 text-[#454545]">
               Tax included. Shipping calculated at checkout
             </p>
           </div>
-          <h1 className="text-sm sm:text-[32px] font-semibold leading-none sm:leading-[44px] text-[#262626]">
-            Rs. {getTotalPrice()}
-          </h1>
+         
         </div>
 
         {/* Checkout button */}
@@ -88,7 +97,13 @@ const Cart = ({ setModalType }) => {
         </button>
       </div>
     </div>
+    </div>
   );
+};
+
+Cart.propTypes = {
+  setModalType: PropTypes.func.isRequired,
+  openDrawer: PropTypes.bool.isRequired,
 };
 
 export default Cart;

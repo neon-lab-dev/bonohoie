@@ -5,9 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ICONS } from "../../../assets";
 import { useLoginMutation } from "../../../redux/Features/Auth/authApi";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../../redux/Features/Auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearRedirectPath, setUser, useRedirectPath } from "../../../redux/Features/Auth/authSlice";
 import { toast } from "sonner";
+import ModalInnerContainer from "../../Reusable/ModalInnerContainer";
 
 const Login = ({ setModalType, setOpenModal }) => {
   const navigate = useNavigate();
@@ -20,6 +21,8 @@ const Login = ({ setModalType, setOpenModal }) => {
     formState: { errors },
   } = useForm();
 
+  const redirectPath = useSelector(useRedirectPath);
+
   const handleLogin = async (data) => {
     const loginData = {
       email: data.email,
@@ -27,20 +30,29 @@ const Login = ({ setModalType, setOpenModal }) => {
     };
     try {
       const res = await login(loginData).unwrap();
-      console.log(res);
       const user = res.user;
       toast.success("Logged in successfully.");
-      setOpenModal(dispatch(setOpenModal(false)));
-      navigate('/')
+      
+      // Set the user in Redux state
       dispatch(setUser({ user }));
+      
+      // Close the modal
+      setOpenModal(dispatch(setOpenModal(false)));
+      
+      // Redirect to the stored path or default to "/"
+      navigate(redirectPath || "/");
+
+      // Clear the redirect path from the state after redirecting
+      dispatch(clearRedirectPath());
     } catch (err) {
       toast.error("Invalid email or password!");
     }
   };
   return (
-    <form
+   <ModalInnerContainer>
+     <form
       onSubmit={handleSubmit(handleLogin)}
-      className="px-8 font-Montserrat flex flex-col gap-6 mt-[42px]"
+      className="font-Montserrat flex flex-col gap-6"
     >
       <div className="flex flex-col gap-4">
         {/* Email field */}
@@ -96,6 +108,7 @@ const Login = ({ setModalType, setOpenModal }) => {
         </span>
       </p>
     </form>
+   </ModalInnerContainer>
   );
 };
 

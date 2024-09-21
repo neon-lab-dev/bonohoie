@@ -49,7 +49,7 @@ const LatestArrivalProductCard = ({ product }) => {
       <img
         // src={isInCart ? ICONS.redHeart : IMAGES.heart}
         src={IMAGES.heart}
-        className="absolute top-3 right-3 hidden md:block cursor-pointer size-5"
+        className="absolute top-3 right-3 cursor-pointer size-5"
         alt="Heart Icon"
         onClick={handleAddToWishList}
       />

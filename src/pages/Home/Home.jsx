@@ -4,6 +4,7 @@ import Hero from "../../components/Hero/Hero";
 import LatestArrival from "../../components/LatestArrival/LatestArrival";
 import WhyWeLoved from "../../components/WhyWeLoved/WhyWeLoved";
 import { Link } from "react-router-dom";
+import Heading from "../../components/Reusable/Heading";
 
 export const Home = () => {
   const {data:products} = useGetAllProductsQuery();
@@ -22,9 +23,14 @@ export const Home = () => {
         {/* bestsellers starts here */}
         <div className="hidden md:block mt-14">
           <div className="flex justify-between">
-            <p className="text-[#333333] text-2xl md:hidden font-semibold">
-              Summer Essentials
-            </p>
+
+          <div className="block md:hidden">
+          <Heading
+  title="Summer Essentials"
+  buttonLabel="See All Products"
+  buttonRoute="/all-products"
+/>
+          </div>
             <p className="text-[#333333] hidden md:block md:text-5xl font-medium">
               Bestsellers
             </p>
@@ -32,10 +38,6 @@ export const Home = () => {
               Forem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit{" "}
             </p>
-            <button className="border-[#333333] border-[1px] p-2 rounded-xl flex text-[#333333] md:hidden">
-              See All Products{" "}
-              <img src={IMAGES.arrow_black} className="mt-1 ml-1" />{" "}
-            </button>
           </div>
 
           <div className="grid md:grid-cols-[33%_33%_33%] justify-center overflow-x-scroll no-scrollbar mb-10">
@@ -333,15 +335,12 @@ export const Home = () => {
 
         {/* new releases */}
         <div>
-        <div className="flex justify-between items-center mt-20">
-        <p className="text-[#333333] text-2xl sm:text-[40px] font-semibold">
-        New Releases
-        </p>
-        <Link  to={"/all-products"} className="border-[#333333] border-[1px] px-1 sm:px-3 py-[10px] rounded-xl flex items-center justify-center gap-[10px] text-[#333333] text-[10px] sm:text-sm font-semibold leading-6 w-[130px] md:w-[180px]">
-          See All Products
-          <img src={IMAGES.arrow_black} className="size-3 sm:size-5" />{" "}
-        </Link>
-      </div>
+        <Heading
+  title="New Releases"
+  buttonLabel="See All Products"
+  buttonRoute="/all-products"
+/>
+
 
           <ul className="flex justify-between overflow-x-scroll no-scrollbar my-10">
             <li className="mx-2 relative">
@@ -428,8 +427,8 @@ export const Home = () => {
           <p className="hidden md:block absolute right-0 top-0 mr-12 mt-8 text-white">
             200 PRODUCTS TO CHOOSE FROM
           </p>
-          <p className="hidden md:block absolute left-0 bottom-0 ml-12 mb-8 text-white text-4xl lg:text-7xl font-semibold w-[30vw]">
-            JOIN THE HAPPINESS CLUB
+          <p className="hidden md:block absolute left-0 bottom-0 ml-12 mb-8 text-white text-4xl lg:text-[84px] font-semibold  leading-[72px]">
+            JOIN THE <br /> HAPPINESS <br /> CLUB
           </p>
           <button className="hidden rounded-lg p-2 text-black md:flex absolute right-0 bottom-0 bg-white mr-12 mb-8">
             Shop now

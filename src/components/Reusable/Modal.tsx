@@ -13,17 +13,17 @@ const Modal = ({ children, openModal1, setOpenModal1, modalType,setModalType, cl
           openModal1 ? "visible opacity-100" : "invisible opacity-0"
         } inset-0 grid place-items-center bg-gray-800/60 duration-100 dark:bg-transparent`}
       >
-       <div className="p-3 absolute overflow-y-auto">
+       <div className=" absolute overflow-y-auto">
        <div
           onClick={(e_) => e_.stopPropagation()}
           className={`rounded-lg bg-white drop-shadow-2xl ${
             openModal1
               ? "opacity-1 duration-300"
-              : "scale-110 opacity-0 duration-150"
+              : "scale-110 opacity-0 duration-150 "
           } ${classNames}`}
         >
             {/* Heading & cross icon */}
-          <div className="flex items-center justify-between px-8 pt-8">
+          <div className="flex items-center justify-between pt-8 px-8">
             <div className="flex items-center gap-[10px]">
             {
               modalType === "chooseGift" &&
@@ -41,7 +41,9 @@ const Modal = ({ children, openModal1, setOpenModal1, modalType,setModalType, cl
               className="size-5 cursor-pointer"
             />
           </div>
+          <div className="pb-0">
           {children}
+          </div>
         </div>
        </div>
       </div>

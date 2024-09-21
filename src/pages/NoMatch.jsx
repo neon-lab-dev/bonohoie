@@ -2,10 +2,14 @@
 import Lottie from "lottie-react";
 import notFoundAnimation from "../assets/page-not-found-animation.json";
 import { Link } from "react-router-dom";
+import NavBar from "../components/NavBar/NavBar";
+import { Footer } from "../components/Footer";
 
 export default function NoMatch() {
   return (
-    <div className="max-w-[900px] px-4 md:px-0 mx-auto font-Montserrat flex flex-col md:flex-row items-center gap-0 md:gap-10">
+    <div>
+      <NavBar/>
+      <div className="max-w-[900px] px-4 md:px-0 mx-auto font-Montserrat flex flex-col md:flex-row items-center gap-0 md:gap-10">
       <div className="w-full md:w-[600px] h-fit">
       <Lottie animationData={notFoundAnimation} loop={true} />
       </div>
@@ -21,6 +25,8 @@ export default function NoMatch() {
               Go Home
             </Link>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 }

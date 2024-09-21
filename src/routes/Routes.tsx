@@ -8,13 +8,15 @@ import WishListedItems from "../pages/WishListedItems/WishListedItems";
 import { TandC } from "../pages/TandC";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import AllProducts from "../pages/AllProducts/AllProducts";
+import NoMatch from "../pages/NoMatch";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    // errorElement: <ErrorPage />,
+    errorElement: <NoMatch />,
     children: [
       {
         path: "/",
@@ -30,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
           path: "/wish-listed-items",
-          element: <WishListedItems/>
+          element: <ProtectedRoute><WishListedItems/></ProtectedRoute>
       },
       {
           path: "/terms-condition",
@@ -38,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
           path: "/product-details/:id",
-          element: <ProductDetails/>,
+          element: <ProtectedRoute><ProductDetails/></ProtectedRoute>,
           loader : ({params}) => fetch(`https://bonohomebackend.vercel.app/api/v1/product/${params.id}`)
       },
       {
