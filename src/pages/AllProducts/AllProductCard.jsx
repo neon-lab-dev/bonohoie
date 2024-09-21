@@ -31,11 +31,11 @@ const AllProductCard = ({item}) => {
         <div>
       <div>
       <div
-        className={`bg-[#F6F6F6] rounded-lg h-[310px] lg:h-[415px] overflow-hidden font-Montserrat mt-10 relative flex flex-col justify-between`}
+        className={`bg-[#F6F6F6] rounded-lg h-[270px] lg:h-[415px] overflow-hidden font-Montserrat mt-0 lg:mt-10 relative flex flex-col justify-between`}
       >
         
         <div className="flex items-center justify-between p-5">
-          <Link to={`/product-details/${_id}`} className="text-[#454545] text-base font-semibold leading-6 capitalize hover:underline">
+          <Link to={`/product-details/${_id}`} className="text-[#454545] text-sm md:text-base font-medium leading-[22px] md:leading-6 capitalize hover:underline">
             {name}
           </Link>
 
@@ -51,7 +51,7 @@ const AllProductCard = ({item}) => {
           <Link to={`/product-details/${_id}`}>
           <img
             src={item.images[0].url}
-            className="h-full  object-cover"
+            className="h-full w-full object-cover"
             alt={item?.name || "Product Image"}
           />
           </Link>

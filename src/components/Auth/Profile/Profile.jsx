@@ -7,6 +7,7 @@ import { useGetMeQuery, useUpdateProfileMutation } from "../../../redux/Features
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/Features/Auth/authSlice";
+import ModalInnerContainer from "../../Reusable/ModalInnerContainer";
 
 const Profile = () => {
 
@@ -92,9 +93,10 @@ const Profile = () => {
   };
 
   return (
-    <form
+    <ModalInnerContainer>
+      <form
       onSubmit={handleSubmit(handleUpdateProfileDetails)}
-      className="px-8 font-Montserrat flex flex-col gap-6 mt-[42px]"
+      className="font-Montserrat flex flex-col gap-6"
     >
         {
           isProfileLoading
@@ -232,14 +234,14 @@ const Profile = () => {
             <button
               type="button"
               onClick={() => setEditMode(true)} // Enable edit mode
-              className="text-white px-6 py-[10px] bg-[#333] rounded-xl text-xs font-semibold mx-auto h-14 w-[179px]"
+              className="text-white px-5 py-[10px] bg-[#333] rounded-xl text-xs font-semibold mx-auto h-14 w-[179px]"
             >
               Update Information
             </button>
             <button
               type="button"
               onClick={() => setPasswordChangeMode(true)} // Example function to trigger change password modal
-              className="text-white px-6 py-[10px] bg-[#333] rounded-xl text-xs font-semibold mx-auto h-14 w-[179px]"
+              className="text-white px-5 py-[10px] bg-[#333] rounded-xl text-xs font-semibold mx-auto h-14 w-[179px]"
             >
               Change Password
             </button>
@@ -249,6 +251,7 @@ const Profile = () => {
       </div>
           }
     </form>
+    </ModalInnerContainer>
   );
 };
 

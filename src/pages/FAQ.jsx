@@ -1,9 +1,12 @@
-import { IMAGES } from '../assets'
+import { ICONS, IMAGES } from '../assets'
 import { MoreQues } from '../components/MoreQues'
-import { HappyMoments } from '../components/HappyMoments'
-import { Footer } from '../components/Footer'
+import { useState } from 'react'
 
 export const FAQ = () => {
+  const [questionTab, setQuestionTab] = useState("General");
+
+  const questionButtonLabel = ["General", "Pricing", "Delivery", "Return"];
+  
   return (
     <div>
     <div className="mx-6 md:mx-10">
@@ -23,75 +26,82 @@ export const FAQ = () => {
         />
       </div>
       <div className="flex justify-between m-4 ">
-        <p className="text-[#391811] font-semibold ">2024</p>
-        <p className="text-[#391811] font-semibold " >PREMIUM KIDS WEAR</p>
+        <p className="text-[#391811] font-semibold text-xs sm:text-base">2024</p>
+        <p className="text-[#391811] font-semibold text-xs sm:text-base" >PREMIUM KIDS WEAR</p>
       </div>
 
-      <div className='flex flex-col md:flex-row justify-between my-10'>
-        <p className='text-2xl md:text-5xl md:w-[30vw] md:ml-3'>Answer to all your questions</p>
+      <div className='flex flex-col md:flex-row gap-7 md:gap-0 justify-between mb-10 mt-16'>
+        <p className='text-2xl md:text-5xl md:w-[30vw] md:ml-3 leading-8 lg:leading-[68px] font-semibold lg:font-medium'>Answer to all your questions</p>
 
         <div className='md:w-[40vw] md:mr-3'>
           <p className='mb-5 md:text-lg'>Forem ipsum dolor sit amet, consectetur  elit. Nunc vulputate libero et velit </p>
-          <div className='flex flex-wrap '>
-            <button className='rounded-3xl border-[#888888] border-2 px-3 py-2  m-1  text-[#888888]'>General</button>
-            <button className='rounded-3xl border-[#888888] border-2 px-3 py-2  m-1  text-[#888888]'>Pricing</button>
-            <button className='rounded-3xl border-[#888888] border-2 px-3 py-2  m-1  text-[#888888]'>Delivery</button>
-            <button className='rounded-3xl border-[#888888] border-2 px-3 py-2  m-1  text-[#888888]'>Return</button>
+          <div className='flex flex-wrap gap-2'>
+          {
+              questionButtonLabel.map((label, index) => 
+                <button 
+              onClick={() => setQuestionTab(label)}
+              key={index} 
+              className={`${questionTab === label ? "bg-[#333] text-white" : "text-[#888] bg-white"} rounded-[32px] py-[10px] px-3 w-[104px] border-[#888888] border-2 hover:bg-[#333] hover:text-white transition duration-300`}>{label}</button>
+              )
+            }
           </div>
         </div>
       </div>
-      <div className='md:grid md:grid-cols-3 md:gap-7 md:m-7 mb-10 md:mb-20'>
-        <div className='bg-[#F6F6F6] rounded-2xl p-5 mb-4'>
-          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={IMAGES.search} alt='search' className='p-4' /> </div>
-          <p className='text-2xl'>What all do we offer ?</p>
-          <p className='text-[#5D5D5D] '>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
-            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </div>
-        <div className='bg-[#F6F6F6] rounded-2xl p-5 mb-4'>
-          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={IMAGES.search} alt='search' className='p-4' /> </div>
-          <p className='text-2xl'>What all do we offer ?</p>
-          <p className='text-[#5D5D5D] '>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
-            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </div>
-        <div className='bg-[#F6F6F6] rounded-2xl p-5 mb-4'>
-          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={IMAGES.search} alt='search' className='p-4' /> </div>
-          <p className='text-2xl'>What all do we offer ?</p>
-          <p className='text-[#5D5D5D] '>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
-            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </div>
-        <div className='bg-[#F6F6F6] rounded-2xl p-5 mb-4'>
-          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={IMAGES.search} alt='search' className='p-4' /> </div>
-          <p className='text-2xl'>What all do we offer ?</p>
-          <p className='text-[#5D5D5D] '>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
-            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </div>
-        <div className='bg-[#F6F6F6] rounded-2xl p-5 mb-4'>
-          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={IMAGES.search} alt='search' className='p-4' /> </div>
-          <p className='text-2xl'>What all do we offer ?</p>
-          <p className='text-[#5D5D5D] '>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
-            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </div>
-        <div className='bg-[#F6F6F6] rounded-2xl p-5 mb-4'>
-          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={IMAGES.search} alt='search' className='p-4' /> </div>
-          <p className='text-2xl'>What all do we offer ?</p>
-          <p className='text-[#5D5D5D] '>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
-            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-        </div>
+      <div className='md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-7 mb-10 md:mb-20'>
         
-
+        {
+          questionTab === "General" &&
+          [1,2,3,4,5,6].map((_,index) => 
+            <div key={index} className='bg-[#F6F6F6] rounded-2xl px-5 pt-4 pb-6  mb-4'>
+          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={ICONS.searchBlack} alt='search' className='p-4' /> </div>
+          <p className='text-2xl mt-7'>What all do we offer ?</p>
+          <p className='text-[#5D5D5D] mt-5'>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
+            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
+            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        </div>
+          )
+        }
+        {
+          questionTab === "Pricing" &&
+          [1,2,3,4,5,6].map((_,index) => 
+            <div key={index} className='bg-[#F6F6F6] rounded-2xl px-5 pt-4 pb-6  mb-4'>
+          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={ICONS.searchBlack} alt='search' className='p-4' /> </div>
+          <p className='text-2xl mt-7'>Pricing info</p>
+          <p className='text-[#5D5D5D] mt-5'>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
+            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
+            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        </div>
+          )
+        }
+        {
+          questionTab === "Delivery" &&
+          [1,2,3,4,5,6].map((_,index) => 
+            <div key={index} className='bg-[#F6F6F6] rounded-2xl px-5 pt-4 pb-6  mb-4'>
+          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={ICONS.searchBlack} alt='search' className='p-4' /> </div>
+          <p className='text-2xl mt-7'>Delivery info</p>
+          <p className='text-[#5D5D5D] mt-5'>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
+            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
+            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        </div>
+          )
+        }
+        {
+          questionTab === "Return" &&
+          [1,2,3,4,5,6].map((_,index) => 
+            <div key={index} className='bg-[#F6F6F6] rounded-2xl px-5 pt-4 pb-6  mb-4'>
+          <div className='bg-[#E7E7E7] rounded-2xl w-fit'><img src={ICONS.searchBlack} alt='search' className='p-4' /> </div>
+          <p className='text-2xl mt-7'>Return Info</p>
+          <p className='text-[#5D5D5D] mt-5'>Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate 
+            libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
+            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        </div>
+          )
+        }
       </div>
 
       <MoreQues/>
       
     </div>
-    <HappyMoments/>
-      <Footer/>
     </div>
 
   )

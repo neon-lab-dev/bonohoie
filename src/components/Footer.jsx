@@ -1,8 +1,16 @@
-import React from 'react'
-import { IMAGES } from '../assets'
 import { Link } from 'react-router-dom';
+import { ICONS, IMAGES } from '../assets'
 
 export const Footer = () => {
+  const footerLinks = [
+    { label: "Home", path: "./" },
+    { label: "Bestsellers", path: "./" },
+    { label: "About Us", path: "./about-us" },
+    { label: "FAQs", path: "./faq" },
+    { label: "Terms and Conditions", path: "/terms-condition" },
+    { label: "Privacy Policy", path: "./" }
+  ];
+  
   return (
     <div className="bg-[#4B64E6] h-[1000px] md:h-[750px] relative overflow-x-hidden mt-10">
       <div className="h-5 bg-[#2D33C8] "></div>
@@ -17,17 +25,17 @@ export const Footer = () => {
           aptent taciti sociosqu{" "}
         </p>
         <div>
-          <div className="flex my-4">
-            <img src={IMAGES.email} className="w-7 h-7 mr-5 " />{" "}
-            <p className="text-white text-[12px] sm:text-base">
+          <div className="flex items-center gap-3 my-4">
+            <img src={ICONS.emailGray} className="size-5" />{" "}
+            <a href="mailto:contactus@bonhomie.com" className="text-white text-[12px] sm:text-base hover:underline">
               contactus@bonhomie.com
-            </p>
+            </a>
           </div>
-          <div className="flex">
-            <img src={IMAGES.call} className="w-7 h-7 mr-5 " />{" "}
-            <p className="text-white text-[12px] sm:text-base">
+          <div className="flex gap-3 items-center">
+            <img src={ICONS.callGray} className="size-5" />{" "}
+            <a href='tel:+91 96476 75788' className="text-white hover:underline text-[12px] sm:text-base">
               +91 96476 75788
-            </p>
+            </a>
           </div>
         </div>
       </div>
@@ -47,26 +55,12 @@ export const Footer = () => {
             <p className="text-[#9CB3F4] text-[14px] sm:text-base mb-2 mt-3 ml-9">Shop by Age</p>
       </div>
       <div className='hidden absolute md:grid grid-cols-3 w-[510px] right-0  top-0  md:mt-32  gap-5 z-20'>
-        <ul className="text-white text-sm">
-          <li className="mb-3 ">
-            <a href="./">Home</a>
-          </li>
-          <li className="mb-3 ">
-            <a href="./">Bestsellers</a>
-          </li>
-          <li className="mb-3 ">
-            <a href="./about-us">About Us</a>
-          </li>
-          <li className="mb-3 ">
-            <a href="./faq">FAQs</a>{" "}
-          </li>
-          <li className="mb-3 ">
-            <a href="./terms-condition">Terms and Conditions</a>
-          </li>
-          <li className="mb-3 ">
-            <a href="./">Privacy Policy</a>
-          </li>
-        </ul>
+      <ul className="text-white text-sm font- leading-6 flex flex-col gap-4">
+  {footerLinks.map((link, index) => (
+      <Link to={link.path} key={index} className='hover:underline'>{link.label}</Link>
+  ))}
+</ul>
+
         
           <ul className="text-white text-sm">
             <li className="mb-3 ">Tshirts </li>
@@ -144,7 +138,7 @@ export const Footer = () => {
       <img
         src={IMAGES.footer_image}
         alt="footer"
-        className="absolute bottom-0 left-0 sm:bottom-0  sm:left-32 md:left-1/4 lg:left-1/3 object-contain xl:h-[600px] h-[500px]  grayscale"
+        className="absolute bottom-0 left-0 sm:bottom-0 sm:left-32 md:left-1/4 lg:left-96 object-contain xl:h-[600px] h-[500px]  grayscale"
       />
       <div className="bg-[#2D33C8] absolute bottom-0 w-[100vw]">
         <img

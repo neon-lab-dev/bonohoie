@@ -4,14 +4,14 @@ const SelectDropdown = ({ label, options, onChange, value }) => {
   return (
     <div className="relative w-[144px]">
       <select
-        className=" cursor-pointer appearance-none w-full h-[56px] px-[20px] py-[10px] rounded-lg border border-[#D1D1D1] text-gray-500 focus:outline-none"
+        className=" cursor-pointer appearance-none w-full h-[56px] px-3 py-[10px] rounded-lg border border-[#D1D1D1] text-gray-500 focus:outline-none"
         value={value}
         onChange={onChange}
       >
         <option value="">{label}</option>
-        {options.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.label}
+        {options?.map((option, index) => (
+          <option className="capitalize" key={index} value={option.value}>
+            {option}
           </option>
         ))}
       </select>

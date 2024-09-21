@@ -1,4 +1,4 @@
-const ProductInfo = () => {
+const ProductInfo = ({productCode}) => {
   return (
     <div className="flex items-center gap-3 mt-6 md:mt-8">
       <div className="flex flex-col gap-4 text-base md:text-xl font-medium leading-normal text-[#5D5D5D]">
@@ -16,7 +16,7 @@ const ProductInfo = () => {
       <div className="flex flex-col gap-4">
         {/* Product code */}
         <p className="text-[#333] text-lg md:text-xl font-semibold leading-normal">
-          28937638
+          {productCode}
         </p>
         {/* Collection */}
         <p className="text-[#333] text-lg md:text-xl font-semibold leading-normal">

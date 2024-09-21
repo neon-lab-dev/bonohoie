@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./NotificationBar.css";
 import NotificationBarBackgroundIcons from "../../assets/images/NotifcationBarBackgroundIcons.png";
 
@@ -34,8 +34,8 @@ export default function NotificationBar() {
 
   return (
     <div className="notification-bar">
-      <p>
-        Free shipping until 31 August, 2024 &nbsp;&nbsp; | &nbsp;&nbsp;{" "}
+      <p className="text-xs sm:text-base">
+         Free shipping until 31 August, 2024 &nbsp;&nbsp; | &nbsp;&nbsp;{" "}
         {timeLeft}
       </p>
       <img

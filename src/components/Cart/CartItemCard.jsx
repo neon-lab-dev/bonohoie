@@ -6,43 +6,36 @@ const CartItemCard = ({ item, onIncrement, onDecrement, onDelete }) => {
   const truncatedTitle = title?.length > 18 ? `${title.slice(0, 18)}...` : title;
 
   return (
-    <div className="bg-white px-8 py-6 w-full">
+    <div className="bg-white w-full pb-6 font-Montserrat">
       <div className="border-b border-[#E7E7E7] flex items-center justify-between pb-6">
-        <div className="flex items-center gap-8">
+        <div className="flex gap-8 w-full items-center">
           <img src={item?.image} alt="product-image" className="w-[40px] sm:w-[80px]" />
 
-          <div>
-            <h1 style={{ fontSize: "clamp(8px, 3vw, 18px)" }} className="font-medium leading-none sm:leading-8 text-[#262626]">
+
+          <div className="w-full">
+          <div className="flex items-center justify-between w-full">
+              {/* Product title */}
+            <h1 className="text-sm md:text-lg font-medium leading-normal sm:leading-8 text-[#262626] capitalize">
               {truncatedTitle}
             </h1>
-            <div className="flex items-center gap-4">
-              <p style={{ fontSize: "clamp(8px, 3vw, 18px)" }} className="font-semibold leading-8 text-[#333]">
-                Rs. {price * item.quantity}
-              </p>
-              <div style={{ fontSize: "clamp(8px, 3vw, 14px)" }} className="font-medium leading-6 text-[#6D6D6D] flex items-center gap-2">
-                <p>X</p>
-                <p>{item?.quantity}</p>
-              </div>
-            </div>
-          </div>
-        </div>
 
+            {/* Quantity increase, decrease, and remove btn */}
         <div className="flex gap-[10px]">
           {/* Quantity update */}
-          <div className="px-1 sm:px-3 py-1 sm:py-2 bg-[#F6F6F6] w-[60px] sm:w-[88px] flex items-center gap-3 rounded-lg">
+          <div className="px-3 py-2 bg-[#F6F6F6] w-[88px] flex items-center justify-center gap-3 rounded-lg">
             <img
               src={ICONS.minus}
               alt="minus-icon"
-              className="cursor-pointer size-2 sm:size-4"
+              className="cursor-pointer size-4"
               onClick={onDecrement}
             />
-            <p style={{ fontSize: "clamp(8px, 2vw, 14px)" }} className="text-sm font-medium leading-6 text-[#262626]">
+            <p className="text-sm font-medium leading-6 text-[#262626]">
               {item?.quantity}
             </p>
             <img
               src={ICONS.plus}
               alt="plus-icon"
-              className="cursor-pointer size-2 sm:size-4"
+              className="cursor-pointer size-4"
               onClick={onIncrement}
             />
           </div>
@@ -52,6 +45,25 @@ const CartItemCard = ({ item, onIncrement, onDecrement, onDelete }) => {
             <img src={ICONS.deleteIcon} alt="delete-icon" className="size-5" />
           </div>
         </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <p className="text-sm md:text-lg font-semibold leading-6 md:leading-8 text-[#333]">
+                Rs. {price * item.quantity}
+              </p>
+              <div className="text-sm font-medium leading-6 text-[#6D6D6D] flex items-center gap-2">
+                <p>X</p>
+                <p>{item?.quantity}</p>
+              </div>
+            </div>
+            </div>
+            
+
+
+        </div>
+
+        
+
       </div>
     </div>
   );

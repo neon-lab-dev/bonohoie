@@ -5,9 +5,10 @@ import FreebiesCard from "./FreebiesCard";
 
 const ChooseGift = () => {
   const {data , isLoading:isFreebiesLoading} = useGetAllFreebiesQuery();
+  console.log(data?.freebies);
   return (
     <div className="py-6">
-      <div className="bg-[#FDF9E9] relative px-8 py-5 border-t border-[#E7E7E7]">
+      <div className="bg-[#FDF9E9] relative px-4 md:px-8 py-5 border-t border-[#E7E7E7]">
         {/* Your Orders modal */}
 
         {/* Background images */}
@@ -22,8 +23,8 @@ const ChooseGift = () => {
             <div className="flex items-center gap-2">
               <img src={ICONS.unlocked} alt="unlock-icon" className="size-8" />
               <h1
-                className="text-[#1C1D4F] font-semibold leading-normal"
-                style={{ fontSize: "clamp(8px, 3vw, 20px)" }}
+                className="text-[#1C1D4F] font-semibold leading-normal text-xl"
+                // style={{ fontSize: "clamp(8px, 3vw, 20px)" }}
               >
                 Unlocked Freebies
               </h1>
@@ -31,23 +32,30 @@ const ChooseGift = () => {
           </div>
 
           <p
-            style={{ fontSize: "clamp(8px, 2vw, 14px)" }}
-            className="text-[#262626] font-medium leading-none sm:leading-6 mt-2"
+            className="text-[#262626] font-medium leading-6 mt-2 text-sm"
           >
             You can select any two of the freebies that have been unlocked.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-7">
+        <div className="mt-7">
           {
             isFreebiesLoading ? 
-            [1,2,3].map((_,index) => 
-              <FreebiesCardLoader key={index}/>
-            )
+            <div className="grid grid-cols-2 gap-3">
+              {
+                [1,2,3].map((_,index) => 
+                  <FreebiesCardLoader key={index}/>
+                )
+              }
+            </div>
             :
-            data?.freebies?.map(freebie => 
-              <FreebiesCard key={freebie?._id} freebie={freebie} />
-            )
+            <div className="grid grid-cols-3 gap-2 md:gap-3">
+              {
+                data?.freebies?.map(freebie => 
+                  <FreebiesCard key={freebie?._id} freebie={freebie} />
+                )
+              }
+            </div>
           }
         </div>
       </div>
