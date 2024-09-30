@@ -1,5 +1,5 @@
-import { ICONS, IMAGES } from '../assets'
-import { MoreQues } from '../components/MoreQues'
+import { ICONS, IMAGES } from '../../assets'
+import { MoreQues } from '../../components/MoreQues'
 import { useState } from 'react'
 
 export const FAQ = () => {

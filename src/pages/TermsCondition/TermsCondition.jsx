@@ -1,10 +1,10 @@
 
-import { Footer } from "../components/Footer";
-import { IMAGES } from "../assets";
-import { MoreQues } from "../components/MoreQues";
-import { HappyMoments } from "../components/HappyMoments";
+import { Footer } from "../../components/Footer";
+import { IMAGES } from "../../assets";
+import { MoreQues } from "../../components/MoreQues";
+import { HappyMoments } from "../../components/HappyMoments";
 
-export const TandC = () => {
+export const TermsCondition = () => {
   return (
     <div>
     <div className="mx-6 md:mx-10">

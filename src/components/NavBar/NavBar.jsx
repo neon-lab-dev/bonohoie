@@ -1,4 +1,4 @@
-import "./NavBar.css";
+// import "./NavBar.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ICONS } from "../../assets";
 
@@ -23,6 +23,7 @@ import CartDrawer from "../Cart/CartDrawer/CartDrawer";
 import ModalInnerContainer from "../Reusable/ModalInnerContainer";
 import { selectDrawerState, setDrawerType, setOpenDrawer } from "../../redux/Features/DrawerSlide/DrawerSlice";
 import ChooseGiftDrawer from "../ChooseGift/ChooseGiftDrawer";
+import axios from "axios";
 
 const navlinks = [
   {
@@ -210,6 +211,14 @@ const NavBar = () => {
     dispatch(setOpenDrawer(!openDrawer));
   }
 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://bonohomebackend.vercel.app/api/v1/product/categories")
+      .then(res => setCategories(res?.data?.categories))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="max-w-[1440px] mx-auto px-4 md:px-[56px] font-Montserrat w-full my-6">
       {/* Auth , cart, orders modal */}
@@ -296,10 +305,10 @@ const NavBar = () => {
 
                         <div className="flex flex-col gap-5">
                           {navlink.categoryList &&
-                            navlink.categoryList.map((category, index) => (
-                              <Link key={index} to={category.path}>
-                                <p className="text-[#333] text-sm font-medium px-3 leading-6 text-start hover:underline">
-                                  {category.label}
+                            categories.map((category, index) => (
+                              <Link key={index} to={`/all-products/category/${category}`}>
+                                <p className="text-[#333] text-sm font-medium px-3 leading-6 text-start hover:underline capitalize">
+                                  {category}
                                 </p>
                               </Link>
                             ))}

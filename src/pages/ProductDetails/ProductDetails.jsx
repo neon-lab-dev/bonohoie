@@ -11,8 +11,10 @@ import ProductInfo from "./ProductInfo";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "sonner";
 import { setModalType, setOpenModal } from "../../redux/Features/Modal/ModalSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ExpandableDescription from "./ExpandableDescription";
+import { useAddToWishListMutation } from "../../redux/Features/WishList/wishListApi";
+import { useCurrentUser } from "../../redux/Features/Auth/authSlice";
 
 
 // Made in missing in api
@@ -23,7 +25,7 @@ const ProductDetails = () => {
   const productDetail = useLoaderData();
   console.log(productDetail);
 
-  const {_id,name, description, ratings, images, sizes} = productDetail.product
+  const {_id, name, description, ratings, images, sizes} = productDetail.product
 
   // State to track selected size and price
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
@@ -113,6 +115,32 @@ const ProductDetails = () => {
     }
   };
 
+  const user = useSelector(useCurrentUser);
+
+
+  const [addToWishList] = useAddToWishListMutation();
+
+  const handleAddToWishList = async () => {
+    // Check if the user is logged in
+    if (user) {
+      const productId = {
+        id: _id,
+      };
+
+      toast.promise(addToWishList(productId).unwrap(), {
+        loading: "Adding to wish list...",
+        success: `${name} has been added to wish list`,
+        error: (error) => {
+          return error?.data?.message || "Failed to add to wish list";
+        },
+      });
+    } else {
+      // Open modal if the user is not logged in.
+      dispatch(setModalType("login"));
+      dispatch(setOpenModal(true));
+    }
+  };
+
 
   return (
     <div className="max-w-[1440px] mx-auto font-Montserrat">
@@ -131,11 +159,12 @@ const ProductDetails = () => {
         <div className="w-full lg:w-[40%]">
           {/* Product name */}
           <div className="flex items-center justify-between">
-          <h1 className="text-2xl md:text-[32px] font-bold leading-normal md:leading-[44px] text-[#333]">
+          <h1 className="text-2xl md:text-[32px] font-bold leading-normal md:leading-[44px] text-[#333] capitalize">
             {name}
           </h1>
 
           <img
+          onClick={handleAddToWishList}
         // src={isInCart ? ICONS.redHeart : IMAGES.heart}
         src={IMAGES.heart}
         className="cursor-pointer size-5"

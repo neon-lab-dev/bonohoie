@@ -3,6 +3,7 @@ import { ICONS } from "../assets";
 import { useGetSingleProductQuery } from "../redux/Features/Products/productApi";
 import { useRemoveWishListProductMutation } from "../redux/Features/WishList/wishListApi";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 const WishListedItemsCard = ({ item }) => {
   console.log(item);
@@ -39,9 +40,9 @@ const WishListedItemsCard = ({ item }) => {
       >
         {!inStock && <div className="absolute inset-0 bg-[#000000]/20"></div>}
         <div className="flex items-center justify-between p-5">
-          <h1 className="text-[#454545] text-base font-semibold leading-6 capitalize">
+          <Link to={`/product-details/${wishlistProduct?.product?._id}`} className="text-[#454545] text-base font-semibold leading-6 capitalize hover:underline">
             {wishlistProduct?.product?.name}
-          </h1>
+          </Link>
 
           <img
           onClick={handleRemoveWishListProduct}
@@ -51,6 +52,7 @@ const WishListedItemsCard = ({ item }) => {
           />
         </div>
 
+        <Link to={`/product-details/${wishlistProduct?.product?._id}`}>
         <img
           src={wishlistProduct?.product?.images[0]?.url}
           alt="Item Image"
@@ -64,7 +66,7 @@ const WishListedItemsCard = ({ item }) => {
             </span>
           </div>
         )}
-      </div>
+      </Link>
 
       <div className="mt-4">
         <h1 className="text-[#333] text-base lg:text-[28px] font-semibold leading-normal">
@@ -74,6 +76,7 @@ const WishListedItemsCard = ({ item }) => {
           inclusive of all taxes
         </p>
       </div>
+        </div>
     </div>
   );
 };

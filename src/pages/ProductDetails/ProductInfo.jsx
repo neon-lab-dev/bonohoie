@@ -16,7 +16,7 @@ const ProductInfo = ({productCode}) => {
       <div className="flex flex-col gap-4">
         {/* Product code */}
         <p className="text-[#333] text-lg md:text-xl font-semibold leading-normal">
-          {productCode}
+        {productCode.substring(0, 7)}
         </p>
         {/* Collection */}
         <p className="text-[#333] text-lg md:text-xl font-semibold leading-normal">

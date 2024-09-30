@@ -2,9 +2,9 @@ import { useState } from "react";
 import { ICONS } from "../../assets";
 import WishListedItemsCard from "../../components/WishListedItemsCard";
 import Sort from "../../components/Sort";
-import Filter from "../../components/Filter";
 import { useGetMeQuery } from "../../redux/Features/Auth/authApi";
 import { Link } from "react-router-dom";
+import Filter from "../../components/Filter/Filter";
 
 const WishListedItems = () => {
   const {data:wishListProducts, refetch, isLoading:isWishlistedProductsLoading} = useGetMeQuery();
