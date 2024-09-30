@@ -1,9 +1,33 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { ICONS } from "../assets";
+import { ICONS } from "../../assets";
 
-const Filter = ({ isFilterExpanded, toggleFilterExpand }) => {
+const Filter = ({ isFilterExpanded, toggleFilterExpand, categories, onApplyFilters, colorOptions, ageOptions }) => {
   const [filterTab, setFilterTab] = useState("Category");
+
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
+
+  const handleCheckboxChange = (category) => {
+    setSelectedCategories((prev) =>
+        prev.includes(category)
+            ? prev.filter((cat) => cat !== category)
+            : [...prev, category]
+    );
+};
+
+  const handleColorCheckboxChange = (color) => {
+    setSelectedColors((prev) =>
+        prev.includes(color)
+            ? prev.filter((clr) => clr !== color)
+            : [...prev, color]
+    );
+};
+
+  const applyFilters = () => {
+    onApplyFilters(selectedCategories);
+    toggleFilterExpand(); 
+  };
 
   return (
     <div className="relative z-50">
@@ -81,26 +105,78 @@ const Filter = ({ isFilterExpanded, toggleFilterExpand }) => {
                   <div className="w-full">
                     {filterTab === "Category" && (
                       <div className="flex flex-col">
-                        <div className="flex items-center justify-between w-full py-4">
+                        {
+                          categories?.map((category, index) => 
+                            <div key={index} className="flex items-center justify-between w-full py-4">
                           <label
                             htmlFor="default-checkbox"
-                            className="text-[#333] font-medium text-base cursor-pointer"
+                            className="text-[#333] font-medium text-base cursor-pointer capitalize"
                           >
-                            TShirt
+                            {category}
                           </label>
                           <input
+                          checked={selectedCategories.includes(category)}
+                          onChange={() => handleCheckboxChange(category)}
                             id="default-checkbox"
                             type="checkbox"
                             value=""
                             className="w-4 h-4  bg-gray-100 border-gray-300 rounded-xl focus:ring-2"
                           />
                         </div>
+                          )
+                        }
                       </div>
                     )}
 
-                    {filterTab === "Age" && <div>Age</div>}
+                    {filterTab === "Age" && 
+                    <div className="flex flex-col">
+                    {
+                      ageOptions?.map((age, index) => 
+                        <div key={index} className="flex items-center justify-between w-full py-4">
+                      <label
+                        htmlFor="default-checkbox"
+                        className="text-[#333] font-medium text-base cursor-pointer capitalize"
+                      >
+                        {age}
+                      </label>
+                      <input
+                      checked={selectedCategories.includes(age)}
+                      onChange={() => handleCheckboxChange(age)}
+                        id="default-checkbox"
+                        type="checkbox"
+                        value=""
+                        className="w-4 h-4  bg-gray-100 border-gray-300 rounded-xl focus:ring-2"
+                      />
+                    </div>
+                      )
+                    }
+                  </div>
+                    }
 
-                    {filterTab === "Colour" && <div>Colour</div>}
+                    {filterTab === "Colour" && 
+                    <div className="flex flex-col">
+                    {
+                      colorOptions?.map((color, index) => 
+                        <div key={index} className="flex items-center justify-between w-full py-4">
+                      <label
+                        htmlFor="default-checkbox"
+                        className="text-[#333] font-medium text-base cursor-pointer capitalize"
+                      >
+                        {color}
+                      </label>
+                      <input
+                      checked={selectedCategories.includes(color)}
+                      onChange={() => handleCheckboxChange(color)}
+                        id="default-checkbox"
+                        type="checkbox"
+                        value=""
+                        className="w-4 h-4  bg-gray-100 border-gray-300 rounded-xl focus:ring-2"
+                      />
+                    </div>
+                      )
+                    }
+                  </div>
+                    }
 
                     {filterTab === "Price Range" && <div>Price Range</div>}
                   </div>
@@ -110,7 +186,7 @@ const Filter = ({ isFilterExpanded, toggleFilterExpand }) => {
           </div>
 
           <div className="bg-[#F6F6F6] px-4 py-3 flex justify-end bottom-0 w-full">
-            <button className="flex items-center justify-center text-white gap-[10px] px-3 py-[10px] bg-[#F82456] rounded-xl text-xs h-12 w-[152px]">
+            <button  onClick={applyFilters} className="flex items-center justify-center text-white gap-[10px] px-3 py-[10px] bg-[#F82456] rounded-xl text-xs h-12 w-[152px]">
               <img
                 src={ICONS.filterWhite}
                 alt="funel-icon"

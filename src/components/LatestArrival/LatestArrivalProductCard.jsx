@@ -3,35 +3,47 @@ import { ICONS, IMAGES } from "../../assets";
 import { toast } from "sonner";
 import { useAddToWishListMutation } from "../../redux/Features/WishList/wishListApi";
 import { Link } from "react-router-dom";
+import { useCurrentUser } from "../../redux/Features/Auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setModalType,
+  setOpenModal,
+} from "../../redux/Features/Modal/ModalSlice";
 
 const LatestArrivalProductCard = ({ product }) => {
-  
+  const dispatch = useDispatch();
+
+  const user = useSelector(useCurrentUser);
+
   const [addToWishList] = useAddToWishListMutation();
 
-    const handleAddToWishList = async () => {
-        const productId = {
-          id: product?._id
-        };
-      
-        toast.promise(
-          addToWishList(productId).unwrap(),
-          {
-            loading: 'Adding to wish list...',
-            success: `${product?.name} has been added to wish list`,
-            error: (error) => {
-              console.log(error?.data?.message); // Log the error to the console
-              return error?.data?.message || "Failed to add to wish list"; // Return the error message
-            },
-          }
-        );
+  const handleAddToWishList = async () => {
+    // Check if the user is logged in
+    if (user) {
+      const productId = {
+        id: product?._id,
       };
 
-
-  
+      toast.promise(addToWishList(productId).unwrap(), {
+        loading: "Adding to wish list...",
+        success: `${product?.name} has been added to wish list`,
+        error: (error) => {
+          return error?.data?.message || "Failed to add to wish list";
+        },
+      });
+    } else {
+      // Open modal if the user is not logged in.
+      dispatch(setModalType("login"));
+      dispatch(setOpenModal(true));
+    }
+  };
 
   return (
     <div className="mx-1 relative font-Montserrat">
-      <Link to={`/product-details/${product?._id}`} className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl">
+      <Link
+        to={`/product-details/${product?._id}`}
+        className="bg-[#F8EBDC] flex items-end justify-center w-[220px] h-[280px] md:w-[340px] md:h-[400px] rounded-xl"
+      >
         {product?.images?.length > 0 ? (
           <img
             src={product?.images[0]?.url}

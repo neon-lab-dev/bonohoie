@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ICONS } from "../../assets";
 import AllProductsHero from "../../components/AllProductsHero/AllProductsHero";
 import SelectDropdown from "../../components/Reusable/SelectDropdown";
@@ -6,69 +6,93 @@ import AllProductCard from "./AllProductCard";
 import { useGetAllProductsQuery } from "../../redux/Features/Products/productApi";
 import ProductCardLoader from "../../components/Loaders/ProductCardLoader";
 import Sort from "../../components/Sort";
-import Filter from "../../components/Filter";
+import Filter from "../../components/Filter/Filter";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const AllProducts = () => {
+  const products = useParams();
   const { data: allProducts, isLoading: isAllProductsLoading } = useGetAllProductsQuery();
-  console.log(allProducts);
-  
+  const [categories, setCategories] = useState([]);
+  const [ageOptions, setAgeOptions] = useState([]);
+  const [colorOptions, setColorOptions] = useState([]);
+  const [genderOptions, setGenderOptions] = useState([]);
+
+  const sortOptions = ["Low to High", "High to Low"];
+
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   // State for filter and search
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(products.category);
+  console.log(selectedCategory);
+  const [selectedSortOrder, setSelectedSortOrder] = useState("");
   const [selectedAge, setSelectedAge] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  
+
   const [isSortExpanded, setIsSortExpanded] = useState(false);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
-  
+
   const toggleSortExpand = () => setIsSortExpanded(!isSortExpanded);
   const toggleFilterExpand = () => setIsFilterExpanded(!isFilterExpanded);
-  
-  // Options for filters (these should be dynamic if possible from backend)
-  const categoryOptions = allProducts?.products ? Array.from(new Set(allProducts.products.map(product => product.category))) : [];
-
-  console.log(categoryOptions);
-  const ageOptions = [/* ...options... */];
-  const genderOptions = [/* ...options... */];
-  const colorOptions = allProducts?.products ? Array.from(new Set(allProducts.products.map(product => product.color))) : [];
-  const priceRangeOptions = [/* ...options... */];
 
 
-  // Normalize function to remove extra spaces, convert to lowercase, and remove all spaces
-const normalizeString = (str) => str.toLowerCase().replace(/\s+/g, '').trim();
+  const priceRangeOptions = [
+    /* ...options... */
+  ];
 
-// Updated handleSearch function to match user input without spaces
-const handleSearch = (searchTerm) => {
-  const normalizedSearchTerm = normalizeString(searchTerm);
+  useEffect(() => {
+    if (allProducts?.products) {
+      const ageSet = new Set();
+      const colorSet = new Set();
+      const genderSet = new Set();
 
-  if (!normalizedSearchTerm) {
-    return allProducts?.products || [];
-  }
+      allProducts.products.forEach((product) => {
+        if (product.age) ageSet.add(product.age);
+        if (product.color) colorSet.add(product.color);
+        if (product.gender) genderSet.add(product.gender);
+      });
 
-  return allProducts?.products.filter(product => {
-    const normalizedProductName = normalizeString(product.name);
-    const normalizedProductDescription = normalizeString(product.description);
-    
-    return normalizedProductName.includes(normalizedSearchTerm) || 
-           normalizedProductDescription.includes(normalizedSearchTerm);
-  }) || [];
-};
+      setAgeOptions([...ageSet]);
+      setColorOptions([...colorSet]);
+      setGenderOptions([...genderSet]);
+    }
+  }, [allProducts]);
 
-  // Filter logic: Filter products based on user selection and search term
-  const filteredProducts = handleSearch(searchTerm).filter(product => {
-    const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
-    const matchesAge = selectedAge ? product.age === selectedAge : true;
-    const matchesGender = selectedGender ? product.gender === selectedGender : true;
-    const matchesColor = selectedColor ? product.color === selectedColor : true;
-    const matchesPrice = selectedPriceRange
-      ? product.price >= parseInt(selectedPriceRange.split("-")[0]) &&
-        product.price <= parseInt(selectedPriceRange.split("-")[1])
-      : true;
-    
-    return matchesCategory && matchesAge && matchesGender && matchesColor && matchesPrice;
-  });
+  useEffect(() => {
+    axios
+      .get("https://bonohomebackend.vercel.app/api/v1/product/categories")
+      .then((res) => setCategories(res?.data?.categories))
+      .catch((err) => console.log(err));
+
+    const queryParams = {};
+    if (searchTerm) queryParams.keyword = searchTerm;
+    if (selectedColor) queryParams.color = selectedColor;
+    if (selectedCategory) queryParams.category = selectedCategory;
+    if (selectedAge) queryParams.age = selectedAge;
+    if (selectedGender) queryParams.gender = selectedGender;
+    if (selectedSortOrder) queryParams.sortOrder = selectedSortOrder;
+
+    const queryString = new URLSearchParams(queryParams).toString();
+
+    axios
+      .get(`https://bonohomebackend.vercel.app/api/v1/products?${queryString}`)
+      .then((res) => setFilteredProducts(res?.data?.products))
+      .catch((err) => console.log(err));
+  }, [
+    searchTerm,
+    selectedColor,
+    selectedCategory,
+    selectedAge,
+    selectedGender,
+    selectedSortOrder,
+  ]);
+
+  const handleApplyFilters = (selectedCategories) => {
+    setSelectedCategory(selectedCategories);
+  };
 
   return (
     <div className="max-w-[1440px] mx-auto font-Montserrat">
@@ -80,9 +104,27 @@ const handleSearch = (searchTerm) => {
             Providing the best
           </h1>
           <p className="text-[#888] font-medium">
-            showing <span className="text-[#333] font-semibold">{filteredProducts?.length}</span>{" "}
+            showing{" "}
+            <span className="text-[#333] font-semibold">
+              {filteredProducts?.length}
+            </span>{" "}
             products
           </p>
+
+          <div className="flex md:hidden items-center justify-between w-[300px] h-[56px] px-[20px] py-[10px] border border-gray-300 rounded-[8px]">
+              <input
+                type="text"
+                placeholder={"Search for any product"}
+                className="outline-none flex-grow"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <img
+                src={ICONS.search}
+                alt="search-icon"
+                className="size-5 cursor-pointer"
+              />
+            </div>
         </div>
 
         {/* Filter Menu */}
@@ -91,7 +133,7 @@ const handleSearch = (searchTerm) => {
             {/* Filter components */}
             <SelectDropdown
               label="Category"
-              options={categoryOptions}
+              options={categories}
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             />
@@ -140,9 +182,9 @@ const handleSearch = (searchTerm) => {
 
             <SelectDropdown
               label="Sort by:"
-              options={categoryOptions}
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              options={sortOptions}
+              value={selectedSortOrder}
+              onChange={(e) => setSelectedSortOrder(e.target.value)}
             />
           </div>
         </div>
@@ -150,7 +192,7 @@ const handleSearch = (searchTerm) => {
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 mt-8">
           {isAllProductsLoading ? (
-            <ProductCardLoader />
+            <ProductCardLoader variant={"allProducts"} />
           ) : (
             filteredProducts?.map((item) => (
               <AllProductCard key={item._id} item={item} />
@@ -162,15 +204,28 @@ const handleSearch = (searchTerm) => {
         <div className="flex items-center justify-between mt-[56px]">
           <p className="text-[#888] font-medium">Showing end of results</p>
           <p className="text-[#888] font-medium">
-            products <span className="text-[#333] font-semibold">{filteredProducts?.length} </span> of{" "}
-            {allProducts?.products?.length}
+            products{" "}
+            <span className="text-[#333] font-semibold">
+              {filteredProducts?.length}{" "}
+            </span>{" "}
+            of {allProducts?.products?.length}
           </p>
         </div>
       </div>
 
       {/* Sort and Filter Components for Mobile */}
-      <Sort isSortExpanded={isSortExpanded} toggleSortExpand={toggleSortExpand} />
-      <Filter isFilterExpanded={isFilterExpanded} toggleFilterExpand={toggleFilterExpand} />
+      <Sort
+        isSortExpanded={isSortExpanded}
+        toggleSortExpand={toggleSortExpand}
+      />
+      <Filter
+        colorOptions={colorOptions}
+        categories={categories}
+        ageOptions={ageOptions}
+        isFilterExpanded={isFilterExpanded}
+        toggleFilterExpand={toggleFilterExpand}
+        onApplyFilters={handleApplyFilters}
+      />
 
       <div
         style={{ boxShadow: "0px -4px 4px 0px rgba(0, 0, 0, 0.06)" }}

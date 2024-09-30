@@ -21,7 +21,7 @@ const LatestArrival = () => {
           // Loader
           <div className="flex items-center justify-between">
             {[1, 2, 3, 4].map((_, index) => (
-              <ProductCardLoader key={index} />
+              <ProductCardLoader key={index} variant={"latestProduct"} />
             ))}
           </div>
         ) : (
